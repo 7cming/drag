@@ -18,7 +18,7 @@ v1.0 2018-10
 ## 介绍
 
 ### 通用
->框架核心依赖bootstrap，默认使用jquery2.x;  
+>框架核心依赖bootstrap;  
 拖拽使用jquery-ui；  
 将easyui兼容后引入，但是编辑比较麻烦，暂时没有编辑功能；   
 
