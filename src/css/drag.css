@@ -1,16 +1,19 @@
 .pagetitle {
     cursor: pointer;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
+
 #navbar {
     padding: 8px;
 }
+
 .main-page {
     padding-top: 51px;
 }
+
 .typelist {
     position: fixed;
     width: 400px;
@@ -19,32 +22,45 @@
     border-right: 1px solid #999999;
     /*background: #4cae4c;*/
 }
+
 .drag-container {
     margin-left: 400px;
 }
+
 .col-layout {
     border: 1px solid #e3e3e3;
     min-height: 70px;
     margin-top: 5px;
 }
+
 .edit .dragbox {
     margin: 10px;
-    padding: 30px 15px 15px;
+    padding: 15px 15px;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    position: relative;
-    word-wrap: break-word;
+    overflow: auto;
 }
-.edit .dragbox:after {
-    background-color: #F5F5F5;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px 0 4px 0;
-    color: #9DA0A4;
-    content: "Container";
-    font-size: 12px;
-    font-weight: bold;
-    left: -1px;
-    padding: 3px 7px;
-    position: absolute;
-    top: -1px;
+
+.droppable-active {
+    background-color: #CCCCFF !important;
+    border: 1px solid #ebebeb
+}
+
+.tools a {
+    cursor: pointer;
+    font-size: 14px !important
+}
+
+.form-body .droppable {
+    min-height: 100px
+}
+
+.draggable {
+    cursor: move;
+}
+
+.ui-sortable-placeholder {
+    border: 1px dashed #cecece !important;
+    visibility: visible !important;
+    background: #e7eaec
 }
