@@ -1,6 +1,7 @@
 # drag
 基于bootstrap的页面元素拖拽
 
+[DEMO](https://7cming.github.io/drag/build/drag.html)
 ===========================
 	
 |Author|7c|
