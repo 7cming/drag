@@ -23,7 +23,7 @@
     font-size: 30px;
 }
 
-.fontcenter{
+.fontcenter {
     vertical-align: middle;
     margin-right: 15px;
 }
@@ -87,6 +87,10 @@
     background: #e7eaec
 }
 
+.drag-component {
+    width: auto;
+}
+
 #colsplit {
     margin-bottom: 5px;
 }
@@ -98,7 +102,7 @@
 }
 
 .btnbar {
-    position: absolute;
+    position: fixed;
     margin-top: 6px;
     margin-left: 160px;
 }
