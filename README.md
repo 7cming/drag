@@ -1,4 +1,5 @@
 
+
 # Drag 页面拖拽
 >基于bootstrap的页面元素拖拽  
 演示：[demo](https://7cming.github.io/drag/build/drag.html)  
@@ -14,7 +15,11 @@ v1.0 2018-10
 右侧为拖拽及展示区域，对拖拽元素进行编辑、移除等操作  
 整体页面功能规划出 [清空]、[保存]、[查看代码]及[下载]  
 
-[逐步更新中...]
+v1.1 2018-10
+> 组件使用accordion进行分类显示  
+使用jQuery UI组件实现拖拽、放置及排序  
+
+[逐步更新中...]  
 有问题或建议发送邮件给我   
 
 ## 介绍
@@ -32,7 +37,8 @@ v1.0 2018-10
 ### 第三方文档
 - [Bootstrap](https://v3.bootcss.com/)
 - [jQuery](https://api.jquery.com/)  
--  [EasyUI](http://www.jeasyui.net/tutorial/)
-
-
+- [jQuery UI](https://api.jqueryui.com/)  
+- [EasyUI](http://www.jeasyui.net/tutorial/)  
+  
+  
 Powered By **7c**  
