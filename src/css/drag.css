@@ -28,9 +28,8 @@
 }
 
 .col-layout {
-    border: 1px solid #e3e3e3;
-    min-height: 70px;
-    margin-top: 5px;
+    border: 1px solid ;
+    min-height: 67px;
 }
 
 .edit .dragbox {
@@ -51,16 +50,23 @@
     font-size: 14px !important
 }
 
-.form-body .droppable {
-    min-height: 100px
-}
-
-.draggable {
-    cursor: move;
-}
-
 .ui-sortable-placeholder {
     border: 1px dashed #cecece !important;
     visibility: visible !important;
     background: #e7eaec
+}
+
+#colsplit {
+    margin-bottom: 5px;
+}
+
+.draglabel {
+    background: #999999;
+    cursor: move;
+}
+
+.btnbar {
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 160px;
 }

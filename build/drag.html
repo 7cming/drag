@@ -42,23 +42,29 @@
                 <div class="components-col">
                     <p>栅格布局，栅格总数默认为12(以空格进行分隔)</p>
                     <input id="colsplit">
-                    <div class="dragcontain" style="margin-top: 5px">
+                    <div class="drag-component component-layout">
                         <div class="dragtoolbar">
-                            <div class="btn btn-xs draglabel" style="background: #999999;cursor: move"><i class="fa fa-arrows-alt"></i> 拖动</div>
+                            <div class="btn btn-xs draglabel"><i class="fa fa-arrows-alt"></i> 拖动</div>
                         </div>
                         <div class="row col-layout">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="group">
-                <h3>block</h3>
-                <div>
-                </div>
-            </div>
+            <!--<div class="group">-->
+                <!--<h3>block</h3>-->
+                <!--<div>-->
+                <!--</div>-->
+            <!--</div>-->
             <div class="group">
                 <h3>button</h3>
                 <div>
+                    <div class="drag-component component-button">
+                        <div class="dragtoolbar btnbar">
+                            <div class="btn btn-xs draglabel"><i class="fa fa-arrows-alt"></i> 拖动</div>
+                        </div>
+                        <button type="button" class="btn btn-default">（默认样式）Default</button>
+                    </div>
                 </div>
             </div>
             <div class="group">
@@ -71,7 +77,6 @@
                                 <input type="text" class="form-control" id="form-input-1" placeholder="请输入">
                             </div>
                         </div>
-                        <span class="draglabel" style="display: block;"><i class="fa fa-arrows-alt"></i>拖动</span>
                         <div class="form-group draggable">
                             <label class="col-sm-4 control-label" for="form-password-1">密码框</label>
                             <div class="col-sm-8">
@@ -135,7 +140,7 @@
         </div>
     </div>
     <div class="drag-container">
-        <div class="dragbox ui-sortable droppable">
+        <div class="dragbox ui-sortable">
         </div>
     </div>
 </div>
