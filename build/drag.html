@@ -40,10 +40,13 @@
             <div class="group">
                 <h3>grid</h3>
                 <div class="components-col">
-                    <p>栅格布局，栅格总数默认为12(以空格进行分隔)</p>
+                    <p>栅格布局，栅格数12(以空格进行分隔)</p>
                     <input id="colsplit">
                     <div class="drag-component component-layout">
                         <div class="dragtoolbar">
+                            <div class="hiddentoolbar">
+                                <button class="btn btn-danger btn-xs remove-link"><i class="fa fa-trash"></i>移除</button>
+                            </div>
                             <div class="btn btn-xs draglabel"><i class="fa fa-arrows-alt"></i> 拖动</div>
                         </div>
                         <div class="row col-layout">
@@ -61,6 +64,9 @@
                 <div>
                     <div class="drag-component component-button">
                         <div class="dragtoolbar btnbar">
+                            <div class="hiddentoolbar">
+                                <button class="btn btn-danger btn-xs remove-link"><i class="fa fa-trash"></i>移除</button>
+                            </div>
                             <div class="btn btn-xs draglabel"><i class="fa fa-arrows-alt"></i> 拖动</div>
                         </div>
                         <button type="button" class="btn btn-default">（默认样式）Default</button>

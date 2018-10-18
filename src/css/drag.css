@@ -63,10 +63,16 @@
 .draglabel {
     background: #999999;
     cursor: move;
+    margin-left: 4px;
 }
 
 .btnbar {
     position: absolute;
     margin-top: 6px;
     margin-left: 160px;
+}
+
+.hiddentoolbar {
+    float: left;
+    display: none;
 }
