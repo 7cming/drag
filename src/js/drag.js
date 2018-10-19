@@ -1,7 +1,6 @@
 window.onload = function () {
-    // setTimeout(function () {
     $('#portalmask').hide(700);
-    // }, 500);
+    $('#colsplit').select();
 };
 $(function () {
     changeFrameHeight();
@@ -42,11 +41,13 @@ $('.pagetitle').click(function () {
 });
 
 $('#cleanbtn').click(function () {
+    $('.dragbox').children().remove();
     bootbox.alert({
-        message: "待开发",
+        message: "已清除",
         size: "small",
         callback: function () {
             setTimeout(function () {
+                $('#colsplit').select();
             }, 50);
         }
     });
@@ -177,5 +178,5 @@ var colcomponentdarg = function () {
 }
 
 $(document).on("click", ".remove-link", function () {
-    $(this).parent().parent().parent().remove();
+    $(this).parent().parent().remove();
 });
