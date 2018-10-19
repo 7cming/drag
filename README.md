@@ -35,7 +35,7 @@ v1.1 2018-10
 完成后点击**查看代码**复制代码到文件或点击**下载**下载为文件到本地；  
 
 ### 第三方文档
-- [Bootstrap](https://v3.bootcss.com/)
+- [Bootstrap](http://www.bootcss.com/)
 - [jQuery](https://api.jquery.com/)  
 - [jQuery UI](https://api.jqueryui.com/)  
 - [EasyUI](http://www.jeasyui.net/tutorial/)  
