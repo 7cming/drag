@@ -28,6 +28,20 @@
     margin-right: 15px;
 }
 
+@media (max-width: 767px) {
+    .mobile-mode {
+        display: none !important;
+    }
+
+    .drag-container {
+        margin-left: 0px !important;
+    }
+
+    .main-content {
+        margin-left: 0px !important;
+    }
+}
+
 .pagetitle {
     font-size: 27px;
     cursor: pointer;
@@ -48,9 +62,10 @@
 .typelist {
     position: fixed;
     width: 400px;
-    height: 100%;
+    height: 90%;
     padding: 10px;
     border-right: 1px solid #999999;
+    overflow: auto;
     /*background: #4cae4c;*/
 }
 
@@ -98,16 +113,16 @@
 .draglabel {
     background: #999999;
     cursor: move;
-    margin-left: 4px;
 }
 
 .btnbar {
-    position: fixed;
-    margin-top: 6px;
-    margin-left: 160px;
+    text-align: center;
+}
+
+.formbar {
+    text-align: right;
 }
 
 .hiddentoolbar {
-    float: left;
     display: none;
 }
