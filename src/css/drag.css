@@ -73,6 +73,17 @@
     margin-left: 400px;
 }
 
+.mobile-warningtext{
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.drag-container .drag-component {
+    margin: 7px 0px;
+}
+
 .col-layout {
     border: 1px solid;
     min-height: 67px;
@@ -121,6 +132,11 @@
 
 .formbar {
     text-align: right;
+}
+
+.easyuibar{
+    text-align: right;
+    margin-right: 2px;
 }
 
 .hiddentoolbar {

@@ -42,6 +42,7 @@ $('.pagetitle').click(function () {
 
 $('#cleanbtn').click(function () {
     $('.dragbox').children().remove();
+    $("#accordion").accordion({active: 0});
     bootbox.alert({
         message: "已清除",
         size: "small",
@@ -137,19 +138,20 @@ var dragboxdrag = function () {
                 }
             }
             $('.drag-container .hiddentoolbar').show();
-            $(".drag-component.component-button").draggable({
+            $(".drag-component.component-button,.drag-component.component-formparent").draggable({
                 handle: ".draglabel",
                 appendTo: "body",
                 helper: "clone"
             });
+            $('.component-formparent .draglabel').removeAttr("disabled");
             colcomponentdarg();
         }
     }).sortable();
 };
 
 var colcomponentdarg = function () {
-    $("[class*=col-sm-]").droppable({
-        accept: ".drag-component.component-button",
+    $(".dragbox [class*=col-sm-]").droppable({
+        accept: ".drag-component.component-button,.drag-component.component-formparent",
         helper: "clone",
         greedy: true,
         hoverClass: "droppable-active",
@@ -162,6 +164,51 @@ var colcomponentdarg = function () {
                     "right": null,
                     "width": "auto"
                 }).appendTo(this);
+            } else {
+                if ($(this)[0] != uidraggable.parent()[0]) {
+                    uidraggable.clone().css({
+                        "position": "static",
+                        "left": null,
+                        "right": null
+                    }).appendTo(this);
+                    uidraggable.remove();
+                }
+            }
+            $('.drag-container .hiddentoolbar').show();
+            if (uidraggable[0].className.indexOf("component-formparent") != -1) {
+                $('.dragtoolbar.formbar .draglabel').removeAttr("disabled");
+                $(".drag-component.component-form").draggable({
+                    handle: ".draglabel",
+                    appendTo: "body",
+                    helper: "clone"
+                });
+                formcomponentdrag();
+            }
+        }
+    }).sortable();
+}
+
+var formcomponentdrag = function () {
+    $(".fromparent").droppable({
+        accept: ".drag-component.component-form",
+        helper: "clone",
+        greedy: true,
+        hoverClass: "droppable-active",
+        drop: function (event, ui) {
+            var uidraggable = $(ui.draggable);
+            if (!uidraggable.hasClass("dropped")) {
+                uidraggable.clone().addClass("dropped").css({
+                    "position": "static",
+                    "left": null,
+                    "right": null,
+                    "width": "auto"
+                }).appendTo(this);
+                var id = uidraggable.children(".form-group").find(":input").attr("id");
+                if (id) {
+                    id = id.split("-").slice(0, -1).join("-") + "-" + (parseInt(id.split("-").slice(-1)[0]) + 1);
+                    uidraggable.children(".form-group").find(":input").attr("id", id);
+                    uidraggable.children(".form-group").find("label").attr("for", id);
+                }
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
                     uidraggable.clone().css({
