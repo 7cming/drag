@@ -1,5 +1,5 @@
 window.onload = function () {
-    $('#portalmask').hide(700);
+    $('#portalmask').hide(777);
     $('#colsplit').select();
 };
 $(function () {
@@ -23,7 +23,7 @@ $(function () {
 
 function changeFrameHeight() {
     var box = parent.$('.dragbox');
-    $('.dragbox').css({"min-height": $(window).height() - box[0].getBoundingClientRect().top - 10});
+    $('.dragbox').css({"height": $(window).height() - box[0].getBoundingClientRect().top - 10});
 }
 
 $('.pagetitle').click(function () {
@@ -115,7 +115,7 @@ var dragboxdrag = function () {
     $(".dragbox").droppable({
         accept: ".drag-component.component-layout",
         helper: "clone",
-        hoverClass: "droppable-active",
+        activeClass: "ui-state-hover",
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
@@ -155,6 +155,7 @@ var colcomponentdarg = function () {
         helper: "clone",
         greedy: true,
         hoverClass: "droppable-active",
+        activeClass: "ui-state-hover",
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
@@ -189,11 +190,12 @@ var colcomponentdarg = function () {
 }
 
 var formcomponentdrag = function () {
-    $(".fromparent").droppable({
+    $(".dragbox .fromparent").droppable({
         accept: ".drag-component.component-form",
         helper: "clone",
         greedy: true,
         hoverClass: "droppable-active",
+        activeClass: "ui-state-hover",
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
