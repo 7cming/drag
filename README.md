@@ -2,7 +2,8 @@
 
 # Drag 页面拖拽
 >基于bootstrap的页面元素拖拽  
-演示：[demo 传送门](https://7cming.github.io/drag/build/drag.html)  
+项目演示：[demo](https://7cming.github.io/drag/build/drag.html)  
+备用演示：[demo](https://mugenming.gitee.io/drag/build/drag.html)  
 
 |Author|7c|
 |----------|-----------------
@@ -12,8 +13,8 @@
 v1.0 2018-10
 > 完成基本的整体布局及功能规划  
 左侧组件区域规划出 栅格布局、~~块元素~~、按钮、表单元素以及easyui控件几个部分，后续根据需要再添加  
-右侧为拖拽及展示区域，对拖拽元素进行编辑、移除等操作  
-整体页面功能规划出 [清除]、[暂存]、[查看]及[下载]  
+右侧为拖拽及展示区域，对拖拽元素进行**编辑**、**移除**等操作  
+整体页面功能规划出 **清除**、**暂存**、**查看**及**下载**  
 
 v1.1 2018-10
 > 组件使用accordion进行分类显示  
@@ -26,11 +27,11 @@ v1.1 2018-10
 >>初始化拖拽区只接受grid组件，grid组件接受其余组件分类中元素，form元素只能拖拽至form拖拽区  
 
 
-已知BUG：  
-easyui中datagrid组件在jQuery-UI中accordion组件中显示时，datagrid的head不显示  
+>已知BUG：  
+当easyui中datagrid组件在jQuery-UI中accordion组件中时，datagrid的head不显示  
 
-[逐步更新中...]  
-有问题或建议发送邮件给我   
+* 逐步更新中...  
+* 有问题或建议发送邮件给我   
 
 ## 介绍
 
