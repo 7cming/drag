@@ -64,13 +64,13 @@
     width: 400px;
     height: 90%;
     padding: 10px;
-    border-right: 1px solid #999999;
     overflow: auto;
     /*background: #4cae4c;*/
 }
 
 .drag-container {
     margin-left: 400px;
+    border-left: 1px solid #999999;
 }
 
 .mobile-warningtext{

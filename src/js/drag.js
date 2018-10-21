@@ -138,12 +138,12 @@ var dragboxdrag = function () {
                 }
             }
             $('.drag-container .hiddentoolbar').show();
-            $(".drag-component.component-button,.drag-component.component-formparent").draggable({
+            $(".drag-component.component-normal,.drag-component.component-formparent").draggable({
                 handle: ".draglabel",
                 appendTo: "body",
                 helper: "clone"
             });
-            $('.component-formparent .draglabel').removeAttr("disabled");
+            $('.component-normal .draglabel,.component-formparent .draglabel').removeAttr("disabled");
             colcomponentdarg();
         }
     }).sortable();
@@ -151,7 +151,7 @@ var dragboxdrag = function () {
 
 var colcomponentdarg = function () {
     $(".dragbox [class*=col-sm-]").droppable({
-        accept: ".drag-component.component-button,.drag-component.component-formparent",
+        accept: ".drag-component.component-normal,.drag-component.component-formparent",
         helper: "clone",
         greedy: true,
         hoverClass: "droppable-active",
