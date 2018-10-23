@@ -73,7 +73,7 @@ button > .fa, .draglabel > .fa {
     border-radius: 4px;
 }
 
-.easyui-tabs .tabs-header .tabs-wrap .tabs{
+.easyui-tabs .tabs-header .tabs-wrap .tabs {
     width: auto;
 }
 
@@ -420,46 +420,6 @@ span.input-icon {
     border-color: #555555;
 }
 
-span.input-icon {
-    display: inline-block;
-}
-
-.input-icon {
-    position: relative;
-}
-
-.input-icon > input {
-    padding-left: 24px;
-    padding-right: 6px;
-}
-
-.input-icon > .ace-icon {
-    padding: 0 3px;
-    z-index: 2;
-    position: absolute;
-    top: 1px;
-    bottom: 1px;
-    left: 3px;
-    line-height: 30px;
-    display: inline-block;
-    color: #909090;
-    font-size: 16px;
-}
-
-.ace-icon {
-    text-align: center;
-}
-
-.input-icon.input-icon-right > input {
-    padding-left: 6px;
-    padding-right: 24px;
-}
-
-.input-icon.input-icon-right > .ace-icon {
-    left: auto;
-    right: 3px;
-}
-
 @media (min-width: 768px) {
     .main-container.container > .btn-scroll-up {
         right: auto;
@@ -510,10 +470,6 @@ span.input-icon {
 
     .main-content .breadcrumbs .breadcrumb .home-icon {
         display: none;
-    }
-
-    .ace-settings-container {
-        display: none !important;
     }
 
     .footer {
