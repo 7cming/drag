@@ -73,6 +73,10 @@ button > .fa, .draglabel > .fa {
     border-radius: 4px;
 }
 
+.easyui-tabs .tabs-header .tabs-wrap .tabs{
+    width: auto;
+}
+
 .tabs-wrap {
     width: 100% !important;
 }

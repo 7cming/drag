@@ -35,6 +35,7 @@
 
     .drag-container {
         margin-left: 0px !important;
+        border-left: 0px;
     }
 
     .main-content {
@@ -142,3 +143,11 @@
 .hiddentoolbar {
     display: none;
 }
+
+/*.combo,.combo-text,.panel.combo-p{*/
+    /*width: 100% !important;*/
+/*}*/
+
+/*.combo.datebox{*/
+    /*width: 100% !important;*/
+/*}*/

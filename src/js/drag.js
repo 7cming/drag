@@ -10,7 +10,12 @@ $(function () {
     $("#accordion").accordion({
         header: "> div > h3",
         collapsible: true,
-        heightStyle: "content"
+        heightStyle: "content",
+        activate: function (event, ui) {
+            if (ui.newHeader[0] != undefined && ui.newHeader[0].textContent == "grid") {
+                $('#colsplit').select();
+            }
+        }
     }).sortable({
         axis: "y",
         handle: "h3",
@@ -229,3 +234,4 @@ var formcomponentdrag = function () {
 $(document).on("click", ".remove-link", function () {
     $(this).parent().parent().remove();
 });
+console.log("有问题联系: %c774669939@qq.com\n%cPowered By %c7c","color:#0099FF","color:#000","color:#990099");
