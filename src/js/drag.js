@@ -143,20 +143,20 @@ var dragboxdrag = function () {
                 }
             }
             $('.drag-container .hiddentoolbar').show();
-            $(".drag-component.component-normal,.drag-component.component-formparent").draggable({
+            $(".drag-component.component-normal,.drag-component.component-formparent,.drag-component.component-btnparent").draggable({
                 handle: ".draglabel",
                 appendTo: "body",
                 helper: "clone"
             });
-            $('.component-normal .draglabel,.component-formparent .draglabel').removeAttr("disabled");
+            $('.component-normal .draglabel,.component-formparent .draglabel,.component-btnparent .draglabel').removeAttr("disabled");
             colcomponentdarg();
         }
-    }).sortable();
+    }).sortable({handle: ".draglabel"});
 };
 
 var colcomponentdarg = function () {
     $(".dragbox [class*=col-sm-]").droppable({
-        accept: ".drag-component.component-normal,.drag-component.component-formparent",
+        accept: ".drag-component.component-normal,.drag-component.component-formparent,.drag-component.component-btnparent",
         helper: "clone",
         greedy: true,
         hoverClass: "droppable-active",
@@ -190,8 +190,17 @@ var colcomponentdarg = function () {
                 });
                 formcomponentdrag();
             }
+            if (uidraggable[0].className.indexOf("component-btnparent") != -1) {
+                $('.dragtoolbar.btnbar .draglabel').removeAttr("disabled");
+                $(".drag-component.component-btn").draggable({
+                    handle: ".draglabel",
+                    appendTo: "body",
+                    helper: "clone"
+                });
+                btncomponentdrag();
+            }
         }
-    }).sortable();
+    }).sortable({handle: ".draglabel"});
 }
 
 var formcomponentdrag = function () {
@@ -228,7 +237,37 @@ var formcomponentdrag = function () {
             }
             $('.drag-container .hiddentoolbar').show();
         }
-    }).sortable();
+    }).sortable({handle: ".draglabel"});
+}
+var btncomponentdrag = function () {
+    $(".dragbox .btnparent").droppable({
+        accept: ".drag-component.component-btn",
+        helper: "clone",
+        greedy: true,
+        hoverClass: "droppable-active",
+        activeClass: "ui-state-hover",
+        drop: function (event, ui) {
+            var uidraggable = $(ui.draggable);
+            if (!uidraggable.hasClass("dropped")) {
+                uidraggable.clone().addClass("dropped").css({
+                    "position": "static",
+                    "left": null,
+                    "right": null,
+                    "width": "auto"
+                }).appendTo(this);
+            } else {
+                if ($(this)[0] != uidraggable.parent()[0]) {
+                    uidraggable.clone().css({
+                        "position": "static",
+                        "left": null,
+                        "right": null
+                    }).appendTo(this);
+                    uidraggable.remove();
+                }
+            }
+            $('.drag-container .hiddentoolbar').show();
+        }
+    }).sortable({handle: ".draglabel"});
 }
 
 $(document).on("click", ".remove-link", function () {
