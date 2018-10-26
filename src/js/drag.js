@@ -124,21 +124,13 @@ var dragboxdrag = function () {
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
-                uidraggable.clone().addClass("dropped").css({
-                    "position": "static",
-                    "left": null,
-                    "right": null
-                }).appendTo(this);
+                uidraggable.clone().addClass("dropped").appendTo(this);
                 // if ($el.children()[1] == null || $el.children()[1].className == "row col-layout") {
                 //     $('<button class="btn btn-danger btn-xs remove-link"><i class="fa fa-trash"></i>移除</button>').appendTo($el.children()[0]);
                 // }
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
-                    uidraggable.clone().css({
-                        "position": "static",
-                        "left": null,
-                        "right": null
-                    }).appendTo(this);
+                    uidraggable.clone().appendTo(this);
                     uidraggable.remove();
                 }
             }
@@ -164,19 +156,10 @@ var colcomponentdarg = function () {
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
-                uidraggable.clone().addClass("dropped").css({
-                    "position": "static",
-                    "left": null,
-                    "right": null,
-                    "width": "auto"
-                }).appendTo(this);
+                uidraggable.clone().addClass("dropped").appendTo(this);
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
-                    uidraggable.clone().css({
-                        "position": "static",
-                        "left": null,
-                        "right": null
-                    }).appendTo(this);
+                    uidraggable.clone().appendTo(this);
                     uidraggable.remove();
                 }
             }
@@ -213,12 +196,7 @@ var formcomponentdrag = function () {
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
-                uidraggable.clone().addClass("dropped").css({
-                    "position": "static",
-                    "left": null,
-                    "right": null,
-                    "width": "auto"
-                }).appendTo(this);
+                uidraggable.clone().addClass("dropped").appendTo(this);
                 var id = uidraggable.children(".form-group").find(":input").attr("id");
                 if (id) {
                     id = id.split("-").slice(0, -1).join("-") + "-" + (parseInt(id.split("-").slice(-1)[0]) + 1);
@@ -227,11 +205,7 @@ var formcomponentdrag = function () {
                 }
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
-                    uidraggable.clone().css({
-                        "position": "static",
-                        "left": null,
-                        "right": null
-                    }).appendTo(this);
+                    uidraggable.clone().appendTo(this);
                     uidraggable.remove();
                 }
             }
@@ -249,19 +223,10 @@ var btncomponentdrag = function () {
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
-                uidraggable.clone().addClass("dropped").css({
-                    "position": "static",
-                    "left": null,
-                    "right": null,
-                    "width": "auto"
-                }).appendTo(this);
+                uidraggable.clone().addClass("dropped").appendTo(this);
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
-                    uidraggable.clone().css({
-                        "position": "static",
-                        "left": null,
-                        "right": null
-                    }).appendTo(this);
+                    uidraggable.clone().appendTo(this);
                     uidraggable.remove();
                 }
             }
