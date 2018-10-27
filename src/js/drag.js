@@ -27,8 +27,10 @@ $(function () {
 });
 
 function changeFrameHeight() {
-    var box = parent.$('.dragbox');
-    $('.dragbox').css({"height": $(window).height() - box[0].getBoundingClientRect().top - 10});
+    var leftbox = parent.$('.typelist');
+    $('.typelist').css({"height": $(window).height() - leftbox[0].getBoundingClientRect().top});
+    var rightbox = parent.$('.drag-container');
+    $('.dragbox').css({"height": $(window).height() - rightbox[0].getBoundingClientRect().top -20});
 }
 
 $('.pagetitle').click(function () {

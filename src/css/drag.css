@@ -57,18 +57,18 @@
 }
 
 .main-page {
-    padding-top: 51px;
+    margin-top: 51px;
 }
 
 .typelist {
     position: fixed;
     width: 400px;
-    height: 90%;
     padding: 10px;
     overflow: auto;
 }
 
 .drag-container {
+    padding: 10px;
     margin-left: 400px;
     border-left: 1px solid #999999;
 }
@@ -90,7 +90,6 @@
 }
 
 .edit .dragbox {
-    margin: 10px;
     padding: 15px 15px;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
