@@ -73,7 +73,7 @@
     border-left: 1px solid #999999;
 }
 
-.mobile-warningtext{
+.mobile-warningtext {
     text-align: center;
     font-size: 23px;
     font-weight: bold;
@@ -81,6 +81,7 @@
 }
 
 .drag-container .drag-component {
+    width: auto;
     margin: 7px 0px;
 }
 
@@ -112,10 +113,6 @@
     background: #e7eaec
 }
 
-.drag-component {
-    width: auto;
-}
-
 #colsplit {
     margin-bottom: 5px;
 }
@@ -123,6 +120,10 @@
 .draglabel {
     background: #999999;
     cursor: move;
+}
+
+.component-btn {
+    text-align: center;
 }
 
 .btnbar {
@@ -133,7 +134,19 @@
     text-align: right;
 }
 
-.easyuibar{
+.fromparent {
+    background: #f0f8ff;
+    min-height: 67px;
+    padding: 7px 11px;
+}
+
+.btnparent {
+    background: #f0f8ff;
+    text-align: center;
+    min-height: 65px
+}
+
+.easyuibar {
     text-align: right;
     margin-right: 2px;
 }

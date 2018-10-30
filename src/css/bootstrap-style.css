@@ -2,6 +2,10 @@ button > .fa, .draglabel > .fa {
     margin-right: 5px;
 }
 
+input[type="file"] {
+    width: 100%;
+}
+
 .nav-list {
     margin: 0px 0px 0px 0px;
     padding: 0;
