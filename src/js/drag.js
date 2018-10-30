@@ -3,6 +3,7 @@ window.onload = function () {
     $('#colsplit').select();
 };
 $(function () {
+    bootbox.setLocale("zh_CN");
     changeFrameHeight();
     window.onresize = function () {
         changeFrameHeight();
@@ -30,7 +31,7 @@ function changeFrameHeight() {
     var leftbox = parent.$('.typelist');
     $('.typelist').css({"height": $(window).height() - leftbox[0].getBoundingClientRect().top});
     var rightbox = parent.$('.drag-container');
-    $('.dragbox').css({"height": $(window).height() - rightbox[0].getBoundingClientRect().top -20});
+    $('.dragbox').css({"height": $(window).height() - rightbox[0].getBoundingClientRect().top - 20});
 }
 
 $('.pagetitle').click(function () {
@@ -127,9 +128,6 @@ var dragboxdrag = function () {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
                 uidraggable.clone().addClass("dropped").appendTo(this);
-                // if ($el.children()[1] == null || $el.children()[1].className == "row col-layout") {
-                //     $('<button class="btn btn-danger btn-xs remove-link"><i class="fa fa-trash"></i>移除</button>').appendTo($el.children()[0]);
-                // }
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
                     uidraggable.clone().appendTo(this);
@@ -158,7 +156,8 @@ var colcomponentdarg = function () {
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
-                uidraggable.clone().addClass("dropped").appendTo(this);
+                var dropedui = uidraggable.clone();
+                dropedui.addClass("dropped").appendTo(this);
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
                     uidraggable.clone().appendTo(this);
@@ -198,7 +197,8 @@ var formcomponentdrag = function () {
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
-                uidraggable.clone().addClass("dropped").appendTo(this);
+                var dropedui = uidraggable.clone();
+                dropedui.addClass("dropped").appendTo(this);
                 var id = uidraggable.children(".form-group").find(":input").attr("id");
                 if (id) {
                     id = id.split("-").slice(0, -1).join("-") + "-" + (parseInt(id.split("-").slice(-1)[0]) + 1);
@@ -225,7 +225,8 @@ var btncomponentdrag = function () {
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
-                uidraggable.clone().addClass("dropped").appendTo(this);
+                var dropedui = uidraggable.clone();
+                dropedui.addClass("dropped").appendTo(this);
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
                     uidraggable.clone().appendTo(this);
@@ -240,4 +241,20 @@ var btncomponentdrag = function () {
 $(document).on("click", ".remove-link", function () {
     $(this).parent().parent().remove();
 });
-console.log("有问题联系: %c774669939@qq.com\n%cPowered By %c7c","color:#0099FF","color:#000","color:#990099");
+
+$(document).on("click", ".edit-link", function () {
+    var operation = $(this).parent().parent();
+    bootbox.prompt({
+        title: "编辑",
+        inputType: 'textarea',
+        callback: function (result) {
+            console.log($('.bootbox-input-textarea').val());
+            operation.find('.codeblock').html($('.bootbox-input-textarea').val());
+        }
+    });
+    $('.bootbox-input-textarea').css({'min-height': '168px', 'resize': 'none'});
+    $('.bootbox-input-textarea').val(html_beautify($(this).parent().parent().find('.codeblock').html()));
+    return false;
+});
+
+console.log("有问题联系: %c774669939@qq.com\n%cPowered By %c7c", "color:#0099FF", "color:#000", "color:#990099");
