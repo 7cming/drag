@@ -80,14 +80,15 @@
     margin-top: 10px;
 }
 
-.drag-container .drag-component {
-    width: auto;
+.view-parent {
     margin: 7px 0px;
 }
 
 .col-layout {
     border: 1px solid;
+    border-radius: 4px;
     min-height: 67px;
+    padding: 3px;
 }
 
 .edit .dragbox {
@@ -135,14 +136,15 @@
 }
 
 .fromparent {
+    border-radius: 4px;
     background: #f0f8ff;
     min-height: 67px;
     padding: 7px 11px;
 }
 
 .btnparent {
+    border-radius: 4px;
     background: #f0f8ff;
-    text-align: center;
     min-height: 65px
 }
 

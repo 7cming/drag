@@ -53,7 +53,9 @@
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="row col-layout">
+                        <div class="component-row">
+                            <div class="row col-layout">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,21 +64,21 @@
                 <h3>form</h3>
                 <div>
                     <p>form表单，form标签内嵌form-group类</p>
-                    <div class="drag-component component-formparent">
+                    <div class="drag-component component-formparent view-parent">
                         <div class="dragtoolbar formbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="codeblock">
+                        <div class="component-parentblock">
                             <form class="form-horizontal fromparent">
                             </form>
                         </div>
                     </div>
                     <form class="form-horizontal">
-                        <div class="drag-component component-form">
+                        <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
-                                <button class="btn btn-warning btn-xs edit-link"><i class="fa fa-edit"></i>编辑</button>
+                                <button class="btn btn-warning btn-xs edit-link hiddentoolbar"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
                             <div class="codeblock">
@@ -88,104 +90,118 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="drag-component component-form">
+                        <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label" for="form-readonly-1">只读框</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="form-readonly-1" readonly="true">
+                            <div class="codeblock">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="form-readonly-1">只读框</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="form-readonly-1" readonly="true">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="drag-component component-form">
+                        <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label" for="form-iconleft-1">左图标输入框</label>
-                                <div class="col-sm-8">
-                                <span class="input-icon">
-                                    <input type="text" class="form-control" id="form-iconleft-1">
-                                    <i class="inputicon fa fa-leaf blue"></i>
-                                </span>
+                            <div class="codeblock">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="form-iconleft-1">左图标输入框</label>
+                                    <div class="col-sm-8">
+                                    <span class="input-icon">
+                                        <input type="text" class="form-control" id="form-iconleft-1">
+                                        <i class="inputicon fa fa-leaf blue"></i>
+                                    </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="drag-component component-form">
+                        <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label" for="form-iconright-1">右图标输入框</label>
-                                <div class="col-sm-8">
-                                <span class="input-icon input-icon-right">
-                                    <input type="text" class="form-control" id="form-iconright-1">
-                                    <i class="inputicon fa fa-leaf green"></i>
-                                </span>
+                            <div class="codeblock">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="form-iconright-1">右图标输入框</label>
+                                    <div class="col-sm-8">
+                                    <span class="input-icon input-icon-right">
+                                        <input type="text" class="form-control" id="form-iconright-1">
+                                        <i class="inputicon fa fa-leaf green"></i>
+                                    </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="drag-component component-form">
+                        <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label" for="form-textarea-1">文本域</label>
-                                <div class="col-sm-8">
-                                    <textarea class="form-control" id="form-textarea-1" placeholder="请输入"></textarea>
+                            <div class="codeblock">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="form-textarea-1">文本域</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control" id="form-textarea-1" placeholder="请输入"></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="drag-component component-form">
+                        <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label" for="form-file-1">文件上传</label>
-                                <div class="col-sm-8">
-                                    <input  type="file" id="form-file-1">
+                            <div class="codeblock">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="form-file-1">文件上传</label>
+                                    <div class="col-sm-8">
+                                        <input  type="file" id="form-file-1">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="drag-component component-form">
+                        <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="form-group">
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-                                </label>
+                            <div class="codeblock">
+                                <div class="form-group">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div class="drag-component component-form">
+                        <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="form-group">
-                                <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-                                </label>
+                            <div class="codeblock">
+                                <div class="form-group">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -194,20 +210,24 @@
             <div class="group">
                 <h3>button</h3>
                 <div>
-                    <div class="drag-component component-btnparent">
+                    <div class="drag-component component-btnparent view-parent">
                         <div class="dragtoolbar formbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="btnparent">
+                        <div class="component-parentblock">
+                            <div class="divcenter btnparent">
+                            </div>
                         </div>
                     </div>
-                    <div class="drag-component component-btn">
+                    <div class="drag-component component-btn view-child">
                         <div class="dragtoolbar btnbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <button type="button" class="btn btn-default">default</button>
+                        <div class="codeblock">
+                            <button type="button" class="btn btn-default">default</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -219,42 +239,27 @@
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <table class="easyui-datagrid" title="title"
-                               data-options="
-                                            rownumbers:true,
-                                            singleSelect:false,
-                                            collapsible:false,
-                                            method:'get',
-                                            fitColumns:true,
-                                            pagination:true">
-                            <thead>
-                            <tr>
-                                <th data-options="field:'ck',checkbox:true"></th>
-                                <th data-options="field:'itemid',width:80">Item ID</th>
-                                <th data-options="field:'productid',width:100">Product</th>
-                                <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
-                                <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
-                                <th data-options="field:'attr1',width:250">Attribute</th>
-                                <th data-options="field:'status',width:60,align:'center'">Status</th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="drag-component component-normal">
-                        <div class="dragtoolbar easyuibar">
-                            <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
-                            <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
-                        </div>
-                        <div class="easyui-tabs">
-                            <div title="tab1" data-options="closable:true">
-                                tab1
-                            </div>
-                            <div title="tab2" data-options="closable:true">
-                                tab2
-                            </div>
-                            <div title="tab3" data-options="closable:true">
-                                tab3
-                            </div>
+                        <div class="codeblock">
+                            <table class="easyui-datagrid" title="title"
+                                   data-options="
+                                                rownumbers:true,
+                                                singleSelect:false,
+                                                collapsible:false,
+                                                method:'get',
+                                                fitColumns:true,
+                                                pagination:true">
+                                <thead>
+                                <tr>
+                                    <th data-options="field:'ck',checkbox:true"></th>
+                                    <th data-options="field:'itemid',width:80">Item ID</th>
+                                    <th data-options="field:'productid',width:100">Product</th>
+                                    <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+                                    <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+                                    <th data-options="field:'attr1',width:250">Attribute</th>
+                                    <th data-options="field:'status',width:60,align:'center'">Status</th>
+                                </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                     <div class="drag-component component-normal">
@@ -262,10 +267,17 @@
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label" for="form-input-1">combobox</label>
-                            <div class="col-sm-8">
-                                <input class="easyui-combobox">
+                        <div class="codeblock">
+                            <div class="easyui-tabs">
+                                <div title="tab1" data-options="closable:true">
+                                    tab1
+                                </div>
+                                <div title="tab2" data-options="closable:true">
+                                    tab2
+                                </div>
+                                <div title="tab3" data-options="closable:true">
+                                    tab3
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -274,10 +286,12 @@
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label" for="form-input-1">datebox</label>
-                            <div class="col-sm-8">
-                                <input class="easyui-datebox">
+                        <div class="codeblock">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="form-input-1">combobox</label>
+                                <div class="col-sm-8">
+                                    <input class="easyui-combobox">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -286,10 +300,12 @@
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label" for="form-input-1">datetimebox</label>
-                            <div class="col-sm-8">
-                                <input class="easyui-datetimebox">
+                        <div class="codeblock">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="form-input-1">datebox</label>
+                                <div class="col-sm-8">
+                                    <input class="easyui-datebox">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -298,10 +314,26 @@
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label" for="form-input-1">numberbox</label>
-                            <div class="col-sm-8">
-                                <input class="easyui-numberbox">
+                        <div class="codeblock">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="form-input-1">datetimebox</label>
+                                <div class="col-sm-8">
+                                    <input class="easyui-datetimebox">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="drag-component component-normal">
+                        <div class="dragtoolbar easyuibar">
+                            <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
+                        </div>
+                        <div class="codeblock">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label" for="form-input-1">numberbox</label>
+                                <div class="col-sm-8">
+                                    <input class="easyui-numberbox">
+                                </div>
                             </div>
                         </div>
                     </div>
