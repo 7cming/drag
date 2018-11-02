@@ -160,7 +160,11 @@ var colcomponentdarg = function () {
                 dropedui.addClass("dropped").appendTo(this);
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
-                    uidraggable.clone().appendTo(this);
+                    uidraggable.clone().css({
+                        "position": "static",
+                        "left": null,
+                        "right": null
+                    }).appendTo(this);
                     uidraggable.remove();
                 }
             }
@@ -207,7 +211,11 @@ var formcomponentdrag = function () {
                 }
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
-                    uidraggable.clone().appendTo(this);
+                    uidraggable.clone().css({
+                        "position": "static",
+                        "left": null,
+                        "right": null
+                    }).appendTo(this);
                     uidraggable.remove();
                 }
             }
@@ -229,13 +237,17 @@ var btncomponentdrag = function () {
                 dropedui.addClass("dropped").appendTo(this);
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
-                    uidraggable.clone().appendTo(this);
+                    uidraggable.clone().css({
+                        "position": "static",
+                        "left": null,
+                        "right": null
+                    }).appendTo(this);
                     uidraggable.remove();
                 }
             }
             $('.drag-container .hiddentoolbar').show();
         }
-    }).sortable({handle: ".draglabel"});
+    }).sortable({handle: ".draglabel", axis: "x"});
 }
 
 $(document).on("click", ".remove-link", function () {
@@ -244,16 +256,9 @@ $(document).on("click", ".remove-link", function () {
 
 $(document).on("click", ".edit-link", function () {
     var operation = $(this).parent().parent();
-    bootbox.prompt({
-        title: "编辑",
-        inputType: 'textarea',
-        callback: function (result) {
-            console.log($('.bootbox-input-textarea').val());
-            operation.find('.codeblock').html($('.bootbox-input-textarea').val());
-        }
-    });
-    $('.bootbox-input-textarea').css({'min-height': '168px', 'resize': 'none'});
-    $('.bootbox-input-textarea').val(html_beautify($(this).parent().parent().find('.codeblock').html()));
+    $('#codeModal').modal('show');
+    $('#codeModalLabel').html('编辑');
+    $('.modal-body').find('textarea').val(html_beautify(operation.find('.codeblock').html()));
     return false;
 });
 

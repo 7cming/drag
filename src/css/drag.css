@@ -100,7 +100,7 @@
 
 .droppable-active {
     background-color: #CCCCFF !important;
-    border: 1px solid #ebebeb
+    border: 1px solid #0E2D5F;
 }
 
 .tools a {
@@ -125,6 +125,8 @@
 
 .component-btn {
     text-align: center;
+    display: inline-block;
+    width: 155px;
 }
 
 .btnbar {

@@ -239,13 +239,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="drag-component component-btn view-child">
-                        <div class="dragtoolbar btnbar">
-                            <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
-                            <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
-                        </div>
-                        <div class="codeblock">
-                            <button type="button" class="btn btn-default">default</button>
+                    <div class="divcenter">
+                        <div class="drag-component component-btn view-child">
+                            <div class="dragtoolbar btnbar">
+                                <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                                <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
+                            </div>
+                            <div class="codeblock">
+                                <button type="button" class="btn btn-default">default</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -363,6 +365,23 @@
     <div class="drag-container">
         <p class="visible-xs mobile-warningtext">小屏幕终端请在PC端使用</p>
         <div class="dragbox ui-sortable">
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                <h4 class="modal-title" id="codeModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <textarea style="width: 100%;resize: none;border-radius: 4px;min-height: 168px"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
         </div>
     </div>
 </div>
