@@ -19,7 +19,7 @@ $(function () {
         }
     }).sortable({
         axis: "y",
-        handle: "h3",
+        handle: ".ui-accordion-header",
         stop: function (event, ui) {
             ui.item.children("h3").triggerHandler("focusout");
             $(this).accordion("refresh");
@@ -74,6 +74,7 @@ $('#savebtn').click(function () {
 });
 
 $('#viewbtn').click(function () {
+
     bootbox.alert({
         message: "待开发",
         size: "small",
@@ -254,12 +255,38 @@ $(document).on("click", ".remove-link", function () {
     $(this).parent().parent().remove();
 });
 
+var operation;
 $(document).on("click", ".edit-link", function () {
-    var operation = $(this).parent().parent();
+    operation = $(this).parent().parent();
     $('#codeModal').modal('show');
     $('#codeModalLabel').html('编辑');
+    // alert(operation.find('.codeblock').children()[0].className);
+    if (operation.find('.codeblock').children()[0].className == "form-group") {
+        $('.modal-body').find('input').val(operation.find('label')[0].innerHTML);
+    } else {
+        $('.modal-body').find('input').val(operation.find('.codeblock').children()[0].innerHTML);
+    }
     $('.modal-body').find('textarea').val(html_beautify(operation.find('.codeblock').html()));
-    return false;
+
+    setTimeout(function () {
+        // $('.modal-body').find('textarea').select();
+        $('.modal-body').find('input').select();
+    }, 500);
 });
+
+$('#updateContent').on("click", (function () {
+    if (operation.find('.codeblock').children()[0].className == "form-group") {
+        operation.find('label')[0].innerHTML = $('.modal-body').find('input').val();
+    } else {
+        operation.find('.codeblock').children()[0].innerHTML = $('.modal-body').find('input').val();
+    }
+    $('.modal-body').find('textarea').val(html_beautify(operation.find('.codeblock').html()));
+    $('.modal-body').find('input').select();
+}));
+
+$('#updateCode').on("click", (function () {
+    operation.find('.codeblock').html($('.modal-body').find('textarea').val());
+    $('#codeModal').modal('hide');
+}));
 
 console.log("有问题联系: %c774669939@qq.com\n%cPowered By %c7c", "color:#0099FF", "color:#000", "color:#990099");

@@ -62,18 +62,20 @@
                     <div class="drag-component component-normal">
                         <div class="dragtoolbar formbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="component-htitle">
+                        <div class="codeblock">
                             <h3 style="border: 1px solid;border-radius: 4px;margin-top: 0px">标题 h3</h3>
                         </div>
                     </div>
                     <div class="drag-component component-normal">
                         <div class="dragtoolbar formbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="component-htitle">
+                        <div class="codeblock">
                             <p style="border: 1px solid;border-radius: 4px">段落 p</p>
                         </div>
                     </div>
@@ -97,7 +99,7 @@
                         <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
-                                <button class="btn btn-warning btn-xs edit-link hiddentoolbar"><i class="fa fa-edit"></i>编辑</button>
+                                <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
                             <div class="codeblock">
@@ -243,6 +245,7 @@
                         <div class="drag-component component-btn view-child">
                             <div class="dragtoolbar btnbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                                <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
                             <div class="codeblock">
@@ -376,11 +379,17 @@
                 <h4 class="modal-title" id="codeModalLabel"></h4>
             </div>
             <div class="modal-body">
-                <textarea style="width: 100%;resize: none;border-radius: 4px;min-height: 168px"></textarea>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Barça! Barça! Baaarça!">
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning" type="button" id="updateContent">更新</button>
+                    </span>
+                </div>
+                <textarea></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">确定</button>
+                <button type="button" class="btn btn-primary" id="updateCode">确定</button>
             </div>
         </div>
     </div>
