@@ -274,19 +274,29 @@ $(document).on("click", ".edit-link", function () {
     }, 500);
 });
 
-$('#updateContent').on("click", (function () {
-    if (operation.find('.codeblock').children()[0].className == "form-group") {
-        operation.find('label')[0].innerHTML = $('.modal-body').find('input').val();
+$('#updateContent').on("click", function () {
+    var copycontent = operation.clone();
+    if (copycontent.find('.codeblock').children()[0].className == "form-group") {
+        copycontent.find('label')[0].innerHTML = $('.modal-body').find('input').val();
     } else {
-        operation.find('.codeblock').children()[0].innerHTML = $('.modal-body').find('input').val();
+        copycontent.find('.codeblock').children()[0].innerHTML = $('.modal-body').find('input').val();
     }
-    $('.modal-body').find('textarea').val(html_beautify(operation.find('.codeblock').html()));
+    $('.modal-body').find('textarea').val(html_beautify(copycontent.find('.codeblock').html()));
     $('.modal-body').find('input').select();
-}));
+});
 
-$('#updateCode').on("click", (function () {
+$(document).on("click", "#hsize .dropdown-menu a", function () {
+    $(this).parent().parent().find("li").removeClass("active");
+    $(this).parent().addClass("active");
+    var elementobj = $(this).parent().parent().parent().parent().parent();
+    var elementval = $(this).attr("rel");
+    var hh = $(elementval).html(elementobj.find('.codeblock')[0].innerText.replace(/[\r\n]/g, ""));
+    elementobj.find('.codeblock').prop('innerHTML', hh.prop('outerHTML'));
+});
+
+$('#updateCode').on("click", function () {
     operation.find('.codeblock').html($('.modal-body').find('textarea').val());
     $('#codeModal').modal('hide');
-}));
+});
 
 console.log("有问题联系: %c774669939@qq.com\n%cPowered By %c7c", "color:#0099FF", "color:#000", "color:#990099");

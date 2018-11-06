@@ -46,7 +46,7 @@
             <div class="group">
                 <h3>grid</h3>
                 <div class="components-col">
-                    <p>栅格布局，栅格数12(以空格进行分隔)</p>
+                    <h4>栅格布局，栅格数12(以空格进行分隔)</h4>
                     <input id="colsplit">
                     <div class="drag-component component-layout">
                         <div class="dragtoolbar">
@@ -62,11 +62,19 @@
                     <div class="drag-component component-normal">
                         <div class="dragtoolbar formbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <span class="dropdown hiddentoolbar" id="hsize">
+                                <button class="btn btn-xs dropdown-toggle" data-toggle="dropdown" href="#">h1-6 <span class="caret"></span></button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li class=""><a href="#" rel="<h1></h1>">h1</a></li>
+                                    <li class=""><a href="#" rel="<h2></h2>">h2</a></li>
+                                    <li class="active"><a href="#" rel="<h3></h3>">h3</a></li>
+                                </ul>
+                            </span>
                             <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="codeblock">
-                            <h3 style="border: 1px solid;border-radius: 4px;margin-top: 0px">标题 h3</h3>
+                            <h3>标题 h3</h3>
                         </div>
                     </div>
                     <div class="drag-component component-normal">
@@ -76,7 +84,7 @@
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="codeblock">
-                            <p style="border: 1px solid;border-radius: 4px">段落 p</p>
+                            <p>段落 p</p>
                         </div>
                     </div>
                 </div>
@@ -114,6 +122,7 @@
                         <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                                <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
                             <div class="codeblock">
@@ -128,6 +137,7 @@
                         <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                                <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
                             <div class="codeblock">
@@ -145,6 +155,7 @@
                         <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                                <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
                             <div class="codeblock">
@@ -162,6 +173,7 @@
                         <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                                <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
                             <div class="codeblock">
@@ -388,8 +400,8 @@
                 <textarea></textarea>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary" id="updateCode">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             </div>
         </div>
     </div>
