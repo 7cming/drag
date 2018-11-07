@@ -2,6 +2,7 @@ window.onload = function () {
     $('#portalmask').hide(777);
     $('#colsplit').select();
 };
+
 $(function () {
     bootbox.setLocale("zh_CN");
     changeFrameHeight();
@@ -74,6 +75,41 @@ $('#savebtn').click(function () {
 });
 
 $('#viewbtn').click(function () {
+    var code = $('.dragbox').clone();
+    code.find('.dragtoolbar').remove();
+    code.find('.drag-component').addClass('viewcode');
+    code.find('.component-row').addClass('viewcode');
+    code.find('.component-parentblock').addClass('viewcode');
+    code.find('.codeblock').addClass('viewcode');
+
+    code.find('.codeblock.viewcode').each(function () {
+        $(this).parent().append($(this).children().html());
+    });
+    code.find('.view-child.viewcode').each(function () {
+        $(this).parent().append($(this).children().html().replace(/[\r\n]/g, "").replace(/(^\s*)|(\s*$)/g, ""));
+    });
+    code.find('.view-parent.viewcode').each(function () {
+        if ($(this).children()[0].className.indexOf("form-horizontal") != -1) {
+            $(this).parent().append($(this).children()[0].outerHTML);
+        } else {
+            $(this).parent().append($(this).children().html().replace(/[\r\n]/g, "").replace(/(^\s*)|(\s*$)/g, ""));
+        }
+    });
+    code.find('.component-row.viewcode').each(function () {
+        $(this).parent().append($(this).children().html());
+    });
+    code.find('.component-layout.viewcode').each(function () {
+        $(this).parent().append($(this).children().html());
+    });
+    code.find(".viewcode").remove();
+
+    $.each(["col-layout", "ui-droppable", "ui-sortable", "fromparent", "btnparent"],
+        function (i, c) {
+            code.find("." + c).removeClass(c).removeAttr("style");
+        }
+    );
+
+    console.log(html_beautify(code.html()));
 
     bootbox.alert({
         message: "待开发",
@@ -190,7 +226,7 @@ var colcomponentdarg = function () {
             }
         }
     }).sortable({handle: ".draglabel"});
-}
+};
 
 var formcomponentdrag = function () {
     $(".dragbox .fromparent").droppable({
@@ -223,7 +259,8 @@ var formcomponentdrag = function () {
             $('.drag-container .hiddentoolbar').show();
         }
     }).sortable({handle: ".draglabel"});
-}
+};
+
 var btncomponentdrag = function () {
     $(".dragbox .btnparent").droppable({
         accept: ".drag-component.component-btn",
@@ -249,7 +286,7 @@ var btncomponentdrag = function () {
             $('.drag-container .hiddentoolbar').show();
         }
     }).sortable({handle: ".draglabel", axis: "x"});
-}
+};
 
 $(document).on("click", ".remove-link", function () {
     $(this).parent().parent().remove();
@@ -292,6 +329,32 @@ $(document).on("click", "#hsize .dropdown-menu a", function () {
     var elementval = $(this).attr("rel");
     var hh = $(elementval).html(elementobj.find('.codeblock')[0].innerText.replace(/[\r\n]/g, ""));
     elementobj.find('.codeblock').prop('innerHTML', hh.prop('outerHTML'));
+});
+
+$(document).on("click", ".changeclass .dropdown-menu a", function () {
+    $(this).parent().parent().find("li").removeClass("active");
+    $(this).parent().addClass("active");
+    var elementobj = $(this).parent().parent().parent().parent().parent();
+    var elementval = $(this).attr("rel");
+    var classes = "";
+    $(this).parent().parent().find("a").each(function () {
+        classes += $(this).attr("rel") + " "
+    });
+    elementobj.find('.codeblock').children().removeClass(classes);
+    elementobj.find('.codeblock').children().addClass(elementval);
+});
+
+$(document).on("click", ".changesize .dropdown-menu a", function () {
+    $(this).parent().parent().find("li").removeClass("active");
+    $(this).parent().addClass("active");
+    var elementobj = $(this).parent().parent().parent().parent().parent();
+    var elementval = $(this).attr("rel");
+    var classes = "";
+    $(this).parent().parent().find("a").each(function () {
+        classes += $(this).attr("rel") + " "
+    });
+    elementobj.find('.codeblock').children().removeClass(classes);
+    elementobj.find('.codeblock').children().addClass(elementval);
 });
 
 $('#updateCode').on("click", function () {

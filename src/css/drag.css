@@ -126,6 +126,7 @@
 .component-btn {
     text-align: center;
     display: inline-block;
+    margin-right: 10px;
 }
 
 .btnbar {
