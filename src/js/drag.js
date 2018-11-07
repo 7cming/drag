@@ -8,7 +8,7 @@ $(function () {
     changeFrameHeight();
     window.onresize = function () {
         changeFrameHeight();
-    }
+    };
     $("#accordion").accordion({
         header: "> div > h3",
         collapsible: true,
@@ -24,6 +24,15 @@ $(function () {
         stop: function (event, ui) {
             ui.item.children("h3").triggerHandler("focusout");
             $(this).accordion("refresh");
+        }
+    });
+    $('.modal-body').find('input').bind('keydown', function (event) {
+        if (event.keyCode == "13") {
+            $('#updateContent').click();
+        }
+        if (event.ctrlKey == true && event.keyCode == "83") {
+            event.preventDefault();
+            $('#updateCode').click();
         }
     });
 });
@@ -297,7 +306,6 @@ $(document).on("click", ".edit-link", function () {
     operation = $(this).parent().parent();
     $('#codeModal').modal('show');
     $('#codeModalLabel').html('编辑');
-    // alert(operation.find('.codeblock').children()[0].className);
     if (operation.find('.codeblock').children()[0].className == "form-group") {
         $('.modal-body').find('input').val(operation.find('label')[0].innerHTML);
     } else {
@@ -306,7 +314,6 @@ $(document).on("click", ".edit-link", function () {
     $('.modal-body').find('textarea').val(html_beautify(operation.find('.codeblock').html()));
 
     setTimeout(function () {
-        // $('.modal-body').find('textarea').select();
         $('.modal-body').find('input').select();
     }, 500);
 });
@@ -340,21 +347,13 @@ $(document).on("click", ".changeclass .dropdown-menu a", function () {
     $(this).parent().parent().find("a").each(function () {
         classes += $(this).attr("rel") + " "
     });
-    elementobj.find('.codeblock').children().removeClass(classes);
-    elementobj.find('.codeblock').children().addClass(elementval);
-});
-
-$(document).on("click", ".changesize .dropdown-menu a", function () {
-    $(this).parent().parent().find("li").removeClass("active");
-    $(this).parent().addClass("active");
-    var elementobj = $(this).parent().parent().parent().parent().parent();
-    var elementval = $(this).attr("rel");
-    var classes = "";
-    $(this).parent().parent().find("a").each(function () {
-        classes += $(this).attr("rel") + " "
-    });
-    elementobj.find('.codeblock').children().removeClass(classes);
-    elementobj.find('.codeblock').children().addClass(elementval);
+    if (elementobj[0].className.indexOf("view-parent") != -1) {
+        elementobj.find('.component-parentblock').children().removeClass(classes);
+        elementobj.find('.component-parentblock').children().addClass(elementval);
+    } else {
+        elementobj.find('.codeblock').children().removeClass(classes);
+        elementobj.find('.codeblock').children().addClass(elementval);
+    }
 });
 
 $('#updateCode').on("click", function () {
