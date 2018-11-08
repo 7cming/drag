@@ -26,11 +26,36 @@ $(function () {
             $(this).accordion("refresh");
         }
     });
+    $(document).keydown(function (event) {
+        if ($('.bootbox').hasClass('in')) {
+            event.preventDefault();
+            return;
+        }
+        if (event.ctrlKey == true && event.keyCode == "81") {
+            event.preventDefault();
+            $('#cleanbtn').click();
+        }
+        if (event.ctrlKey == true && event.keyCode == "83") {
+            event.preventDefault();
+            $('#savebtn').click();
+        }
+        if (event.ctrlKey == true && event.keyCode == "80") {
+            event.preventDefault();
+            $('#viewbtn').click();
+        }
+        if (event.ctrlKey == true && event.keyCode == "68") {
+            event.preventDefault();
+            $('#downbtn').click();
+        }
+        if (event.altKey == true && event.keyCode == "67") {
+            $('#codeModal').modal('hide');
+        }
+    });
     $('.modal-body').find('input').bind('keydown', function (event) {
         if (event.keyCode == "13") {
             $('#updateContent').click();
         }
-        if (event.ctrlKey == true && event.keyCode == "83") {
+        if (event.altKey == true && event.keyCode == "83") {
             event.preventDefault();
             $('#updateCode').click();
         }
@@ -59,22 +84,35 @@ $('.pagetitle').click(function () {
 });
 
 $('#cleanbtn').click(function () {
-    $('.dragbox').children().remove();
-    $("#accordion").accordion({active: 0});
-    bootbox.alert({
-        message: "已清除",
-        size: "small",
-        callback: function () {
-            setTimeout(function () {
-                $('#colsplit').select();
-            }, 50);
+    bootbox.confirm({
+        title: "清除",
+        message: "是否确认清除",
+        size: 'small',
+        buttons: {
+            cancel: {
+                className: 'btn-danger',
+                label: '<i class="fa fa-times"></i>否'
+            },
+            confirm: {
+                className: 'btn-success',
+                label: '<i class="fa fa-check"></i>是'
+            }
+        },
+        callback: function (result) {
+            if (result) {
+                $('.dragbox').children().remove();
+                $("#accordion").accordion({active: 0});
+                setTimeout(function () {
+                    $('#colsplit').select();
+                }, 50);
+            }
         }
     });
 });
 
 $('#savebtn').click(function () {
     bootbox.alert({
-        message: "待开发",
+        message: "暂存待开发",
         size: "small",
         callback: function () {
             setTimeout(function () {
@@ -84,6 +122,11 @@ $('#savebtn').click(function () {
 });
 
 $('#viewbtn').click(function () {
+    $('#codeModal').modal('show');
+    $('#codeModalLabel').html('查看');
+    $('#codeModal').find('.input-group').hide();
+    $('.modal-body').find('textarea').css({"min-height": "568px"});
+
     var code = $('.dragbox').clone();
     code.find('.dragtoolbar').remove();
     code.find('.drag-component').addClass('viewcode');
@@ -111,28 +154,21 @@ $('#viewbtn').click(function () {
         $(this).parent().append($(this).children().html());
     });
     code.find(".viewcode").remove();
-
     $.each(["col-layout", "ui-droppable", "ui-sortable", "fromparent", "btnparent"],
         function (i, c) {
             code.find("." + c).removeClass(c).removeAttr("style");
         }
     );
-
-    console.log(html_beautify(code.html()));
-
-    bootbox.alert({
-        message: "待开发",
-        size: "small",
-        callback: function () {
-            setTimeout(function () {
-            }, 50);
-        }
-    });
+    code.find('[contenteditable]').removeAttr("contenteditable");
+    $('.modal-body').find('textarea').val(html_beautify(code.html()));
+    setTimeout(function () {
+        $('.modal-body').find('textarea').select();
+    }, 500);
 });
 
 $('#downbtn').click(function () {
     bootbox.alert({
-        message: "待开发",
+        message: "下载待开发",
         size: "small",
         callback: function () {
             setTimeout(function () {
@@ -304,15 +340,17 @@ $(document).on("click", ".remove-link", function () {
 var operation;
 $(document).on("click", ".edit-link", function () {
     operation = $(this).parent().parent();
+    operation.find('[contenteditable]').removeAttr("contenteditable");
     $('#codeModal').modal('show');
     $('#codeModalLabel').html('编辑');
+    $('#codeModal').find('.input-group').show();
+    $('.modal-body').find('textarea').css({"min-height": "268px"});
     if (operation.find('.codeblock').children()[0].className == "form-group") {
         $('.modal-body').find('input').val(operation.find('label')[0].innerHTML);
     } else {
         $('.modal-body').find('input').val(operation.find('.codeblock').children()[0].innerHTML);
     }
-    $('.modal-body').find('textarea').val(html_beautify(operation.find('.codeblock').html()));
-
+    $('.modal-body').find('textarea').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
     setTimeout(function () {
         $('.modal-body').find('input').select();
     }, 500);

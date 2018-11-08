@@ -147,7 +147,8 @@
 .btnparent {
     border-radius: 4px;
     background: #f0f8ff;
-    min-height: 65px
+    min-height: 65px;
+    padding: 7px 0px;
 }
 
 .easyuibar {
@@ -164,5 +165,4 @@
     margin-top: 5px;
     resize: none;
     border-radius: 4px;
-    min-height: 168px
 }
