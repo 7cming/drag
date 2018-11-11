@@ -201,7 +201,12 @@ $('#downloadCode').click(function () {
     if (filename == "" || filename == null) {
         bootbox.alert({
             message: "请输入文件名",
-            size: "small"
+            size: "small",
+            callback: function () {
+                setTimeout(function () {
+                    $('#filename').select();
+                }, 500);
+            }
         });
         return;
     }
