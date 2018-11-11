@@ -167,3 +167,14 @@
     resize: none;
     border-radius: 4px;
 }
+
+.preview .dragtoolbar {
+    display: none;
+}
+
+.preview .col-layout, .preview .dragbox [class*=col-sm-], .preview .btnparent, .preview .fromparent, .preview .view-parent, .preview .component-normal {
+    margin: 0px 0;
+    background: none;
+    border: none !important;
+    min-height: 0px !important;
+}

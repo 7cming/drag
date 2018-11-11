@@ -44,6 +44,10 @@ $(function () {
         }
         if (event.ctrlKey == true && event.keyCode == "80") {
             event.preventDefault();
+            $('#previewbtn').click();
+        }
+        if (event.ctrlKey == true && event.keyCode == "70") {
+            event.preventDefault();
             $('#viewbtn').click();
         }
         if (event.ctrlKey == true && event.keyCode == "68") {
@@ -115,6 +119,22 @@ $('#cleanbtn').click(function () {
 
 $('#savebtn').click(function () {
     localsave("dragcode", $('.dragbox').clone().html());
+});
+
+$('#previewbtn').click(function () {
+    if ($('body').hasClass('preview')) {
+        $('body').removeClass('preview');
+        $('.typelist').removeClass('sidebar-close');
+        $('.drag-container').css("margin-left", "400px");
+        $(".main-content").css("margin-left", "");
+        $('.typelist').show();
+    } else {
+        $('body').addClass('preview');
+        $('.typelist').addClass('sidebar-close');
+        $('.drag-container').css("margin-left", "0px");
+        $('.main-content').css("margin-left", "0px");
+        $('.typelist').hide();
+    }
 });
 
 $('#viewbtn').click(function () {
