@@ -26,6 +26,9 @@ $(function () {
             $(this).accordion("refresh");
         }
     });
+    $('.dragbox').html(localStorage.getItem("dragcode"));
+    $('#headcode').val(localStorage.getItem("headcode"));
+    $('#footcode').val(localStorage.getItem("footcode"));
     $(document).keydown(function (event) {
         if ($('.bootbox').hasClass('in')) {
             event.preventDefault();
@@ -111,22 +114,92 @@ $('#cleanbtn').click(function () {
 });
 
 $('#savebtn').click(function () {
-    bootbox.alert({
-        message: "暂存待开发",
-        size: "small",
-        callback: function () {
-            setTimeout(function () {
-            }, 50);
-        }
-    });
+    localsave("dragcode", $('.dragbox').clone().html());
 });
 
 $('#viewbtn').click(function () {
     $('#codeModal').modal('show');
     $('#codeModalLabel').html('查看');
     $('#codeModal').find('.input-group').hide();
-    $('.modal-body').find('textarea').css({"min-height": "568px"});
+    $('#updateCode').hide();
+    $('#headcode,#footcode,#downloadCode').hide();
+    $('#codeModal').find('.form-inline').hide();
+    $('#bodycode').css({"min-height": "568px"});
+    $('#bodycode').val(viewcode());
+    setTimeout(function () {
+        $('#bodycode').select();
+    }, 500);
+});
 
+$('#downbtn').click(function () {
+    $('#codeModal').modal('show');
+    $('#codeModalLabel').html('下载');
+    $('#headcode,#footcode,#downloadCode').show();
+    $('#codeModal').find('.form-inline').show();
+    $('#headcode').css({"min-height": "128px"});
+    $('#bodycode').css({"min-height": "368px"});
+    $('#footcode').css({"min-height": "98px"});
+    $('#codeModal').find('.input-group').hide();
+    $('#updateCode').hide();
+    $('#bodycode').css({"min-height": "268px"});
+    $('#bodycode').val(viewcode());
+    setTimeout(function () {
+        $('#filename').select();
+    }, 500);
+});
+
+$('#savehead').click(function () {
+    localsave("headcode", $('#headcode').val());
+});
+
+$('#savefoot').click(function () {
+    localsave("footcode", $('#footcode').val());
+});
+
+function localsave(item, content) {
+    if (typeof(Storage) !== "undefined") {
+        localStorage.setItem(item, html_beautify(content));
+    } else {
+        bootbox.alert({
+            message: "浏览器不支持",
+            size: "small"
+        });
+        return;
+    }
+    bootbox.dialog({
+        message: '<div class="text-center">已暂存至浏览器缓存</div>',
+        size: 'small'
+    });
+    setTimeout(function () {
+        bootbox.hideAll();
+    }, 1000);
+}
+
+$('#downloadCode').click(function () {
+    var filename = $('#filename').val();
+    var filetype = $('#filetype').val();
+    if (filename == "" || filename == null) {
+        bootbox.alert({
+            message: "请输入文件名",
+            size: "small"
+        });
+        return;
+    }
+    var content = $('#headcode').val() + $('#bodycode').val() + $('#footcode').val();
+    download(filename, filetype, html_beautify(content));
+});
+
+function download(filename, filetype, content) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+    element.setAttribute('download', filename + '.' + filetype);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
+function viewcode() {
     var code = $('.dragbox').clone();
     code.find('.dragtoolbar').remove();
     code.find('.drag-component').addClass('viewcode');
@@ -160,22 +233,8 @@ $('#viewbtn').click(function () {
         }
     );
     code.find('[contenteditable]').removeAttr("contenteditable");
-    $('.modal-body').find('textarea').val(html_beautify(code.html()));
-    setTimeout(function () {
-        $('.modal-body').find('textarea').select();
-    }, 500);
-});
-
-$('#downbtn').click(function () {
-    bootbox.alert({
-        message: "下载待开发",
-        size: "small",
-        callback: function () {
-            setTimeout(function () {
-            }, 50);
-        }
-    });
-});
+    return html_beautify(code.html());
+}
 
 $('#colsplit').bind('input propertychange', function () {
     var checknum = 0;
@@ -205,7 +264,8 @@ var dragboxdrag = function () {
     $(".dragbox").droppable({
         accept: ".drag-component.component-layout",
         helper: "clone",
-        activeClass: "ui-state-hover",
+        hoverClass: "droppable-active",
+        activeClass: "droppable-hover",
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
@@ -234,7 +294,7 @@ var colcomponentdarg = function () {
         helper: "clone",
         greedy: true,
         hoverClass: "droppable-active",
-        activeClass: "ui-state-hover",
+        activeClass: "droppable-hover",
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
@@ -279,17 +339,17 @@ var formcomponentdrag = function () {
         helper: "clone",
         greedy: true,
         hoverClass: "droppable-active",
-        activeClass: "ui-state-hover",
+        activeClass: "droppable-hover",
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
                 var dropedui = uidraggable.clone();
                 dropedui.addClass("dropped").appendTo(this);
-                var id = uidraggable.children(".form-group").find(":input").attr("id");
+                var id = uidraggable.find(".form-group").find(":input").attr("id");
                 if (id) {
                     id = id.split("-").slice(0, -1).join("-") + "-" + (parseInt(id.split("-").slice(-1)[0]) + 1);
-                    uidraggable.children(".form-group").find(":input").attr("id", id);
-                    uidraggable.children(".form-group").find("label").attr("for", id);
+                    uidraggable.find(".form-group").find(":input").attr("id", id);
+                    uidraggable.find(".form-group").find("label").attr("for", id);
                 }
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
@@ -312,12 +372,18 @@ var btncomponentdrag = function () {
         helper: "clone",
         greedy: true,
         hoverClass: "droppable-active",
-        activeClass: "ui-state-hover",
+        activeClass: "droppable-hover",
         drop: function (event, ui) {
             var uidraggable = $(ui.draggable);
             if (!uidraggable.hasClass("dropped")) {
                 var dropedui = uidraggable.clone();
                 dropedui.addClass("dropped").appendTo(this);
+                var id = uidraggable.find(".form-group").find(":input").attr("id");
+                if (id) {
+                    id = id.split("-").slice(0, -1).join("-") + "-" + (parseInt(id.split("-").slice(-1)[0]) + 1);
+                    uidraggable.find(".form-group").find(":input").attr("id", id);
+                    uidraggable.find(".form-group").find("label").attr("for", id);
+                }
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
                     uidraggable.clone().css({
@@ -344,13 +410,16 @@ $(document).on("click", ".edit-link", function () {
     $('#codeModal').modal('show');
     $('#codeModalLabel').html('编辑');
     $('#codeModal').find('.input-group').show();
-    $('.modal-body').find('textarea').css({"min-height": "268px"});
+    $('#updateCode').show();
+    $('#headcode,#footcode,#downloadCode').hide();
+    $('#codeModal').find('.form-inline').hide();
+    $('#bodycode').css({"min-height": "268px"});
     if (operation.find('.codeblock').children()[0].className == "form-group") {
         $('.modal-body').find('input').val(operation.find('label')[0].innerHTML);
     } else {
         $('.modal-body').find('input').val(operation.find('.codeblock').children()[0].innerHTML);
     }
-    $('.modal-body').find('textarea').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
+    $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
     setTimeout(function () {
         $('.modal-body').find('input').select();
     }, 500);
@@ -363,7 +432,7 @@ $('#updateContent').on("click", function () {
     } else {
         copycontent.find('.codeblock').children()[0].innerHTML = $('.modal-body').find('input').val();
     }
-    $('.modal-body').find('textarea').val(html_beautify(copycontent.find('.codeblock').html()));
+    $('#bodycode').val(html_beautify(copycontent.find('.codeblock').html()));
     $('.modal-body').find('input').select();
 });
 
@@ -395,7 +464,7 @@ $(document).on("click", ".changeclass .dropdown-menu a", function () {
 });
 
 $('#updateCode').on("click", function () {
-    operation.find('.codeblock').html($('.modal-body').find('textarea').val());
+    operation.find('.codeblock').html($('#bodycode').val());
     $('#codeModal').modal('hide');
 });
 

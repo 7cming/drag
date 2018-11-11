@@ -47,7 +47,7 @@
                 <h3>grid</h3>
                 <div class="components-col">
                     <h4>栅格布局，栅格数12(以空格进行分隔)</h4>
-                    <input id="colsplit">
+                    <input class="boot-input" id="colsplit">
                     <div class="drag-component component-layout">
                         <div class="dragtoolbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
@@ -82,7 +82,7 @@
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="codeblock">
-                            <h3 contenteditable="true">标题 h3</h3>
+                            <h3 contenteditable="true" class="fontbold">标题 h3</h3>
                         </div>
                     </div>
                     <div class="drag-component component-normal view-child">
@@ -265,23 +265,38 @@
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="component-parentblock">
-                            <div class="text-center btnparent">
+                            <div class="form-inline text-center btnparent">
                             </div>
                         </div>
                     </div>
                     <div class="text-center">
                         <div class="drag-component component-btn view-child">
-                            <div class="dragtoolbar btnbar">
+                            <div class="dragtoolbar btnbar text-right">
+                                <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                                <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
+                                <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
+                            </div>
+                            <div class="codeblock">
+                                <div class="form-group">
+                                    <label for="btn-input-1">输入框</label>
+                                    <input type="text" class="form-control" id="btn-input-1" placeholder="请输入">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="drag-component component-btn view-child">
+                            <div class="dragtoolbar btnbar text-center">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                                 <span class="dropdown hiddentoolbar changeclass">
                                     <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">主题 <span class="caret"></span></button>
                                     <ul class="dropdown-menu pull-right">
-                                        <li class="active"><a href="#" rel="btn-default">默认</a></li>
-                                        <li class=""><a href="#" rel="btn-primary">首选</a></li>
-                                        <li class=""><a href="#" rel="btn-success">成功</a></li>
-                                        <li class=""><a href="#" rel="btn-info">一般</a></li>
-                                        <li class=""><a href="#" rel="btn-warning">警告</a></li>
-                                        <li class=""><a href="#" rel="btn-danger">危险</a></li>
+                                        <li class="active"><a href="#" rel="btn-default">默认（白）</a></li>
+                                        <li class=""><a href="#" rel="btn-primary">首选（深蓝）</a></li>
+                                        <li class=""><a href="#" rel="btn-success">成功（绿）</a></li>
+                                        <li class=""><a href="#" rel="btn-info">一般（浅蓝）</a></li>
+                                        <li class=""><a href="#" rel="btn-warning">警告（橙黄）</a></li>
+                                        <li class=""><a href="#" rel="btn-danger">危险（红）</a></li>
                                     </ul>
                                 </span>
                                 <span class="dropdown hiddentoolbar changeclass">
@@ -360,7 +375,7 @@
                         </div>
                         <div class="codeblock">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="form-input-1">combobox</label>
+                                <label class="col-sm-4 control-label">combobox</label>
                                 <div class="col-sm-8">
                                     <input class="easyui-combobox">
                                 </div>
@@ -374,7 +389,7 @@
                         </div>
                         <div class="codeblock">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="form-input-1">datebox</label>
+                                <label class="col-sm-4 control-label">datebox</label>
                                 <div class="col-sm-8">
                                     <input class="easyui-datebox">
                                 </div>
@@ -388,7 +403,7 @@
                         </div>
                         <div class="codeblock">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="form-input-1">datetimebox</label>
+                                <label class="col-sm-4 control-label">datetimebox</label>
                                 <div class="col-sm-8">
                                     <input class="easyui-datetimebox">
                                 </div>
@@ -402,7 +417,7 @@
                         </div>
                         <div class="codeblock">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="form-input-1">numberbox</label>
+                                <label class="col-sm-4 control-label">numberbox</label>
                                 <div class="col-sm-8">
                                     <input class="easyui-numberbox">
                                 </div>
@@ -433,9 +448,27 @@
                         <button class="btn btn-warning" type="button" id="updateContent">更新</button>
                     </span>
                 </div>
-                <textarea></textarea>
+                <textarea id="headcode" placeholder="文件头部"></textarea>
+                <textarea id="bodycode"></textarea>
+                <textarea id="footcode" placeholder="文件尾部"></textarea>
+                <form class="form-inline text-right">
+                    <div class="form-group">
+                        <label for="filename">文件名</label>
+                        <input type="text" class="form-control" id="filename" placeholder="请输入">
+                    </div>
+                    <div class="form-group">
+                        <label for="filetype">文件类型</label>
+                        <select class="form-control" id="filetype">
+                            <option>jsp</option>
+                            <option>html</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-info" id="savehead">保存头部文件</button>
+                    <button type="button" class="btn btn-info" id="savefoot">保存尾部文件</button>
+                </form>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="downloadCode">下载</button>
                 <button type="button" class="btn btn-primary" id="updateCode">确定</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             </div>

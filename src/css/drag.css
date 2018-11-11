@@ -103,6 +103,11 @@
     border: 1px solid #0E2D5F;
 }
 
+.droppable-hover {
+    border: 2px dashed #cccccc;
+    background: #ededed;
+}
+
 .tools a {
     cursor: pointer;
     font-size: 14px !important
@@ -127,10 +132,6 @@
     text-align: center;
     display: inline-block;
     margin-right: 10px;
-}
-
-.btnbar {
-    text-align: center;
 }
 
 .formbar {
