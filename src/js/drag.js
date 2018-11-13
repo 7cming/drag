@@ -1,6 +1,12 @@
+// $.parser.auto = false;
 window.onload = function () {
     $('#portalmask').hide(777);
     $('#colsplit').select();
+    // datagrid = $('.datagrid').parent().clone();
+    // console.log(datagrid.html());
+    // $('.datagrid').addClass('easyui-datagrid');
+    // $.parser.parse($('.datagrid').parent());
+    // $.parser.parse();
 };
 
 $(function () {
@@ -26,7 +32,9 @@ $(function () {
             $(this).accordion("refresh");
         }
     });
-    $('.dragbox').html(localStorage.getItem("dragcode"));
+    if (localStorage.getItem("dragcode") != "") {
+        $('.dragbox').html(localStorage.getItem("dragcode"));
+    }
     $('#headcode').val(localStorage.getItem("headcode"));
     $('#footcode').val(localStorage.getItem("footcode"));
     $(document).keydown(function (event) {
