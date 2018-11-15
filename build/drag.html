@@ -59,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                    <h4>基础标签</h4>
+                    <hr><h4>base label</h4>
                     <div class="drag-component component-normal view-child">
                         <div class="dragtoolbar formbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
@@ -113,6 +113,7 @@
                         </div>
                     </div>
                     <form class="form-horizontal">
+                        <hr><h4>normal</h4>
                         <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
@@ -124,34 +125,6 @@
                                     <label class="col-sm-4 control-label" for="form-input-1">输入框</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="form-input-1" placeholder="请输入">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="drag-component component-form view-child">
-                            <div class="dragtoolbar formbar">
-                                <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
-                                <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
-                            </div>
-                            <div class="codeblock">
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label">combobox</label>
-                                    <div class="col-sm-8">
-                                        <input class="easyui-combobox">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="drag-component component-form view-child">
-                            <div class="dragtoolbar formbar">
-                                <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
-                                <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
-                            </div>
-                            <div class="codeblock">
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label">numberbox</label>
-                                    <div class="col-sm-8">
-                                        <input class="easyui-numberbox">
                                     </div>
                                 </div>
                             </div>
@@ -243,15 +216,18 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-group">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-                                    </label>
+                                    <label class="col-sm-4 control-label">复选框</label>
+                                    <div class="col-sm-8">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -262,15 +238,18 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-group">
-                                    <label class="radio-inline">
-                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-                                    </label>
+                                    <label class="col-sm-4 control-label">单选框</label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -298,6 +277,7 @@
                             </div>
                         </div>
                     </div>
+                    <hr><h4>element</h4>
                     <div class="text-center">
                         <div class="drag-component component-btn view-child">
                             <div class="dragtoolbar btnbar text-right">
@@ -353,17 +333,28 @@
                     <div class="drag-component component-normal">
                         <div class="dragtoolbar easyuibar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="codeblock">
+                        <div class="easyuidisplay">
                             <table class="easyui-datagrid" title="title"
-                                   data-options="
-                                                rownumbers:true,
-                                                singleSelect:false,
-                                                collapsible:false,
-                                                method:'get',
-                                                fitColumns:true,
-                                                pagination:true">
+                                   data-options="rownumbers:true,singleSelect:false,collapsible:false,method:'get',fitColumns:true,pagination:true">
+                                <thead>
+                                <tr>
+                                    <th data-options="field:'ck',checkbox:true"></th>
+                                    <th data-options="field:'itemid',width:80">Item ID</th>
+                                    <th data-options="field:'productid',width:100">Product</th>
+                                    <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+                                    <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+                                    <th data-options="field:'attr1',width:250">Attribute</th>
+                                    <th data-options="field:'status',width:60,align:'center'">Status</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="codeblock hidden">
+                            <table class="" rel="easyui-datagrid" title="title"
+                                data-options="rownumbers:true,singleSelect:false,collapsible:false,method:'get',fitColumns:true,pagination:true">
                                 <thead>
                                 <tr>
                                     <th data-options="field:'ck',checkbox:true"></th>
