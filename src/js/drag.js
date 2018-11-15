@@ -1,12 +1,6 @@
-// $.parser.auto = false;
 window.onload = function () {
     $('#portalmask').hide(777);
     $('#colsplit').select();
-    // datagrid = $('.datagrid').parent().clone();
-    // console.log(datagrid.html());
-    // $('.datagrid').addClass('easyui-datagrid');
-    // $.parser.parse($('.datagrid').parent());
-    // $.parser.parse();
 };
 
 $(function () {
@@ -450,7 +444,12 @@ $(document).on("click", ".edit-link", function () {
     if (operation.find('.codeblock').children()[0].className == "form-group") {
         $('#updatetext').val(operation.find('label')[0].innerHTML);
     } else if (operation.find('.codeblock').children()[0].className == "easyui") {
-
+        // datagrid = $('.datagrid').parent().clone();
+        // console.log(datagrid.html());
+        // $('.datagrid').addClass('easyui-datagrid');
+        // $.parser.parse($('.datagrid').parent());
+        // $.parser.parse();
+        alert(0);
     } else {
         $('#updatetext').val(operation.find('.codeblock').children()[0].innerHTML);
     }
@@ -465,7 +464,12 @@ $('#updateContent').on("click", function () {
     if (copycontent.find('.codeblock').children()[0].className == "form-group") {
         copycontent.find('label')[0].innerHTML = $('.modal-body').find('input').val();
     } else if (operation.find('.codeblock').children()[0].className == "easyui") {
-
+        // datagrid = $('.datagrid').parent().clone();
+        // console.log(datagrid.html());
+        // $('.datagrid').addClass('easyui-datagrid');
+        // $.parser.parse($('.datagrid').parent());
+        // $.parser.parse();
+        alert(1);
     } else {
         copycontent.find('.codeblock').children()[0].innerHTML = $('.modal-body').find('input').val();
     }
