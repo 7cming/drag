@@ -448,13 +448,15 @@ $(document).on("click", ".edit-link", function () {
     $('#codeModal').find('.form-inline').hide();
     $('#bodycode').css({"min-height": "268px"});
     if (operation.find('.codeblock').children()[0].className == "form-group") {
-        $('.modal-body').find('input').val(operation.find('label')[0].innerHTML);
+        $('#updatetext').val(operation.find('label')[0].innerHTML);
+    } else if (operation.find('.codeblock').children()[0].className == "easyui") {
+
     } else {
-        $('.modal-body').find('input').val(operation.find('.codeblock').children()[0].innerHTML);
+        $('#updatetext').val(operation.find('.codeblock').children()[0].innerHTML);
     }
     $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
     setTimeout(function () {
-        $('.modal-body').find('input').select();
+        $('#updatetext').select();
     }, 500);
 });
 
@@ -462,11 +464,13 @@ $('#updateContent').on("click", function () {
     var copycontent = operation.clone();
     if (copycontent.find('.codeblock').children()[0].className == "form-group") {
         copycontent.find('label')[0].innerHTML = $('.modal-body').find('input').val();
+    } else if (operation.find('.codeblock').children()[0].className == "easyui") {
+
     } else {
         copycontent.find('.codeblock').children()[0].innerHTML = $('.modal-body').find('input').val();
     }
     $('#bodycode').val(html_beautify(copycontent.find('.codeblock').html()));
-    $('.modal-body').find('input').select();
+    $('#updatetext').select();
 });
 
 $(document).on("click", "#hsize .dropdown-menu a", function () {

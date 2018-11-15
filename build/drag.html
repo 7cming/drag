@@ -112,7 +112,7 @@
                             </form>
                         </div>
                     </div>
-                    <form class="form-horizontal">
+                    <div class="form-horizontal">
                         <hr><h4>normal</h4>
                         <div class="drag-component component-form view-child">
                             <div class="dragtoolbar formbar">
@@ -253,7 +253,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div class="group">
@@ -353,7 +353,7 @@
                             </table>
                         </div>
                         <div class="codeblock hidden">
-                            <table class="" rel="easyui-datagrid" title="title"
+                            <table class="easyui" rel="easyui-datagrid" title="title"
                                 data-options="rownumbers:true,singleSelect:false,collapsible:false,method:'get',fitColumns:true,pagination:true">
                                 <thead>
                                 <tr>
@@ -463,7 +463,7 @@
             </div>
             <div class="modal-body">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Barça! Barça! Baaarça!">
+                    <input type="text" class="form-control" id="updatetext" placeholder="Barça! Barça! Baaarça!">
                     <span class="input-group-btn">
                         <button class="btn btn-warning" type="button" id="updateContent">更新</button>
                     </span>
@@ -475,6 +475,7 @@
                     <div class="form-group">
                         <label for="filename">文件名</label>
                         <input type="text" class="form-control" id="filename" placeholder="请输入">
+                        <input type="text" style="display:none">
                     </div>
                     <div class="form-group">
                         <label for="filetype">文件类型</label>
