@@ -229,13 +229,18 @@ function download(filename, filetype, content) {
 function viewcode() {
     var code = $('.dragbox').clone();
     code.find('.dragtoolbar').remove();
+    code.find('.easyuidisplay').remove();
     code.find('.drag-component').addClass('viewcode');
     code.find('.component-row').addClass('viewcode');
     code.find('.component-parentblock').addClass('viewcode');
     code.find('.codeblock').addClass('viewcode');
 
     code.find('.codeblock.viewcode').each(function () {
-        $(this).parent().append($(this).children().html());
+        if ($(this).children()[0].localName=="table") {
+            $(this).parent().append($(this).children()[0].outerHTML);
+        } else {
+            $(this).parent().append($(this).children().html());
+        }
     });
     code.find('.view-child.viewcode').each(function () {
         $(this).parent().append($(this).children().html().replace(/[\r\n]/g, "").replace(/(^\s*)|(\s*$)/g, ""));
@@ -483,6 +488,7 @@ $(document).on("click", "#hsize .dropdown-menu a", function () {
     var elementobj = $(this).parent().parent().parent().parent().parent();
     var elementval = $(this).attr("rel");
     var hh = $(elementval).html(elementobj.find('.codeblock')[0].innerText.replace(/[\r\n]/g, ""));
+    hh.addClass("fontbold");
     elementobj.find('.codeblock').prop('innerHTML', hh.prop('outerHTML'));
 });
 
