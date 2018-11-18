@@ -489,6 +489,7 @@ $(document).on("click", "#hsize .dropdown-menu a", function () {
     var elementval = $(this).attr("rel");
     var hh = $(elementval).html(elementobj.find('.codeblock')[0].innerText.replace(/[\r\n]/g, ""));
     hh.addClass("fontbold");
+    hh.attr("contenteditable","true");
     elementobj.find('.codeblock').prop('innerHTML', hh.prop('outerHTML'));
 });
 
