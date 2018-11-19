@@ -60,7 +60,7 @@ $(function () {
             $('#codeModal').modal('hide');
         }
     });
-    $('.modal-body').find('input').bind('keydown', function (event) {
+    $('#updatetext').bind('keydown', function (event) {
         if (event.keyCode == "13") {
             $('#updateContent').click();
         }
@@ -445,23 +445,34 @@ $(document).on("click", ".edit-link", function () {
     $('#codeModal').modal('show');
     $('#codeModalLabel').html('编辑');
     $('#codeModal').find('.input-group').show();
+    $('#updatetext').val('');
+    $('#bodycode').val('');
     $('#updateCode').show();
     $('#headcode,#footcode,#downloadCode').hide();
     $('#codeModal').find('.form-inline').hide();
     $('#bodycode').css({"min-height": "268px"});
-    if (operation.find('.codeblock').children()[0].className == "form-group" && !operation.find('.codeblock').hasClass("easyuicode")) {
-        $('#updatetext').val(operation.find('label')[0].innerHTML);
-        $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
+    if (operation.find('.codeblock').children()[0].className == "form-group") {
+        if (operation.find('.codeblock').hasClass("easyuicode")) {
+            $('#updatetext').val(operation.find('label')[0].innerHTML);
+            var easyuicode = operation.clone().find('.easyuicode');
+            var classname = operation.clone().find('.easyui').attr("rel");
+            easyuicode.find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
+            $('#bodycode').val(html_beautify(easyuicode.html()));
+        } else {
+            $('#updatetext').val(operation.find('label')[0].innerHTML);
+            $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
+        }
     } else if (operation.find('.codeblock').hasClass("easyuicode")) {
         var easyuicode = operation.clone().find('.easyuicode');
         var classname = operation.clone().find('.easyui').attr("rel");
+        // var title = easyuicode.find('.easyui').attr("title");
         easyuicode.find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
+        // $('#updatetext').val(title);
         $('#bodycode').val(html_beautify(easyuicode.html()));
     } else {
-        $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
         $('#updatetext').val(operation.find('.codeblock').children()[0].innerHTML);
+        $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
     }
-
     setTimeout(function () {
         $('#updatetext').select();
     }, 500);
@@ -470,16 +481,24 @@ $(document).on("click", ".edit-link", function () {
 $('#updateContent').on("click", function () {
     var copycontent = operation.clone();
     if (copycontent.find('.codeblock').children()[0].className == "form-group") {
-        copycontent.find('label')[0].innerHTML = $('.modal-body').find('input').val();
-    } else if (operation.find('.codeblock').children()[0].className == "easyui") {
-        // datagrid = $('.datagrid').parent().clone();
-        // console.log(datagrid.html());
-        // $('.datagrid').addClass('easyui-datagrid');
-        // $.parser.parse($('.datagrid').parent());
-        // $.parser.parse();
-        alert(1);
+        if (operation.find('.codeblock').hasClass("easyuicode")) {
+            var easyuicode = copycontent.find('.easyuicode');
+            var classname = copycontent.find('.easyui').attr("rel");
+            easyuicode.find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
+            easyuicode.find('label')[0].innerHTML = $('#updatetext').val();
+            $('#bodycode').val(html_beautify(easyuicode.html()));
+        } else {
+            copycontent.find('label')[0].innerHTML = $('#updatetext').val();
+            $('#bodycode').val(html_beautify(copycontent.find('.codeblock').html()));
+        }
+    } else if (copycontent.find('.codeblock').children()[0].className == "easyui") {
+        // var easyuicode = copycontent.find('.easyuicode');
+        // var classname = copycontent.find('.easyui').attr("rel");
+        // easyuicode.find('.easyui').attr("title", $('#updatetext').val());
+        // easyuicode.find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
+        // $('#bodycode').val(html_beautify(easyuicode.html()));
     } else {
-        copycontent.find('.codeblock').children()[0].innerHTML = $('.modal-body').find('input').val();
+        copycontent.find('.codeblock').children()[0].innerHTML = $('#updatetext').val();
         $('#bodycode').val(html_beautify(copycontent.find('.codeblock').html()));
     }
     $('#updatetext').select();
@@ -515,7 +534,16 @@ $(document).on("click", ".changeclass .dropdown-menu a", function () {
 });
 
 $('#updateCode').on("click", function () {
-    operation.find('.codeblock').html($('#bodycode').val());
+    if (operation.find('.codeblock').hasClass('easyuicode')) {
+        alert();
+        // datagrid = $('.datagrid').parent().clone();
+        // console.log(datagrid.html());
+        // $('.datagrid').addClass('easyui-datagrid');
+        // $.parser.parse($('.datagrid').parent());
+        // $.parser.parse();
+    } else {
+        operation.find('.codeblock').html($('#bodycode').val());
+    }
     $('#codeModal').modal('hide');
 });
 

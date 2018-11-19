@@ -138,11 +138,12 @@ table {
     background: url(./imgs/down.png) no-repeat;
     background-size: 12px 12px;
 }
+*/
 ::-webkit-scrollbar-thumb:hover {
     background-color: #333;
     -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,.1);
 }
-*/
+
 
 .boot-input {
     height: 30px;
