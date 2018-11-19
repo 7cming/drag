@@ -236,15 +236,14 @@ function viewcode() {
     code.find('.codeblock').addClass('viewcode');
 
     code.find('.codeblock.viewcode').each(function () {
-        if ($(this).children()[0].localName == "table") {
-            // var easyuicode = operation.clone().find('.easyui');
-            // var classname = operation.clone().find('.easyui').attr("rel");
-            // easyuicode.removeAttr("rel").removeClass("easyui").addClass(classname);
-
-            $(this).parent().append($(this).children()[0].outerHTML);
-        } else {
-            $(this).parent().append($(this).children().html());
-        }
+        var classname = $(this).find('.easyui').attr("rel");
+        $(this).find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
+        // if ($(this).children()[0].localName == "table") {
+        //     $(this).parent().append($(this).children()[0].outerHTML);
+        // } else {
+        //     $(this).parent().append($(this).children().html());
+        // }
+        $(this).parent().append($(this).html());
     });
     code.find('.view-child.viewcode').each(function () {
         $(this).parent().append($(this).children().html().replace(/[\r\n]/g, "").replace(/(^\s*)|(\s*$)/g, ""));

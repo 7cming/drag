@@ -111,9 +111,9 @@ table {
 }
 
 /* 页面滚动条优化 */
-/**
+
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 7px;
     height: 15px;
     background-color: #F5F5F5;
 }
@@ -128,7 +128,7 @@ table {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: rgba(0,0,0,.4);
 }
-
+/**
 ::-webkit-scrollbar-button:start {
     background: url(./imgs/up.png) no-repeat;
     background-size: 12px 12px;
