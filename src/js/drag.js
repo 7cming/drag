@@ -492,6 +492,7 @@ $('#updateContent').on("click", function () {
             $('#bodycode').val(html_beautify(copycontent.find('.codeblock').html()));
         }
     } else if (copycontent.find('.codeblock').children()[0].className == "easyui") {
+        //确定输入框可修改的内容
         // var easyuicode = copycontent.find('.easyuicode');
         // var classname = copycontent.find('.easyui').attr("rel");
         // easyuicode.find('.easyui').attr("title", $('#updatetext').val());
