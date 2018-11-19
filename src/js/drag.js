@@ -236,7 +236,11 @@ function viewcode() {
     code.find('.codeblock').addClass('viewcode');
 
     code.find('.codeblock.viewcode').each(function () {
-        if ($(this).children()[0].localName=="table") {
+        if ($(this).children()[0].localName == "table") {
+            // var easyuicode = operation.clone().find('.easyui');
+            // var classname = operation.clone().find('.easyui').attr("rel");
+            // easyuicode.removeAttr("rel").removeClass("easyui").addClass(classname);
+
             $(this).parent().append($(this).children()[0].outerHTML);
         } else {
             $(this).parent().append($(this).children().html());
@@ -446,19 +450,19 @@ $(document).on("click", ".edit-link", function () {
     $('#headcode,#footcode,#downloadCode').hide();
     $('#codeModal').find('.form-inline').hide();
     $('#bodycode').css({"min-height": "268px"});
-    if (operation.find('.codeblock').children()[0].className == "form-group") {
+    if (operation.find('.codeblock').children()[0].className == "form-group" && !operation.find('.codeblock').hasClass("easyuicode")) {
         $('#updatetext').val(operation.find('label')[0].innerHTML);
-    } else if (operation.find('.codeblock').children()[0].className == "easyui") {
-        // datagrid = $('.datagrid').parent().clone();
-        // console.log(datagrid.html());
-        // $('.datagrid').addClass('easyui-datagrid');
-        // $.parser.parse($('.datagrid').parent());
-        // $.parser.parse();
-        alert(0);
+        $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
+    } else if (operation.find('.codeblock').hasClass("easyuicode")) {
+        var easyuicode = operation.clone().find('.easyuicode');
+        var classname = operation.clone().find('.easyui').attr("rel");
+        easyuicode.find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
+        $('#bodycode').val(html_beautify(easyuicode.html()));
     } else {
+        $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
         $('#updatetext').val(operation.find('.codeblock').children()[0].innerHTML);
     }
-    $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
+
     setTimeout(function () {
         $('#updatetext').select();
     }, 500);
@@ -477,8 +481,8 @@ $('#updateContent').on("click", function () {
         alert(1);
     } else {
         copycontent.find('.codeblock').children()[0].innerHTML = $('.modal-body').find('input').val();
+        $('#bodycode').val(html_beautify(copycontent.find('.codeblock').html()));
     }
-    $('#bodycode').val(html_beautify(copycontent.find('.codeblock').html()));
     $('#updatetext').select();
 });
 
@@ -489,7 +493,7 @@ $(document).on("click", "#hsize .dropdown-menu a", function () {
     var elementval = $(this).attr("rel");
     var hh = $(elementval).html(elementobj.find('.codeblock')[0].innerText.replace(/[\r\n]/g, ""));
     hh.addClass("fontbold");
-    hh.attr("contenteditable","true");
+    hh.attr("contenteditable", "true");
     elementobj.find('.codeblock').prop('innerHTML', hh.prop('outerHTML'));
 });
 

@@ -349,7 +349,7 @@
                                 </thead>
                             </table>
                         </div>
-                        <div class="codeblock">
+                        <div class="codeblock easyuicode hidden">
                             <table class="easyui" rel="easyui-datagrid" title="title"
                                 data-options="rownumbers:true,singleSelect:false,collapsible:false,method:'get',fitColumns:true,pagination:true">
                                 <thead>
@@ -366,10 +366,24 @@
                     <div class="drag-component component-normal view-child">
                         <div class="dragtoolbar easyuibar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="codeblock">
+                        <div class="easyuidisplay">
                             <div class="easyui-tabs">
+                                <div title="tab1" data-options="closable:true">
+                                    tab1
+                                </div>
+                                <div title="tab2" data-options="closable:true">
+                                    tab2
+                                </div>
+                                <div title="tab3" data-options="closable:true">
+                                    tab3
+                                </div>
+                            </div>
+                        </div>
+                        <div class="codeblock easyuicode hidden">
+                            <div class="easyui" rel="easyui-tabs">
                                 <div title="tab1" data-options="closable:true">
                                     tab1
                                 </div>
@@ -385,9 +399,10 @@
                     <div class="drag-component component-normal view-child">
                         <div class="dragtoolbar easyuibar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="codeblock">
+                        <div class="easyuidisplay">
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">combobox</label>
                                 <div class="col-sm-8">
@@ -395,13 +410,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="codeblock easyuicode hidden">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">combobox</label>
+                                <div class="col-sm-8">
+                                    <input class="easyui" rel="easyui-combobox">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="drag-component component-normal view-child">
                         <div class="dragtoolbar easyuibar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="codeblock">
+                        <div class="easyuidisplay">
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">datebox</label>
                                 <div class="col-sm-8">
@@ -409,17 +433,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="drag-component component-normal view-child">
-                        <div class="dragtoolbar easyuibar">
-                            <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
-                            <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
-                        </div>
-                        <div class="codeblock">
+                        <div class="codeblock easyuicode hidden">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label">datetimebox</label>
+                                <label class="col-sm-4 control-label">datebox</label>
                                 <div class="col-sm-8">
-                                    <input class="easyui-datetimebox">
+                                    <input class="easyui" rel="easyui-datebox">
                                 </div>
                             </div>
                         </div>
@@ -427,13 +445,45 @@
                     <div class="drag-component component-normal view-child">
                         <div class="dragtoolbar easyuibar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="codeblock">
+                        <div class="easyuidisplay">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">datetimebox</label>
+                                <div class="col-sm-8">
+                                    <input class="easyui-datetimebox">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="codeblock easyuicode hidden">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">datetimebox</label>
+                                <div class="col-sm-8">
+                                    <input class="easyui" rel="easyui-datetimebox">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="drag-component component-normal view-child">
+                        <div class="dragtoolbar easyuibar">
+                            <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
+                            <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
+                        </div>
+                        <div class="easyuidisplay">
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">numberbox</label>
                                 <div class="col-sm-8">
                                     <input class="easyui-numberbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="codeblock easyuicode hidden">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">numberbox</label>
+                                <div class="col-sm-8">
+                                    <input class="easyui" rel="easyui-numberbox">
                                 </div>
                             </div>
                         </div>
