@@ -232,17 +232,11 @@ function viewcode() {
     code.find('.easyuidisplay').remove();
     code.find('.drag-component').addClass('viewcode');
     code.find('.component-row').addClass('viewcode');
-    code.find('.component-parentblock').addClass('viewcode');
     code.find('.codeblock').addClass('viewcode');
 
     code.find('.codeblock.viewcode').each(function () {
         var classname = $(this).find('.easyui').attr("rel");
         $(this).find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
-        // if ($(this).children()[0].localName == "table") {
-        //     $(this).parent().append($(this).children()[0].outerHTML);
-        // } else {
-        //     $(this).parent().append($(this).children().html());
-        // }
         $(this).parent().append($(this).html());
     });
     code.find('.view-child.viewcode').each(function () {
@@ -463,11 +457,10 @@ $(document).on("click", ".edit-link", function () {
             $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
         }
     } else if (operation.find('.codeblock').hasClass("easyuicode")) {
+        $('#updatetext').attr('placeholder', "暂时不提供更新，可对文本直接操作");
         var easyuicode = operation.clone().find('.easyuicode');
         var classname = operation.clone().find('.easyui').attr("rel");
-        // var title = easyuicode.find('.easyui').attr("title");
         easyuicode.find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
-        // $('#updatetext').val(title);
         $('#bodycode').val(html_beautify(easyuicode.html()));
     } else {
         $('#updatetext').val(operation.find('.codeblock').children()[0].innerHTML);
@@ -492,17 +485,32 @@ $('#updateContent').on("click", function () {
             $('#bodycode').val(html_beautify(copycontent.find('.codeblock').html()));
         }
     } else if (copycontent.find('.codeblock').children()[0].className == "easyui") {
-        //确定输入框可修改的内容
-        // var easyuicode = copycontent.find('.easyuicode');
-        // var classname = copycontent.find('.easyui').attr("rel");
-        // easyuicode.find('.easyui').attr("title", $('#updatetext').val());
-        // easyuicode.find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
-        // $('#bodycode').val(html_beautify(easyuicode.html()));
+        bootbox.dialog({
+            message: '<div class="text-center">暂时不提供更新，可对文本直接操作</div>',
+            size: 'small'
+        });
+        setTimeout(function () {
+            bootbox.hideAll();
+        }, 1000);
     } else {
         copycontent.find('.codeblock').children()[0].innerHTML = $('#updatetext').val();
         $('#bodycode').val(html_beautify(copycontent.find('.codeblock').html()));
     }
     $('#updatetext').select();
+});
+
+$('#updateCode').on("click", function () {
+    if (operation.find('.codeblock').hasClass('easyuicode')) {
+        var newcode = $('#bodycode').val();
+        operation.find('.easyuidisplay').children().remove();
+        operation.find('.easyuidisplay').html(html_beautify(newcode));
+        $.parser.parse(operation.find('.easyuidisplay'));
+        operation.find('.easyuicode').children().remove();
+        operation.find('.easyuicode').html(html_beautify(newcode));
+    } else {
+        operation.find('.codeblock').html($('#bodycode').val());
+    }
+    $('#codeModal').modal('hide');
 });
 
 $(document).on("click", "#hsize .dropdown-menu a", function () {
@@ -532,20 +540,6 @@ $(document).on("click", ".changeclass .dropdown-menu a", function () {
         elementobj.find('.codeblock').children().removeClass(classes);
         elementobj.find('.codeblock').children().addClass(elementval);
     }
-});
-
-$('#updateCode').on("click", function () {
-    if (operation.find('.codeblock').hasClass('easyuicode')) {
-        alert();
-        // datagrid = $('.datagrid').parent().clone();
-        // console.log(datagrid.html());
-        // $('.datagrid').addClass('easyui-datagrid');
-        // $.parser.parse($('.datagrid').parent());
-        // $.parser.parse();
-    } else {
-        operation.find('.codeblock').html($('#bodycode').val());
-    }
-    $('#codeModal').modal('hide');
 });
 
 console.log("有问题联系: %c774669939@qq.com\n%cPowered By %c7c", "color:#0099FF", "color:#000", "color:#990099");
