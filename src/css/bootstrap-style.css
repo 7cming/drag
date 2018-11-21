@@ -44,6 +44,11 @@ input[type="file"] {
     text-align: center;
 }
 
+.form-inline .form-group{
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
 /* bootstrap 兼容 easyui */
 .panel {
     margin-bottom: 0px;

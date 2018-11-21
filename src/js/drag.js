@@ -445,7 +445,7 @@ $(document).on("click", ".edit-link", function () {
     $('#headcode,#footcode,#downloadCode').hide();
     $('#codeModal').find('.form-inline').hide();
     $('#bodycode').css({"min-height": "268px"});
-    if (operation.find('.codeblock').children()[0].className == "form-group") {
+    if (operation.find('.codeblock').children()[0].className == "form-group" || operation.find('.codeblock').children()[0].className == "element-inline") {
         if (operation.find('.codeblock').hasClass("easyuicode")) {
             $('#updatetext').val(operation.find('label')[0].innerHTML);
             var easyuicode = operation.clone().find('.easyuicode');
