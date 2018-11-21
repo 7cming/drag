@@ -157,6 +157,11 @@
     margin-right: 2px;
 }
 
+.elementbar {
+    text-align: right;
+    margin-right: 12px;
+}
+
 .hiddentoolbar {
     display: none;
 }
