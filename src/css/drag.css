@@ -164,6 +164,7 @@
 
 .hiddentoolbar {
     display: none;
+    margin-right: 2px;
 }
 
 .modal-body textarea {
