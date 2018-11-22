@@ -119,20 +119,26 @@ table {
 
 .row-inline{
     margin-bottom: 15px;
+    clear: both;
 }
 
 .row-inline-item{
-    float: left;
+    display: inline-block;
 }
 
 .element-inline {
     margin-bottom: 15px;
-    overflow: hidden;
 }
 
 .inline-label {
     padding: 7px 7px 0px 0px;
     text-align: right;
+    float: left;
+    width: 100px;
+}
+
+.inline-input{
+    float: left;
 }
 
 /* 页面滚动条优化 */

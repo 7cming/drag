@@ -359,7 +359,7 @@
                         <div class="dragtoolbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
                             <span class="dropdown hiddentoolbar changeclass">
-                                <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">对齐（对齐仅适用于按钮） <span class="caret"></span></button>
+                                <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">对齐 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li class="active"><a href="#" rel="">默认</a></li>
                                     <li class=""><a href="#" rel="text-center">居中</a></li>
@@ -377,9 +377,9 @@
                         <div class="drag-component component-btn view-child">
                             <div class="dragtoolbar btnbar text-right">
                                 <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
-                                <span class="dropdown hiddentoolbar changeclass">
+                                <span class="dropdown hiddentoolbar changeinlinebtn">
                                     <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">主题 <span class="caret"></span></button>
-                                    <ul class="dropdown-menu pull-right">
+                                    <ul class="dropdown-menu">
                                         <li class="active"><a href="#" rel="btn-default">默认（白）</a></li>
                                         <li class=""><a href="#" rel="btn-primary">首选（深蓝）</a></li>
                                         <li class=""><a href="#" rel="btn-success">成功（绿）</a></li>
@@ -388,7 +388,7 @@
                                         <li class=""><a href="#" rel="btn-danger">危险（红）</a></li>
                                     </ul>
                                 </span>
-                                <span class="dropdown hiddentoolbar changeclass">
+                                <span class="dropdown hiddentoolbar changeinlinebtn">
                                     <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">大小 <span class="caret"></span></button>
                                     <ul class="dropdown-menu pull-right">
                                         <li class="active"><a href="#" rel="">默认</a></li>
@@ -401,7 +401,11 @@
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
                             <div class="codeblock">
-                                <button type="button" class="btn btn-default">default</button>
+                                <div class="row-inline-item">
+                                    <div class="inline-input">
+                                        <button type="button" class="btn btn-default">default</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -414,8 +418,8 @@
                         </div>
                         <div class="codeblock">
                             <div class="row-inline-item">
-                                <label class="col-sm-4 inline-label" for="btn-input-1">输入框</label>
-                                <div class="col-sm-8">
+                                <label class="inline-label" for="btn-input-1">输入框</label>
+                                <div class="inline-input">
                                     <input class="form-control" type="text" id="btn-input-1" placeholder="请输入">
                                 </div>
                             </div>
@@ -430,16 +434,16 @@
                         </div>
                         <div class="easyuidisplay">
                             <div class="row-inline-item">
-                                <label class="col-sm-4 inline-label">下拉框</label>
-                                <div class="col-sm-8">
+                                <label class="inline-label">下拉框</label>
+                                <div class="inline-input">
                                     <input class="easyui-combobox">
                                 </div>
                             </div>
                         </div>
                         <div class="codeblock easyuicode hidden">
                             <div class="row-inline-item">
-                                <label class="col-sm-4 inline-label">下拉框</label>
-                                <div class="col-sm-8">
+                                <label class="inline-label">下拉框</label>
+                                <div class="inline-input">
                                     <input class="easyui" rel="easyui-combobox">
                                 </div>
                             </div>
@@ -453,16 +457,16 @@
                         </div>
                         <div class="easyuidisplay">
                             <div class="row-inline-item">
-                                <label class="col-sm-4 inline-label">日期框</label>
-                                <div class="col-sm-8">
+                                <label class="inline-label">日期框</label>
+                                <div class="inline-input">
                                     <input class="easyui-datebox">
                                 </div>
                             </div>
                         </div>
                         <div class="codeblock easyuicode hidden">
                             <div class="row-inline-item">
-                                <label class="col-sm-4 inline-label">日期框</label>
-                                <div class="col-sm-8">
+                                <label class="inline-label">日期框</label>
+                                <div class="inline-input">
                                     <input class="easyui" rel="easyui-datebox">
                                 </div>
                             </div>
@@ -650,7 +654,7 @@
             </div>
             <div class="modal-body">
                 <div class="input-group">
-                    <input type="text" class="form-control" id="updatetext" placeholder="Barça! Barça! Baaarça!">
+                    <input type="text" class="form-control" id="updatetext" placeholder="hello world">
                     <span class="input-group-btn">
                         <button class="btn btn-warning" type="button" id="updateContent">更新</button>
                     </span>

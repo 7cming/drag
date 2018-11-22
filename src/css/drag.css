@@ -138,10 +138,6 @@
     text-align: right;
 }
 
-.btnbar {
-    margin-right: 12px;
-}
-
 .fromparent {
     border-radius: 4px;
     background: #f0f8ff;
@@ -179,10 +175,6 @@
 
 .preview .dragtoolbar {
     display: none;
-}
-
-.codeblock,.easyuidisplay{
-    overflow: hidden;
 }
 
 .preview .col-layout, .preview .dragbox [class*=col-sm-], .preview .btnparent, .preview .fromparent, .preview .view-parent, .preview .component-normal {

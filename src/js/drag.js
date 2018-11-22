@@ -445,7 +445,8 @@ $(document).on("click", ".edit-link", function () {
     $('#headcode,#footcode,#downloadCode').hide();
     $('#codeModal').find('.form-inline').hide();
     $('#bodycode').css({"min-height": "268px"});
-    if (operation.find('.codeblock').children()[0].className == "form-group" || operation.find('.codeblock').children()[0].className == "element-inline") {
+    var codechildname = operation.find('.codeblock').children()[0].className;
+    if (codechildname == "form-group" || codechildname == "element-inline" || codechildname == "row-inline-item") {
         if (operation.find('.codeblock').hasClass("easyuicode")) {
             $('#updatetext').val(operation.find('label')[0].innerHTML);
             var easyuicode = operation.clone().find('.easyuicode');
@@ -453,7 +454,11 @@ $(document).on("click", ".edit-link", function () {
             easyuicode.find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
             $('#bodycode').val(html_beautify(easyuicode.html()));
         } else {
-            $('#updatetext').val(operation.find('label')[0].innerHTML);
+            if (operation.find('label')[0] == undefined) {
+                $('#updatetext').val(operation.find('.inline-input').children()[0].innerHTML);
+            } else {
+                $('#updatetext').val(operation.find('label')[0].innerHTML);
+            }
             $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
         }
     } else if (operation.find('.codeblock').hasClass("easyuicode")) {
@@ -473,7 +478,8 @@ $(document).on("click", ".edit-link", function () {
 
 $('#updateContent').on("click", function () {
     var copycontent = operation.clone();
-    if (copycontent.find('.codeblock').children()[0].className == "form-group") {
+    var codechildname = copycontent.find('.codeblock').children()[0].className;
+    if (codechildname == "form-group" || codechildname == "element-inline" || codechildname == "row-inline-item") {
         if (operation.find('.codeblock').hasClass("easyuicode")) {
             var easyuicode = copycontent.find('.easyuicode');
             var classname = copycontent.find('.easyui').attr("rel");
@@ -481,7 +487,11 @@ $('#updateContent').on("click", function () {
             easyuicode.find('label')[0].innerHTML = $('#updatetext').val();
             $('#bodycode').val(html_beautify(easyuicode.html()));
         } else {
-            copycontent.find('label')[0].innerHTML = $('#updatetext').val();
+            if (operation.find('label')[0] == undefined) {
+                copycontent.find('.inline-input').children()[0].innerHTML = $('#updatetext').val();
+            } else {
+                copycontent.find('label')[0].innerHTML = $('#updatetext').val();
+            }
             $('#bodycode').val(html_beautify(copycontent.find('.codeblock').html()));
         }
     } else if (copycontent.find('.codeblock').children()[0].className == "easyui") {
@@ -540,6 +550,19 @@ $(document).on("click", ".changeclass .dropdown-menu a", function () {
         elementobj.find('.codeblock').children().removeClass(classes);
         elementobj.find('.codeblock').children().addClass(elementval);
     }
+});
+
+$(document).on("click", ".changeinlinebtn .dropdown-menu a", function () {
+    $(this).parent().parent().find("li").removeClass("active");
+    $(this).parent().addClass("active");
+    var elementobj = $(this).parent().parent().parent().parent().parent().find('.codeblock');
+    var elementval = $(this).attr("rel");
+    var classes = "";
+    $(this).parent().parent().find("a").each(function () {
+        classes += $(this).attr("rel") + " "
+    });
+    elementobj.find('button').removeClass(classes);
+    elementobj.find('button').addClass(elementval);
 });
 
 console.log("有问题联系: %c774669939@qq.com\n%cPowered By %c7c", "color:#0099FF", "color:#000", "color:#990099");
