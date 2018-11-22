@@ -44,15 +44,6 @@ input[type="file"] {
     text-align: center;
 }
 
-.form-inline .form-group{
-    margin-right: 10px;
-    margin-bottom: 5px;
-}
-
-.form-inline button{
-    margin-bottom: 5px;
-}
-
 /* bootstrap 兼容 easyui */
 .panel {
     margin-bottom: 0px;
@@ -124,6 +115,14 @@ table {
     color: #555555 !important;
     height: 31px !important;
     width: 100% !important;
+}
+
+.row-inline{
+    margin-bottom: 15px;
+}
+
+.row-inline-item{
+    float: left;
 }
 
 .element-inline {
