@@ -365,6 +365,75 @@ span.input-icon {
     color: #BBB !important;
 }
 
+/*  background color  */
+.dark-bg {
+    background-color: #333 !important;
+}
+
+.white-bg {
+    background-color: #FFF !important;
+}
+
+.red-bg {
+    background-color: #DD5A43 !important;
+}
+
+.red2-bg {
+    background-color: #E08374 !important;
+}
+
+.light-red-bg {
+    background-color: #FF7777 !important;
+}
+
+.blue-bg {
+    background-color: #478FCA !important;
+}
+
+.light-blue-bg {
+    background-color: #93CBF9 !important;
+}
+
+.green-bg {
+    background-color: #69AA46 !important;
+}
+
+.light-green-bg {
+    background-color: #B0D877 !important;
+}
+
+.orange-bg {
+    background-color: #FF892A !important;
+}
+
+.orange2-bg {
+    background-color: #FEB902 !important;
+}
+
+.light-orange-bg {
+    background-color: #FCAC6F !important;
+}
+
+.purple-bg {
+    background-color: #A069C3 !important;
+}
+
+.pink-bg {
+    background-color: #C6699F !important;
+}
+
+.pink2-bg {
+    background-color: #D6487E !important;
+}
+
+.brown-bg {
+    background-color: brown !important;
+}
+
+.light-grey-bg {
+    background-color: #BBB !important;
+}
+
 .grey-bg {
     background-color: #f3f3f4;
 }
