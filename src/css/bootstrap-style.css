@@ -126,15 +126,22 @@ table {
     display: inline-block;
 }
 
-.element-inline {
-    margin-bottom: 15px;
-}
-
-.inline-label {
+.row-inline-item .inline-label {
     padding: 7px 7px 0px 0px;
     text-align: right;
     float: left;
     width: 100px;
+}
+
+.element-inline {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.element-inline .inline-label {
+    padding: 7px 7px 0px 0px;
+    text-align: right;
+    float: left;
 }
 
 .inline-input{
