@@ -397,26 +397,13 @@ $(document).on("click", ".changeclass .dropdown-menu a", function () {
     $(this).parent().parent().find("a").each(function () {
         classes += $(this).attr("rel") + " "
     });
-    if (elementobj[0].className.indexOf("view-parent") != -1) {
+    if (elementobj[0].className.indexOf("component-btnparent") != -1) {
         elementobj.find('.component-parentblock').children().removeClass(classes);
         elementobj.find('.component-parentblock').children().addClass(elementval);
     } else {
         elementobj.find('.codeblock').children().removeClass(classes);
         elementobj.find('.codeblock').children().addClass(elementval);
     }
-});
-
-$(document).on("click", ".changeinlinebtn .dropdown-menu a", function () {
-    $(this).parent().parent().find("li").removeClass("active");
-    $(this).parent().addClass("active");
-    var elementobj = $(this).parent().parent().parent().parent().parent().find('.codeblock');
-    var elementval = $(this).attr("rel");
-    var classes = "";
-    $(this).parent().parent().find("a").each(function () {
-        classes += $(this).attr("rel") + " "
-    });
-    elementobj.find('button').removeClass(classes);
-    elementobj.find('button').addClass(elementval);
 });
 
 console.log("有问题联系: %c774669939@qq.com\n%cPowered By %c7c", "color:#0099FF", "color:#000", "color:#990099");
