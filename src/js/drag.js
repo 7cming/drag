@@ -400,6 +400,9 @@ $(document).on("click", ".changeclass .dropdown-menu a", function () {
     if (elementobj[0].className.indexOf("component-btnparent") != -1) {
         elementobj.find('.component-parentblock').children().removeClass(classes);
         elementobj.find('.component-parentblock').children().addClass(elementval);
+    } else if (elementobj[0].className.indexOf("component-btn") != -1) {
+        elementobj.find('.codeblock .inline-input').children().removeClass(classes);
+        elementobj.find('.codeblock .inline-input').children().addClass(elementval);
     } else {
         elementobj.find('.codeblock').children().removeClass(classes);
         elementobj.find('.codeblock').children().addClass(elementval);

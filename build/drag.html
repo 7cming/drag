@@ -36,7 +36,7 @@
             <button type="button" class="btn btn-danger" id="cleanbtn" rel="Ctrl+Q"><i class="fa fa-trash"></i>清除</button>
             <button type="button" class="btn btn-info" rel="Ctrl+S"><i class="fa fa-save"></i>暂存</button>
             <button type="button" class="btn btn-primary" rel="Ctrl+P"><i class="fa fa-eye"></i>预览</button>
-            <button type="button" class="btn btn-primary" rel="Ctrl+F"><i class="fa fa-code"></i>查看</button>
+            <button type="button" class="btn orange2-bg" rel="Ctrl+F"><i class="fa fa-code"></i>查看</button>
             <button type="button" class="btn btn-success" rel="Ctrl+D"><i class="fa fa-download"></i>下载</button>
         </div>
     </div>
@@ -276,7 +276,7 @@
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="component-parentblock">
-                            <div class="form-inline btnparent text-right">
+                            <div class="row-inline btnparent text-right">
                             </div>
                         </div>
                     </div>
@@ -308,7 +308,11 @@
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
                             <div class="codeblock">
-                                <button type="button" class="btn btn-default">default</button>
+                                <div class="row-inline-item">
+                                    <div class="inline-input">
+                                        <button type="button" class="btn btn-default">default</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -320,9 +324,11 @@
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="codeblock">
-                            <div class="form-group">
-                                <label for="btn-input-1">输入框</label>
-                                <input class="form-control" type="text" id="btn-input-1" placeholder="请输入">
+                            <div class="row-inline-item">
+                                <label class="inline-label" for="btn-input-1">输入框</label>
+                                <div class="inline-input">
+                                    <input class="form-control" type="text" id="btn-input-1" placeholder="请输入">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -330,36 +336,46 @@
                     <div class="drag-component component-btn view-child">
                         <div class="dragtoolbar btnbar text-right">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="easyuidisplay">
-                            <div class="form-group">
-                                <label>下拉框</label>
-                                <input class="easyui-combobox">
+                            <div class="row-inline-item">
+                                <label class="inline-label">下拉框</label>
+                                <div class="inline-input">
+                                    <input class="easyui-combobox">
+                                </div>
                             </div>
                         </div>
                         <div class="codeblock easyuicode hidden">
-                            <div class="form-group">
-                                <label>下拉框</label>
-                                <input class="easyui" rel="easyui-combobox">
+                            <div class="row-inline-item">
+                                <label class="inline-label">下拉框</label>
+                                <div class="inline-input">
+                                    <input class="easyui" rel="easyui-combobox">
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="drag-component component-btn view-child">
                         <div class="dragtoolbar btnbar text-right">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="easyuidisplay">
-                            <div class="form-group">
-                                <label>日期框</label>
-                                <input class="easyui-datebox">
+                            <div class="row-inline-item">
+                                <label class="inline-label">日期框</label>
+                                <div class="inline-input">
+                                    <input class="easyui-datebox">
+                                </div>
                             </div>
                         </div>
                         <div class="codeblock easyuicode hidden">
-                            <div class="form-group">
-                                <label>日期框</label>
-                                <input class="easyui" rel="easyui-datebox">
+                            <div class="row-inline-item">
+                                <label class="inline-label">日期框</label>
+                                <div class="inline-input">
+                                    <input class="easyui" rel="easyui-datebox">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -435,6 +451,7 @@
                     <div class="drag-component component-normal view-parent">
                         <div class="dragtoolbar elementbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="easyuidisplay">
@@ -457,6 +474,7 @@
                     <div class="drag-component component-normal view-parent">
                         <div class="dragtoolbar elementbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="easyuidisplay">
@@ -479,6 +497,7 @@
                     <div class="drag-component component-normal view-parent">
                         <div class="dragtoolbar elementbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="easyuidisplay">
@@ -501,6 +520,7 @@
                     <div class="drag-component component-normal view-parent">
                         <div class="dragtoolbar elementbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="easyuidisplay">
