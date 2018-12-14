@@ -119,6 +119,29 @@ $('#cleanbtn').click(function () {
     });
 });
 
+$('#savebtn').click(function () {
+    localsave("dragcode", $('.dragbox').clone().html());
+});
+
+function localsave(item, content) {
+    if (typeof(Storage) !== "undefined") {
+        localStorage.setItem(item, html_beautify(content));
+    } else {
+        bootbox.alert({
+            message: "浏览器不支持",
+            size: "small"
+        });
+        return;
+    }
+    bootbox.dialog({
+        message: '<div class="text-center">已暂存至浏览器缓存</div>',
+        size: 'small'
+    });
+    setTimeout(function () {
+        bootbox.hideAll();
+    }, 1000);
+}
+
 $('#colsplit').bind('input propertychange', function () {
     var checknum = 0;
     var content = "";
