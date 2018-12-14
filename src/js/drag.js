@@ -110,6 +110,7 @@ $('#cleanbtn').click(function () {
         callback: function (result) {
             if (result) {
                 $('.dragbox').children().remove();
+                localStorage.removeItem('dragcode');
                 $("#accordion").accordion({active: 0});
                 setTimeout(function () {
                     $('#colsplit').select();
