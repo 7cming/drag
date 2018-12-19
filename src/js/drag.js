@@ -124,6 +124,22 @@ $('#savebtn').click(function () {
     localsave("dragcode", $('.dragbox').clone().html());
 });
 
+$('#previewbtn').click(function () {
+    if ($('body').hasClass('preview')) {
+        $('body').removeClass('preview');
+        $('.typelist').removeClass('sidebar-close');
+        $('.drag-container').css("margin-left", "400px");
+        $(".main-content").css("margin-left", "");
+        $('.typelist').show();
+    } else {
+        $('body').addClass('preview');
+        $('.typelist').addClass('sidebar-close');
+        $('.drag-container').css("margin-left", "0px");
+        $('.main-content').css("margin-left", "0px");
+        $('.typelist').hide();
+    }
+});
+
 function localsave(item, content) {
     if (typeof(Storage) !== "undefined") {
         localStorage.setItem(item, html_beautify(content));
