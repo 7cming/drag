@@ -5,6 +5,7 @@ window.onload = function () {
 
 $(function () {
     bootbox.setLocale("zh_CN");
+    $('[data-toggle="tooltip"]').tooltip();
     changeFrameHeight();
     window.onresize = function () {
         changeFrameHeight();
@@ -140,6 +141,20 @@ $('#previewbtn').click(function () {
     }
 });
 
+$('#viewbtn').click(function () {
+    $('#codeModal').modal('show');
+    $('#codeModalLabel').html('查看');
+    $('#codeModal').find('.input-group').hide();
+    $('#updateCode').hide();
+    $('#headcode,#footcode,#downloadCode').hide();
+    $('#codeModal').find('.form-inline').hide();
+    $('#bodycode').css({"min-height": "568px"});
+    $('#bodycode').val(viewcode());
+    setTimeout(function () {
+        $('#bodycode').select();
+    }, 500);
+});
+
 function localsave(item, content) {
     if (typeof(Storage) !== "undefined") {
         localStorage.setItem(item, html_beautify(content));
@@ -157,6 +172,45 @@ function localsave(item, content) {
     setTimeout(function () {
         bootbox.hideAll();
     }, 1000);
+}
+
+function viewcode() {
+    var code = $('.dragbox').clone();
+    code.find('.dragtoolbar').remove();
+    code.find('.easyuidisplay').remove();
+    code.find('.drag-component').addClass('viewcode');
+    code.find('.component-row').addClass('viewcode');
+    code.find('.codeblock').addClass('viewcode');
+
+    code.find('.codeblock.viewcode').each(function () {
+        var classname = $(this).find('.easyui').attr("rel");
+        $(this).find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
+        $(this).parent().append($(this).html());
+    });
+    code.find('.view-child.viewcode').each(function () {
+        $(this).parent().append($(this).children().html().replace(/[\r\n]/g, "").replace(/(^\s*)|(\s*$)/g, ""));
+    });
+    code.find('.view-parent.viewcode').each(function () {
+        if ($(this).children()[0].className.indexOf("form-horizontal") != -1) {
+            $(this).parent().append($(this).children()[0].outerHTML);
+        } else {
+            $(this).parent().append($(this).children().html().replace(/[\r\n]/g, "").replace(/(^\s*)|(\s*$)/g, ""));
+        }
+    });
+    code.find('.component-row.viewcode').each(function () {
+        $(this).parent().append($(this).children().html());
+    });
+    code.find('.component-layout.viewcode').each(function () {
+        $(this).parent().append($(this).children().html());
+    });
+    code.find(".viewcode").remove();
+    $.each(["col-layout", "ui-droppable", "ui-sortable", "fromparent", "btnparent"],
+        function (i, c) {
+            code.find("." + c).removeClass(c).removeAttr("style");
+        }
+    );
+    code.find('[contenteditable]').removeAttr("contenteditable");
+    return html_beautify(code.html());
 }
 
 $('#colsplit').bind('input propertychange', function () {

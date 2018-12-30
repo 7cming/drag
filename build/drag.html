@@ -32,12 +32,12 @@
             </button>
             <div class="navbar-brand pagetitle">Drag</div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse navbar-right">
-            <button type="button" class="btn btn-danger" id="cleanbtn" rel="Ctrl+Q"><i class="fa fa-trash"></i>清除</button>
-            <button type="button" class="btn btn-info" id="savebtn" rel="Ctrl+S"><i class="fa fa-save"></i>暂存</button>
-            <button type="button" class="btn btn-primary" id="previewbtn" rel="Ctrl+P"><i class="fa fa-eye"></i>预览</button>
-            <button type="button" class="btn orange2-bg" id="viewbtn" rel="Ctrl+F"><i class="fa fa-code"></i>查看</button>
-            <button type="button" class="btn btn-success" rel="Ctrl+D"><i class="fa fa-download"></i>下载</button>
+        <div id="navbar" class="navbar-right">
+            <button type="button" class="btn btn-danger" id="cleanbtn" rel="Ctrl+Q" data-toggle="tooltip" data-placement="bottom" title="Ctrl + Q"><i class="fa fa-trash"></i>清除</button>
+            <button type="button" class="btn btn-info" id="savebtn" rel="Ctrl+S" data-toggle="tooltip" data-placement="bottom" title="Ctrl + S"><i class="fa fa-save"></i>暂存</button>
+            <button type="button" class="btn btn-primary" id="previewbtn" rel="Ctrl+P" data-toggle="tooltip" data-placement="bottom" title="Ctrl + P"><i class="fa fa-eye"></i>预览</button>
+            <button type="button" class="btn orange2-bg" id="viewbtn" rel="Ctrl+F" data-toggle="tooltip" data-placement="bottom" title="Ctrl + F"><i class="fa fa-code"></i>查看</button>
+            <button type="button" class="btn btn-success" rel="Ctrl+D" data-toggle="tooltip" data-placement="bottom" title="Ctrl + D"><i class="fa fa-download"></i>下载</button>
         </div>
     </div>
 </div>
@@ -656,7 +656,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" id="updatetext" placeholder="hello world">
                     <span class="input-group-btn">
-                        <button class="btn btn-warning" type="button" id="updateContent">更新</button>
+                        <button class="btn btn-warning" type="button" id="updateContent" data-toggle="tooltip" data-placement="top" title="Enter">更新</button>
                     </span>
                 </div>
                 <textarea id="headcode" placeholder="文件头部"></textarea>
@@ -679,10 +679,10 @@
                     <button type="button" class="btn btn-info" id="savefoot">保存尾部文件</button>
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer-window">
                 <button type="button" class="btn btn-success" id="downloadCode">下载</button>
-                <button type="button" class="btn btn-primary" id="updateCode">确定</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="updateCode" data-toggle="tooltip" data-placement="top" title="Alt + S">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="tooltip" data-placement="top" title="Alt + C">关闭</button>
             </div>
         </div>
     </div>
@@ -697,4 +697,5 @@
 <script src="../src/js/easyui-lang-zh_CN.js"></script>
 <script src="../src/js/beautifyhtml.js"></script>
 <script src="../src/js/jquery-ui.js"></script>
+<script src="../src/js/tooltip.js"></script>
 <script src="../src/js/drag.js"></script>

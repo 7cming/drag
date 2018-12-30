@@ -3059,21 +3059,6 @@
   background-color: #fff3f3;
   color: #000;
 }
-.tooltip {
-  position: absolute;
-  display: none;
-  z-index: 9900000;
-  outline: none;
-  opacity: 1;
-  filter: alpha(opacity=100);
-  padding: 5px;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 5px;
-  -moz-border-radius: 5px 5px 5px 5px;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-}
 .tooltip-content {
   font-size: 12px;
 }
@@ -3132,11 +3117,6 @@
   top: 0;
   left: 50%;
   margin: -12px 0 0 -6px;
-}
-.tooltip {
-  background-color: #ffffff;
-  border-color: #95B8E7;
-  color: #000000;
 }
 .tooltip-right .tooltip-arrow-outer {
   border-right-color: #95B8E7;
