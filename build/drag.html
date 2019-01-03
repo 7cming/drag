@@ -37,7 +37,7 @@
             <button type="button" class="btn btn-info" id="savebtn" rel="Ctrl+S" data-toggle="tooltip" data-placement="bottom" title="Ctrl + S"><i class="fa fa-save"></i>暂存</button>
             <button type="button" class="btn btn-primary" id="previewbtn" rel="Ctrl+P" data-toggle="tooltip" data-placement="bottom" title="Ctrl + P"><i class="fa fa-eye"></i>预览</button>
             <button type="button" class="btn orange2-bg" id="viewbtn" rel="Ctrl+F" data-toggle="tooltip" data-placement="bottom" title="Ctrl + F"><i class="fa fa-code"></i>查看</button>
-            <button type="button" class="btn btn-success" rel="Ctrl+D" data-toggle="tooltip" data-placement="bottom" title="Ctrl + D"><i class="fa fa-download"></i>下载</button>
+            <button type="button" class="btn btn-success" id="downbtn" rel="Ctrl+D" data-toggle="tooltip" data-placement="bottom" title="Ctrl + D"><i class="fa fa-download"></i>下载</button>
         </div>
     </div>
 </div>
@@ -66,9 +66,9 @@
                             <span class="dropdown hiddentoolbar" id="hsize">
                                 <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">h1-3 <span class="caret"></span></button>
                                 <ul class="dropdown-menu pull-right">
-                                    <li class=""><a href="#" rel="<h1></h1>">h1</a></li>
+                                    <li class="active"><a href="#" rel="<h1></h1>">h1</a></li>
                                     <li class=""><a href="#" rel="<h2></h2>">h2</a></li>
-                                    <li class="active"><a href="#" rel="<h3></h3>">h3</a></li>
+                                    <li class=""><a href="#" rel="<h3></h3>">h3</a></li>
                                 </ul>
                             </span>
                             <span class="dropdown hiddentoolbar changeclass">
@@ -83,7 +83,7 @@
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="codeblock">
-                            <h3 contenteditable="true" class="fontbold">标题 h3</h3>
+                            <h1 contenteditable="true" class="fontbold">标题 h3</h1>
                         </div>
                     </div>
                     <div class="drag-component component-normal view-parent">
@@ -108,8 +108,11 @@
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="component-parentblock">
-                            <form class="form-horizontal fromparent">
-                            </form>
+                            <fieldset>
+                                <legend contenteditable="true">demo</legend>
+                                <form class="form-horizontal fromparent">
+                                </form>
+                            </fieldset>
                         </div>
                     </div>
                     <div class="form-horizontal">
@@ -349,6 +352,47 @@
                                 </div>
                             </div>
                         </div>
+                        <hr><h4>button</h4>
+                        <div class="drag-component component-form view-child">
+                            <div class="dragtoolbar formbar">
+                                <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                                <span class="dropdown hiddentoolbar changeclass-align">
+                                    <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">对齐 <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li class=""><a href="#" rel="">默认</a></li>
+                                        <li class=""><a href="#" rel="text-center">居中</a></li>
+                                        <li class="active"><a href="#" rel="text-right">居右</a></li>
+                                    </ul>
+                                </span>
+                                <span class="dropdown hiddentoolbar changeclass">
+                                    <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">主题 <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li class="active"><a href="#" rel="btn-default">默认（白）</a></li>
+                                        <li class=""><a href="#" rel="btn-primary">首选（深蓝）</a></li>
+                                        <li class=""><a href="#" rel="btn-success">成功（绿）</a></li>
+                                        <li class=""><a href="#" rel="btn-info">一般（浅蓝）</a></li>
+                                        <li class=""><a href="#" rel="btn-warning">警告（橙黄）</a></li>
+                                        <li class=""><a href="#" rel="btn-danger">危险（红）</a></li>
+                                    </ul>
+                                </span>
+                                <span class="dropdown hiddentoolbar changeclass">
+                                    <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">大小 <span class="caret"></span></button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li class="active"><a href="#" rel="">默认</a></li>
+                                        <li class=""><a href="#" rel="btn-lg">大</a></li>
+                                        <li class=""><a href="#" rel="btn-sm">小</a></li>
+                                        <li class=""><a href="#" rel="btn-xs">超小</a></li>
+                                    </ul>
+                                </span>
+                                <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
+                                <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
+                            </div>
+                            <div class="codeblock">
+                                <div class="form-btn text-right alignval">
+                                    <button type="button" class="btn btn-default">default</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -358,7 +402,7 @@
                     <div class="drag-component component-btnparent view-parent">
                         <div class="dragtoolbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
-                            <span class="dropdown hiddentoolbar changeclass">
+                            <span class="dropdown hiddentoolbar changeclass-align">
                                 <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" href="#">对齐 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li class=""><a href="#" rel="">默认</a></li>
@@ -369,8 +413,11 @@
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="component-parentblock">
-                            <div class="row-inline btnparent text-right">
-                            </div>
+                            <fieldset>
+                                <legend contenteditable="true">demo</legend>
+                                <div class="row-inline btnparent text-right alignval">
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
                     <div class="text-center">
