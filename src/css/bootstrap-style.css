@@ -117,12 +117,15 @@ table {
     width: 100% !important;
 }
 
-.row-inline{
-    margin-bottom: 15px;
+fieldset {
+    margin-bottom: 10px;
+}
+
+.row-inline {
     clear: both;
 }
 
-.row-inline-item{
+.row-inline-item {
     display: inline-block;
 }
 
@@ -144,7 +147,7 @@ table {
     float: left;
 }
 
-.inline-input{
+.inline-input {
     float: left;
 }
 
