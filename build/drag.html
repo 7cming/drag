@@ -83,7 +83,7 @@
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="codeblock">
-                            <h1 contenteditable="true" class="fontbold">标题 h3</h1>
+                            <h1 contenteditable="true" class="fontbold fast-edit">标题 h3</h1>
                         </div>
                     </div>
                     <div class="drag-component component-normal view-parent">
@@ -93,7 +93,7 @@
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="codeblock">
-                            <p contenteditable="true">段落 p</p>
+                            <p contenteditable="true" class="fast-edit">段落 p</p>
                         </div>
                     </div>
                 </div>
@@ -125,9 +125,9 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="form-input-1">输入框</label>
+                                    <label class="col-sm-4 control-label fast-edit" for="form-input-1">输入框</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="form-input-1" placeholder="请输入">
+                                        <input type="text" class="form-control" id="form-input-1" name="form-input-1" placeholder="请输入">
                                     </div>
                                 </div>
                             </div>
@@ -140,9 +140,9 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="form-readonly-1">只读框</label>
+                                    <label class="col-sm-4 control-label fast-edit" for="form-readonly-1">只读框</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="form-readonly-1" readonly="readonly">
+                                        <input type="text" class="form-control" id="form-readonly-1" name="form-readonly-1" readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -155,10 +155,10 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="form-iconleft-1">左图标输入框</label>
+                                    <label class="col-sm-4 control-label fast-edit" for="form-iconleft-1">左图标输入框</label>
                                     <div class="col-sm-8">
                                     <span class="input-icon">
-                                        <input type="text" class="form-control" id="form-iconleft-1">
+                                        <input type="text" class="form-control" id="form-iconleft-1" name="form-iconleft-1">
                                         <i class="inputicon fa fa-leaf blue"></i>
                                     </span>
                                     </div>
@@ -173,10 +173,10 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="form-iconright-1">右图标输入框</label>
+                                    <label class="col-sm-4 control-label fast-edit" for="form-iconright-1">右图标输入框</label>
                                     <div class="col-sm-8">
                                     <span class="input-icon input-icon-right">
-                                        <input type="text" class="form-control" id="form-iconright-1">
+                                        <input type="text" class="form-control" id="form-iconright-1" name="form-iconright-1">
                                         <i class="inputicon fa fa-leaf green"></i>
                                     </span>
                                     </div>
@@ -191,9 +191,9 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="form-textarea-1">文本域</label>
+                                    <label class="col-sm-4 control-label fast-edit" for="form-textarea-1">文本域</label>
                                     <div class="col-sm-8">
-                                        <textarea class="form-control" id="form-textarea-1" placeholder="请输入"></textarea>
+                                        <textarea class="form-control" id="form-textarea-1" name="form-textarea-1" placeholder="请输入"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -206,9 +206,9 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="form-file-1">文件上传</label>
+                                    <label class="col-sm-4 control-label fast-edit" for="form-file-1">文件上传</label>
                                     <div class="col-sm-8">
-                                        <input  type="file" id="form-file-1">
+                                        <input  type="file" id="form-file-1" name="form-file-1">
                                     </div>
                                 </div>
                             </div>
@@ -221,7 +221,7 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">复选框</label>
+                                    <label class="col-sm-4 control-label fast-edit">复选框</label>
                                     <div class="col-sm-8">
                                         <label class="checkbox-inline">
                                             <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
@@ -244,7 +244,7 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">单选框</label>
+                                    <label class="col-sm-4 control-label fast-edit">单选框</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
                                             <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
@@ -276,9 +276,9 @@
                             </div>
                             <div class="codeblock easyuicode hidden">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">下拉框</label>
+                                    <label class="col-sm-4 control-label fast-edit">下拉框</label>
                                     <div class="col-sm-8">
-                                        <input class="easyui" rel="easyui-combobox">
+                                        <input class="easyui" rel="easyui-combobox" id="easyui-combobox-1" name="easyui-combobox-1">
                                     </div>
                                 </div>
                             </div>
@@ -299,9 +299,9 @@
                             </div>
                             <div class="codeblock easyuicode hidden">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">日期框</label>
+                                    <label class="col-sm-4 control-label fast-edit">日期框</label>
                                     <div class="col-sm-8">
-                                        <input class="easyui" rel="easyui-datebox">
+                                        <input class="easyui" rel="easyui-datebox" id="easyui-datebox-1" name="easyui-datebox-1">
                                     </div>
                                 </div>
                             </div>
@@ -322,9 +322,9 @@
                             </div>
                             <div class="codeblock easyuicode hidden">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">时间框</label>
+                                    <label class="col-sm-4 control-label fast-edit">时间框</label>
                                     <div class="col-sm-8">
-                                        <input class="easyui" rel="easyui-datetimebox">
+                                        <input class="easyui" rel="easyui-datetimebox" id="easyui-datetimebox-1" name="easyui-datetimebox-1">
                                     </div>
                                 </div>
                             </div>
@@ -345,9 +345,9 @@
                             </div>
                             <div class="codeblock easyuicode hidden">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">数字框</label>
+                                    <label class="col-sm-4 control-label fast-edit">数字框</label>
                                     <div class="col-sm-8">
-                                        <input class="easyui" rel="easyui-numberbox">
+                                        <input class="easyui" rel="easyui-numberbox" id="easyui-numberbox-1" name="easyui-numberbox-1">
                                     </div>
                                 </div>
                             </div>
@@ -389,7 +389,7 @@
                             </div>
                             <div class="codeblock">
                                 <div class="form-btn text-right alignval">
-                                    <button type="button" class="btn btn-default">default</button>
+                                    <button type="button" class="btn btn-default fast-edit" id="formbutton-1">default</button>
                                 </div>
                             </div>
                         </div>
@@ -450,7 +450,7 @@
                             <div class="codeblock">
                                 <div class="row-inline-item">
                                     <div class="inline-input">
-                                        <button type="button" class="btn btn-default">default</button>
+                                        <button type="button" class="btn btn-default fast-edit">default</button>
                                     </div>
                                 </div>
                             </div>
@@ -465,7 +465,7 @@
                         </div>
                         <div class="codeblock">
                             <div class="row-inline-item">
-                                <label class="inline-label" for="btn-input-1">输入框</label>
+                                <label class="inline-label fast-edit" for="btn-input-1">输入框</label>
                                 <div class="inline-input">
                                     <input class="form-control" type="text" id="btn-input-1" placeholder="请输入">
                                 </div>
@@ -489,7 +489,7 @@
                         </div>
                         <div class="codeblock easyuicode hidden">
                             <div class="row-inline-item">
-                                <label class="inline-label">下拉框</label>
+                                <label class="inline-label fast-edit">下拉框</label>
                                 <div class="inline-input">
                                     <input class="easyui" rel="easyui-combobox">
                                 </div>
@@ -512,7 +512,7 @@
                         </div>
                         <div class="codeblock easyuicode hidden">
                             <div class="row-inline-item">
-                                <label class="inline-label">日期框</label>
+                                <label class="inline-label fast-edit">日期框</label>
                                 <div class="inline-input">
                                     <input class="easyui" rel="easyui-datebox">
                                 </div>
@@ -606,7 +606,7 @@
                         </div>
                         <div class="codeblock easyuicode hidden">
                             <div class="element-inline">
-                                <label class="col-sm-4 inline-label">下拉框</label>
+                                <label class="col-sm-4 inline-label fast-edit">下拉框</label>
                                 <div class="col-sm-8">
                                     <input class="easyui" rel="easyui-combobox">
                                 </div>
@@ -629,7 +629,7 @@
                         </div>
                         <div class="codeblock easyuicode hidden">
                             <div class="element-inline">
-                                <label class="col-sm-4 inline-label">日期框</label>
+                                <label class="col-sm-4 inline-label fast-edit">日期框</label>
                                 <div class="col-sm-8">
                                     <input class="easyui" rel="easyui-datebox">
                                 </div>
@@ -652,7 +652,7 @@
                         </div>
                         <div class="codeblock easyuicode hidden">
                             <div class="element-inline">
-                                <label class="col-sm-4 inline-label">时间框</label>
+                                <label class="col-sm-4 inline-label fast-edit">时间框</label>
                                 <div class="col-sm-8">
                                     <input class="easyui" rel="easyui-datetimebox">
                                 </div>
@@ -675,7 +675,7 @@
                         </div>
                         <div class="codeblock easyuicode hidden">
                             <div class="element-inline">
-                                <label class="col-sm-4 inline-label">数字框</label>
+                                <label class="col-sm-4 inline-label fast-edit">数字框</label>
                                 <div class="col-sm-8">
                                     <input class="easyui" rel="easyui-numberbox">
                                 </div>
@@ -704,7 +704,13 @@
                     <input type="text" class="form-control" id="updatetext" placeholder="hello world">
                     <span class="input-group-btn">
                         <button class="btn btn-warning" type="button" id="updateContent" data-toggle="tooltip" data-placement="top" title="Enter">更新</button>
+                        <button class="btn btn-info" type="button" id="editmore" data-toggle="tooltip" data-placement="top" title="更多">更多属性</button>
                     </span>
+                </div>
+                <div class="editmore" style="min-height: 200px;border: 1px solid rgb(169, 169, 169);border-radius: 4px;display: block">
+                    <div>
+
+                    </div>
                 </div>
                 <textarea id="headcode" placeholder="文件头部"></textarea>
                 <textarea id="bodycode"></textarea>
@@ -722,8 +728,8 @@
                             <option>html</option>
                         </select>
                     </div>
-                    <button type="button" class="btn btn-info" id="savehead">保存头部文件</button>
-                    <button type="button" class="btn btn-info" id="savefoot">保存尾部文件</button>
+                    <button type="button" class="btn btn-info" id="savehead">保存头部</button>
+                    <button type="button" class="btn btn-info" id="savefoot">保存尾部</button>
                 </form>
             </div>
             <div class="modal-footer-window">
