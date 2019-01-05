@@ -502,6 +502,8 @@ $(document).on("click", ".remove-link", function () {
 });
 
 var operation;
+var editelementtype;
+var input = ["id", "name", "placeholder", "data-options"];
 //编辑代码
 $(document).on("click", ".edit-link", function () {
     operation = $(this).parent().parent();
@@ -559,8 +561,9 @@ $(document).on("click", ".edit-link", function () {
     }
     //抽取codeblock 可编辑 属性
     $(".attrlist").children().remove();
+    $(".attrlist").html("");
     var attrcontent = "";
-    $.each(["id", "name", "placeholder", "hello"],
+    $.each(input,
         function (i, c) {
             if (displaycode.find("input").attr(c)) {
                 attrcontent +=
@@ -577,7 +580,7 @@ $(document).on("click", ".edit-link", function () {
         $(".attrlist").append(attrcontent);
     } else {
         $('.editmore').css("display", "none");
-        $(".attrlist").html("自动加载属性：id、name、placeholder");
+        $(".attrlist").html("自动加载属性：input---id、name、placeholder");
     }
 
     setTimeout(function () {
@@ -588,12 +591,14 @@ $(document).on("click", ".edit-link", function () {
 $(document).on("click", "#displaybtn", function () {
     var copycontent = operation.clone();
 
-    $.each(["id", "name", "placeholder", "hello"],
+    $.each(input,
         function (i, c) {
             if (copycontent.find(".codeblock").find("input").attr(c)) {
                 copycontent.find(".codeblock").find("input").attr(c, $('#dcode-' + c).val());
                 if (c == "id") {
-                    copycontent.find(".codeblock").find("label").attr("for", $('#dcode-' + c).val());
+                    if (copycontent.find(".codeblock").find("label").attr("for")) {
+                        copycontent.find(".codeblock").find("label").attr("for", $('#dcode-' + c).val());
+                    }
                 }
             }
         }

@@ -278,7 +278,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit">下拉框</label>
                                     <div class="col-sm-8">
-                                        <input class="easyui" rel="easyui-combobox" id="easyui-combobox-1" name="easyui-combobox-1">
+                                        <input class="easyui" rel="easyui-combobox" id="easyui-combobox-1" name="easyui-combobox-1"
+                                            data-options="url:'xx',method:'get',valueField:'id',textField:'text',panelHeight:'auto'">
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +302,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit">日期框</label>
                                     <div class="col-sm-8">
-                                        <input class="easyui" rel="easyui-datebox" id="easyui-datebox-1" name="easyui-datebox-1">
+                                        <input class="easyui" rel="easyui-datebox" id="easyui-datebox-1" name="easyui-datebox-1"
+                                               data-options="onSelect:onSelect">
                                     </div>
                                 </div>
                             </div>
@@ -347,7 +349,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit">数字框</label>
                                     <div class="col-sm-8">
-                                        <input class="easyui" rel="easyui-numberbox" id="easyui-numberbox-1" name="easyui-numberbox-1">
+                                        <input class="easyui" rel="easyui-numberbox" id="easyui-numberbox-1" name="easyui-numberbox-1"
+                                               data-options="precision:2,groupSeparator:','">
                                     </div>
                                 </div>
                             </div>
@@ -491,7 +494,8 @@
                             <div class="row-inline-item">
                                 <label class="inline-label fast-edit">下拉框</label>
                                 <div class="inline-input">
-                                    <input class="easyui" rel="easyui-combobox">
+                                    <input class="easyui" rel="easyui-combobox" id="beasyui-combobox-1" name="beasyui-combobox-1"
+                                           data-options="url:'xx',method:'get',valueField:'id',textField:'text',panelHeight:'auto'">
                                 </div>
                             </div>
                         </div>
@@ -514,7 +518,8 @@
                             <div class="row-inline-item">
                                 <label class="inline-label fast-edit">日期框</label>
                                 <div class="inline-input">
-                                    <input class="easyui" rel="easyui-datebox">
+                                    <input class="easyui" rel="easyui-datebox" id="beasyui-datebox-1" name="beasyui-datebox-1"
+                                           data-options="onSelect:onSelect">
                                 </div>
                             </div>
                         </div>
@@ -608,7 +613,8 @@
                             <div class="element-inline">
                                 <label class="col-sm-4 inline-label fast-edit">下拉框</label>
                                 <div class="col-sm-8">
-                                    <input class="easyui" rel="easyui-combobox">
+                                    <input class="easyui" rel="easyui-combobox" id="neasyui-combobox-1" name="neasyui-combobox-1"
+                                           data-options="url:'xx',method:'get',valueField:'id',textField:'text',panelHeight:'auto'">
                                 </div>
                             </div>
                         </div>
@@ -631,7 +637,8 @@
                             <div class="element-inline">
                                 <label class="col-sm-4 inline-label fast-edit">日期框</label>
                                 <div class="col-sm-8">
-                                    <input class="easyui" rel="easyui-datebox">
+                                    <input class="easyui" rel="easyui-datebox" id="neasyui-datebox-1" name="neasyui-datebox-1"
+                                           data-options="onSelect:onSelect">
                                 </div>
                             </div>
                         </div>
@@ -654,7 +661,7 @@
                             <div class="element-inline">
                                 <label class="col-sm-4 inline-label fast-edit">时间框</label>
                                 <div class="col-sm-8">
-                                    <input class="easyui" rel="easyui-datetimebox">
+                                    <input class="easyui" rel="easyui-datetimebox" id="neasyui-datetimebox-1" name="neasyui-datetimebox-1">
                                 </div>
                             </div>
                         </div>
@@ -677,7 +684,8 @@
                             <div class="element-inline">
                                 <label class="col-sm-4 inline-label fast-edit">数字框</label>
                                 <div class="col-sm-8">
-                                    <input class="easyui" rel="easyui-numberbox">
+                                    <input class="easyui" rel="easyui-numberbox" id="neasyui-numberbox-1" name="neasyui-numberbox-1"
+                                           data-options="precision:2,groupSeparator:','">
                                 </div>
                             </div>
                         </div>
@@ -704,7 +712,7 @@
                     <input type="text" class="form-control" id="updatetext" placeholder="hello world">
                     <span class="input-group-btn">
                         <button class="btn btn-warning" type="button" id="updateContent" data-toggle="tooltip" data-placement="top" title="Enter">更新</button>
-                        <button class="btn btn-info" type="button" id="editmore" data-toggle="tooltip" data-placement="top" title="更多">更多属性</button>
+                        <button class="btn btn-info" type="button" id="editmore">更多属性</button>
                     </span>
                 </div>
                 <div class="editmore">
