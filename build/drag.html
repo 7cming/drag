@@ -105,12 +105,13 @@
                     <div class="drag-component component-formparent view-parent">
                         <div class="dragtoolbar">
                             <button class="btn btn-danger btn-xs remove-link hiddentoolbar"><i class="fa fa-times"></i>移除</button>
+                            <button class="btn btn-warning btn-xs edit-form-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>form URL</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
                         <div class="component-parentblock">
                             <fieldset>
                                 <legend contenteditable="true">demo</legend>
-                                <form class="form-horizontal fromparent">
+                                <form class="form-horizontal fromparent" action="url" method="post">
                                 </form>
                             </fieldset>
                         </div>
@@ -742,6 +743,33 @@
             <div class="modal-footer-window">
                 <button type="button" class="btn btn-success" id="downloadCode">下载</button>
                 <button type="button" class="btn btn-primary" id="updateCode" data-toggle="tooltip" data-placement="top" title="Alt + S">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="tooltip" data-placement="top" title="Alt + C">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                <h4 class="modal-title">form 属性</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="filename">action</label>
+                    <input type="text" class="form-control" id="formaction">
+                </div>
+                <div class="form-group">
+                    <label for="filetype">method</label>
+                    <select class="form-control" id="formmethod">
+                        <option>post</option>
+                        <option>get</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer-window">
+                <button type="button" class="btn btn-primary" id="updateformCode">确定</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="tooltip" data-placement="top" title="Alt + C">关闭</button>
             </div>
         </div>

@@ -518,7 +518,7 @@ $(document).on("click", ".edit-link", function () {
     $('#headcode,#footcode,#downloadCode').hide();
     $('#codeModal').find('.form-inline').hide();
     $('#bodycode').css({"min-height": "268px"});
-    var codechildname = operation.find('.codeblock').children()[0].className;
+    // var codechildname = operation.find('.codeblock').children()[0].className;
     // if (codechildname == "form-group" || codechildname == "element-inline" || codechildname == "row-inline-item") {
     //     if (operation.find('.codeblock').hasClass("easyuicode")) {
     //         $('#updatetext').val(operation.find('label')[0].innerHTML);
@@ -680,6 +680,21 @@ $('#updateCode').on("click", function () {
         operation.find('.codeblock').html($('#bodycode').val());
     }
     $('#codeModal').modal('hide');
+});
+
+
+var editform;
+$(document).on("click", ".edit-form-link", function () {
+    editform = $(this).parent().parent();
+    $('#formModal').modal("show");
+    $('#formaction').val(editform.find("form").attr("action"));
+    $('#formmethod').val(editform.find("form").attr("method"));
+});
+
+$(document).on("click", "#updateformCode", function () {
+    editform.find("form").attr("action",$('#formaction').val());
+    editform.find("form").attr("method",$('#formmethod').val());
+    $('#formModal').modal("hide");
 });
 
 //标题组件样式下拉
