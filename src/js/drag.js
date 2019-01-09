@@ -565,11 +565,11 @@ $(document).on("click", ".edit-link", function () {
     var attrcontent = "";
     $.each(input,
         function (i, c) {
-            if (displaycode.find("input").attr(c)) {
+            if (displaycode.find("input,textarea").attr(c)) {
                 attrcontent +=
                     '<div class="form-group">' +
                     '<label>' + c + '</label>' +
-                    '<input class="form-control" id="dcode-' + c + '" value="' + displaycode.find("input").attr(c) + '">' +
+                    '<input class="form-control" id="dcode-' + c + '" value="' + displaycode.find("input,textarea").attr(c) + '">' +
                     '</div>';
             }
         }
@@ -580,7 +580,7 @@ $(document).on("click", ".edit-link", function () {
         $(".attrlist").append(attrcontent);
     } else {
         $('.editmore').css("display", "none");
-        $(".attrlist").html("自动加载属性：input---id、name、placeholder");
+        $(".attrlist").html("自动加载属性：input,textarea---id、name、placeholder");
     }
 
     setTimeout(function () {
@@ -593,8 +593,8 @@ $(document).on("click", "#displaybtn", function () {
 
     $.each(input,
         function (i, c) {
-            if (copycontent.find(".codeblock").find("input").attr(c)) {
-                copycontent.find(".codeblock").find("input").attr(c, $('#dcode-' + c).val());
+            if (copycontent.find(".codeblock").find("input,textarea").attr(c)) {
+                copycontent.find(".codeblock").find("input,textarea").attr(c, $('#dcode-' + c).val());
                 if (c == "id") {
                     if (copycontent.find(".codeblock").find("label").attr("for")) {
                         copycontent.find(".codeblock").find("label").attr("for", $('#dcode-' + c).val());
@@ -687,11 +687,13 @@ var editform;
 $(document).on("click", ".edit-form-link", function () {
     editform = $(this).parent().parent();
     $('#formModal').modal("show");
+    $('#formid').val(editform.find("form").attr("id"));
     $('#formaction').val(editform.find("form").attr("action"));
     $('#formmethod').val(editform.find("form").attr("method"));
 });
 
 $(document).on("click", "#updateformCode", function () {
+    editform.find("form").attr("id",$('#formid').val());
     editform.find("form").attr("action",$('#formaction').val());
     editform.find("form").attr("method",$('#formmethod').val());
     $('#formModal').modal("hide");

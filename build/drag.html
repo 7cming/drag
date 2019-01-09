@@ -110,8 +110,8 @@
                         </div>
                         <div class="component-parentblock">
                             <fieldset>
-                                <legend contenteditable="true">demo</legend>
-                                <form class="form-horizontal fromparent" action="url" method="post">
+                                <legend contenteditable="true">点击修改</legend>
+                                <form class="form-horizontal fromparent" id="form-id" action="form-url" method="post">
                                 </form>
                             </fieldset>
                         </div>
@@ -418,7 +418,7 @@
                         </div>
                         <div class="component-parentblock">
                             <fieldset>
-                                <legend contenteditable="true">demo</legend>
+                                <legend contenteditable="true">点击修改</legend>
                                 <div class="row-inline btnparent text-right alignval">
                                 </div>
                             </fieldset>
@@ -757,7 +757,11 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="filename">action</label>
+                    <label for="formid">id</label>
+                    <input type="text" class="form-control" id="formid">
+                </div>
+                <div class="form-group">
+                    <label for="formaction">action</label>
                     <input type="text" class="form-control" id="formaction">
                 </div>
                 <div class="form-group">
