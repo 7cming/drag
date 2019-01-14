@@ -614,10 +614,13 @@ $(document).on("click", ".edit-link", function () {
             '</div>';
 
     } else if (operation.find(".codeblock").hasClass("inputcheckbox")) {
-        attrcontent += '<button type="button" class="btn btn-success" id="">添加项目</button><br><ul class="checkboxsortable">';
+        attrcontent += '<button type="button" class="btn btn-success" id="crboxadd">添加项目</button><br><ul class="checkboxsortable">';
         operation.find(".checkboxedit .checkbox-inline").each(function () {
             attrcontent +=
                 '<li class="">' +
+                '<span class="light-grey-bg" style="padding: 4px">' +
+                '<i class="fa fa-times fa-lg red"></i>&emsp;' +
+                '<i class="fa fa-arrows-alt blue"></i></span>&emsp;' +
                 'id <input class="boot-input" value="' + $(this).find("input").attr("id") + '">&emsp;' +
                 'value <input class="boot-input" value="' + $(this).find("input").attr("value") + '">&emsp;' +
                 'option <input class="boot-input" value="' + $(this)[0].innerText + '">&emsp;' +
@@ -628,7 +631,8 @@ $(document).on("click", ".edit-link", function () {
         setTimeout(function () {
             $(".checkboxsortable").sortable({
                 placeholder: "draghighlight",
-                axis: "y"
+                axis: "y",
+                handle: ".fa-arrows-alt"
             });
         }, 500);
     }
@@ -650,6 +654,24 @@ $(document).on("click", ".edit-link", function () {
     }, 500);
 });
 
+
+//添加一行编辑信息
+$(document).on("click", "#crboxadd", function () {
+    $(".checkboxsortable ").append(
+        '<li class="ui-sortable-handle">' +
+        '<span class="light-grey-bg" style="padding: 4px">' +
+        '<i class="fa fa-times fa-lg red"></i>&emsp;' +
+        '<i class="fa fa-arrows-alt blue"></i></span>&emsp;' +
+        'id <input class="boot-input" value="">&emsp;' +
+        'value <input class="boot-input" value="">&emsp;' +
+        'option <input class="boot-input" value="">&emsp;' +
+        '</li>');
+});
+
+//删除该行
+$(document).on("click", ".checkboxsortable > li  .fa-times", function () {
+    $(this).parent().parent().remove();
+});
 
 //更多属性修改按钮
 $(document).on("click", "#displaybtn", function () {
@@ -685,7 +707,16 @@ $(document).on("click", "#displaybtn", function () {
         copycontent.find(".codeblock").find("i").removeClass(copycontent.find(".input-icon > i").data("color")).addClass($('#dcode-iconcolor').val());
     } else if (operation.find(".codeblock").hasClass("inputcheckbox")) {
         copycontent.find(".checkboxedit").children().remove();
-
+        //获取到每行的信息重新生成code
+        var recode = "";
+        $(".checkboxsortable li").each(function () {
+            recode +=
+                '<label class="checkbox-inline">' +
+                '<input type="checkbox" id="' + $(this).find("input")[0].value + '" value="' + $(this).find("input")[1].value + '">' +
+                '' + $(this).find("input")[2].value + '' +
+                '</label>';
+        })
+        copycontent.find(".checkboxedit").append(recode);
     }
 
     if (copycontent.find('.codeblock').hasClass("easyuicode")) {

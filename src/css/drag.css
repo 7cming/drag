@@ -196,7 +196,7 @@
 }
 
 .editmore {
-    max-height: 290px;
+    max-height: 280px;
     overflow: auto;
     border: 1px solid rgb(169, 169, 169);
     border-radius: 4px;
@@ -210,13 +210,22 @@
 
 .checkboxsortable {
     list-style-type: none;
-    margin: 0;
+    margin-top: 5px;
     padding: 0;
 }
 
 .checkboxsortable li {
     margin: 0 5px 5px 5px;
     padding: 5px;
+    border: 1px dotted;
+}
+
+.checkboxsortable .fa-arrows-alt {
+    cursor: move;
+}
+
+.checkboxsortable .fa-times {
+    cursor: pointer;
 }
 
 .draghighlight {
