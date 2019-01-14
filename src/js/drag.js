@@ -304,8 +304,10 @@ function viewcode() {
             code.find("." + c).removeClass(c).removeAttr("style");
         }
     );
-    //移除点击编辑功能
+    //移除html点击编辑功能
     code.find('[contenteditable]').removeAttr("contenteditable");
+    code.find('[data-icon]').removeAttr("data-icon");
+    code.find('[data-color]').removeAttr("data-color");
     //将处理后的代码格式化
     return html_beautify(code.html());
 }
@@ -431,16 +433,18 @@ var formcomponentdrag = function () {
                 var dropedui = uidraggable.clone();
                 dropedui.addClass("dropped").appendTo(this);
                 //处理form中id
-                var id = uidraggable.find(".codeblock").find(":input").attr("id");
-                var name = uidraggable.find(".codeblock").find(":input").attr("name");
-                if (id) {
-                    id = id.split("-").slice(0, -1).join("-") + "-" + (parseInt(id.split("-").slice(-1)[0]) + 1);
-                    uidraggable.find(".codeblock").find(":input").attr("id", id);
-                    uidraggable.find(".codeblock").find("label").attr("for", id);
-                }
-                if (name) {
-                    name = name.split("-").slice(0, -1).join("-") + "-" + (parseInt(name.split("-").slice(-1)[0]) + 1);
-                    uidraggable.find(".codeblock").find(":input").attr("name", name);
+                if (!uidraggable.find(".codeblock").hasClass("inputcheckbox")) {
+                    var id = uidraggable.find(".codeblock").find(":input").attr("id");
+                    var name = uidraggable.find(".codeblock").find(":input").attr("name");
+                    if (id) {
+                        id = id.split("-").slice(0, -1).join("-") + "-" + (parseInt(id.split("-").slice(-1)[0]) + 1);
+                        uidraggable.find(".codeblock").find(":input").attr("id", id);
+                        uidraggable.find(".codeblock").find("label").attr("for", id);
+                    }
+                    if (name) {
+                        name = name.split("-").slice(0, -1).join("-") + "-" + (parseInt(name.split("-").slice(-1)[0]) + 1);
+                        uidraggable.find(".codeblock").find(":input").attr("name", name);
+                    }
                 }
             } else {
                 if ($(this)[0] != uidraggable.parent()[0]) {
@@ -501,9 +505,12 @@ $(document).on("click", ".remove-link", function () {
     $(this).parent().parent().remove();
 });
 
-var operation;
-var editelementtype;
-var input = ["id", "name", "placeholder", "data-options"];
+var operation;//获取编辑父级代码块
+var editelementlabel;//属性标签
+var editelementattr;//类型区分 属性自动加载
+
+var inputlabel = "input,textarea";
+var inputattr = ["id", "name", "placeholder", "data-options"];//input、textarea定义的加载属性
 //编辑代码
 $(document).on("click", ".edit-link", function () {
     operation = $(this).parent().parent();
@@ -545,11 +552,13 @@ $(document).on("click", ".edit-link", function () {
     //     $('#bodycode').val(html_beautify(operation.find('.codeblock').html().replace(/[\r\n]/g, "")));
     // }
     //添加一个class取代上面code
+    //快速编辑属性类 fast-edit
     if (operation.find('.fast-edit')[0] == undefined) {
         $('#updatetext').attr('placeholder', "组件未设置快速修改");
     } else {
         $('#updatetext').val(operation.find('.fast-edit')[0].innerHTML);
     }
+    //处理easyui组件
     var displaycode = operation.clone().find('.codeblock');
     if (operation.find('.codeblock').hasClass("easyuicode")) {
         var classname = operation.clone().find('.easyui').attr("rel");
@@ -559,28 +568,81 @@ $(document).on("click", ".edit-link", function () {
         displaycode.find('.fast-edit');
         $('#bodycode').val(html_beautify(displaycode.html().replace(/[\r\n]/g, "")));
     }
-    //抽取codeblock 可编辑 属性
+
+    //--------------------抽取codeblock 可编辑 属性-------------------
+    //清空属性列表
     $(".attrlist").children().remove();
     $(".attrlist").html("");
-    var attrcontent = "";
-    $.each(input,
-        function (i, c) {
-            if (displaycode.find("input,textarea").attr(c)) {
-                attrcontent +=
-                    '<div class="form-group">' +
-                    '<label>' + c + '</label>' +
-                    '<input class="form-control" id="dcode-' + c + '" value="' + displaycode.find("input,textarea").attr(c) + '">' +
-                    '</div>';
+    var attrcontent = "";//属性加载代码块
+    //判断编辑的组件
+    if (operation.find('.codeblock').hasClass("inputtextarea")) {
+        editelementlabel = inputlabel;
+        editelementattr = inputattr;
+        $.each(editelementattr,
+            function (i, c) {
+                if (displaycode.find(editelementlabel).attr(c)) {
+                    attrcontent +=
+                        '<div class="form-group">' +
+                        '<label>' + c + '</label>' +
+                        '<input class="form-control" id="dcode-' + c + '" value="' + displaycode.find(editelementlabel).attr(c) + '">' +
+                        '</div>';
+                }
             }
-        }
-    );
+        );
+    } else if (operation.find('.codeblock').hasClass("inputifa")) {
+        editelementlabel = inputlabel;
+        editelementattr = inputattr;
+        $.each(editelementattr,
+            function (i, c) {
+                if (displaycode.find(editelementlabel).attr(c)) {
+                    attrcontent +=
+                        '<div class="form-group">' +
+                        '<label>' + c + '</label>' +
+                        '<input class="form-control" id="dcode-' + c + '" value="' + displaycode.find(editelementlabel).attr(c) + '">' +
+                        '</div>';
+                }
+            }
+        );
+        attrcontent = attrcontent +
+            '<div class="form-group">' +
+            '<label>图标&emsp;<i class="fa ' + displaycode.find(".input-icon > i").data("icon") + '"></i></label>' +
+            '<input class="form-control" id="dcode-icon" value="' + displaycode.find(".input-icon > i").data("icon") + '">' +
+            '</div>' +
+            '<div class="form-group">' +
+            '<label>图标<i class="' + displaycode.find(".input-icon > i").data("color") + '">颜色</i></label>' +
+            '<input class="form-control" id="dcode-iconcolor" value="' + displaycode.find(".input-icon > i").data("color") + '">' +
+            '</div>';
+
+    } else if (operation.find(".codeblock").hasClass("inputcheckbox")) {
+        attrcontent += '<button type="button" class="btn btn-success" id="">添加项目</button><br><ul class="checkboxsortable">';
+        operation.find(".checkboxedit .checkbox-inline").each(function () {
+            attrcontent +=
+                '<li class="">' +
+                'id <input class="boot-input" value="' + $(this).find("input").attr("id") + '">&emsp;' +
+                'value <input class="boot-input" value="' + $(this).find("input").attr("value") + '">&emsp;' +
+                'option <input class="boot-input" value="' + $(this)[0].innerText + '">&emsp;' +
+                '</li>';
+        });
+        attrcontent += '</ul>';
+
+        setTimeout(function () {
+            $(".checkboxsortable").sortable({
+                placeholder: "draghighlight",
+                axis: "y"
+            });
+        }, 500);
+    }
+
+    //属性列表后面添加按钮
     if (attrcontent != "") {
         $('.editmore').css("display", "block");
         attrcontent = attrcontent + '<button type="button" class="btn btn-info" id="displaybtn">属性更新</button>';
         $(".attrlist").append(attrcontent);
     } else {
         $('.editmore').css("display", "none");
-        $(".attrlist").html("自动加载属性：input,textarea---id、name、placeholder");
+        $(".attrlist").html("自动加载属性：<br>" +
+            "输入框、文本域---\"id\", \"name\", \"placeholder\", \"data-options\" <br>" +
+            "复选框、单选框---");
     }
 
     setTimeout(function () {
@@ -588,21 +650,43 @@ $(document).on("click", ".edit-link", function () {
     }, 500);
 });
 
+
+//更多属性修改按钮
 $(document).on("click", "#displaybtn", function () {
     var copycontent = operation.clone();
 
-    $.each(input,
-        function (i, c) {
-            if (copycontent.find(".codeblock").find("input,textarea").attr(c)) {
-                copycontent.find(".codeblock").find("input,textarea").attr(c, $('#dcode-' + c).val());
-                if (c == "id") {
-                    if (copycontent.find(".codeblock").find("label").attr("for")) {
-                        copycontent.find(".codeblock").find("label").attr("for", $('#dcode-' + c).val());
+    if (operation.find('.codeblock').hasClass("inputtextarea")) {
+        $.each(editelementattr,
+            function (i, c) {
+                if (copycontent.find(".codeblock").find(editelementlabel).attr(c)) {
+                    copycontent.find(".codeblock").find(editelementlabel).attr(c, $('#dcode-' + c).val());
+                    if (c == "id") {
+                        if (copycontent.find(".codeblock").find("label").attr("for")) {
+                            copycontent.find(".codeblock").find("label").attr("for", $('#dcode-' + c).val());
+                        }
                     }
                 }
             }
-        }
-    );
+        );
+    } else if (operation.find('.codeblock').hasClass("inputifa")) {
+        $.each(editelementattr,
+            function (i, c) {
+                if (copycontent.find(".codeblock").find(editelementlabel).attr(c)) {
+                    copycontent.find(".codeblock").find(editelementlabel).attr(c, $('#dcode-' + c).val());
+                    if (c == "id") {
+                        if (copycontent.find(".codeblock").find("label").attr("for")) {
+                            copycontent.find(".codeblock").find("label").attr("for", $('#dcode-' + c).val());
+                        }
+                    }
+                }
+            }
+        );
+        copycontent.find(".codeblock").find("i").removeClass("fa " + copycontent.find(".input-icon > i").data("icon")).addClass("fa " + $('#dcode-icon').val());
+        copycontent.find(".codeblock").find("i").removeClass(copycontent.find(".input-icon > i").data("color")).addClass($('#dcode-iconcolor').val());
+    } else if (operation.find(".codeblock").hasClass("inputcheckbox")) {
+        copycontent.find(".checkboxedit").children().remove();
+
+    }
 
     if (copycontent.find('.codeblock').hasClass("easyuicode")) {
         var easyuicode = copycontent.find('.easyuicode');
@@ -693,9 +777,9 @@ $(document).on("click", ".edit-form-link", function () {
 });
 
 $(document).on("click", "#updateformCode", function () {
-    editform.find("form").attr("id",$('#formid').val());
-    editform.find("form").attr("action",$('#formaction').val());
-    editform.find("form").attr("method",$('#formmethod').val());
+    editform.find("form").attr("id", $('#formid').val());
+    editform.find("form").attr("action", $('#formaction').val());
+    editform.find("form").attr("method", $('#formmethod').val());
     $('#formModal').modal("hide");
 });
 

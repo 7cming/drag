@@ -124,7 +124,7 @@
                                 <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="codeblock">
+                            <div class="codeblock inputtextarea">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit" for="form-input-1">输入框</label>
                                     <div class="col-sm-8">
@@ -139,7 +139,7 @@
                                 <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="codeblock">
+                            <div class="codeblock inputtextarea">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit" for="form-readonly-1">只读框</label>
                                     <div class="col-sm-8">
@@ -154,13 +154,13 @@
                                 <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="codeblock">
+                            <div class="codeblock inputifa">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit" for="form-iconleft-1">左图标输入框</label>
                                     <div class="col-sm-8">
                                     <span class="input-icon">
                                         <input type="text" class="form-control" id="form-iconleft-1" name="form-iconleft-1">
-                                        <i class="inputicon fa fa-leaf blue"></i>
+                                        <i class="inputicon fa fa-home blue" data-icon="fa-home" data-color="blue"></i>
                                     </span>
                                     </div>
                                 </div>
@@ -172,13 +172,13 @@
                                 <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="codeblock">
+                            <div class="codeblock inputifa">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit" for="form-iconright-1">右图标输入框</label>
                                     <div class="col-sm-8">
                                     <span class="input-icon input-icon-right">
                                         <input type="text" class="form-control" id="form-iconright-1" name="form-iconright-1">
-                                        <i class="inputicon fa fa-leaf green"></i>
+                                        <i class="inputicon fa fa-leaf green" data-icon="fa-leaf" data-color="green"></i>
                                     </span>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                                 <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="codeblock">
+                            <div class="codeblock inputtextarea">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit" for="form-textarea-1">文本域</label>
                                     <div class="col-sm-8">
@@ -205,7 +205,7 @@
                                 <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="codeblock">
+                            <div class="codeblock inputtextarea">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit" for="form-file-1">文件上传</label>
                                     <div class="col-sm-8">
@@ -220,18 +220,18 @@
                                 <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="codeblock">
+                            <div class="codeblock inputcheckbox">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit">复选框</label>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-8 checkboxedit">
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                                            <input type="checkbox" id="inlineCheckbox1" value="value1">option1
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                                            <input type="checkbox" id="inlineCheckbox2" value="value2">option2
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+                                            <input type="checkbox" id="inlineCheckbox3" value="value3">option3
                                         </label>
                                     </div>
                                 </div>
@@ -248,13 +248,13 @@
                                     <label class="col-sm-4 control-label fast-edit">单选框</label>
                                     <div class="col-sm-8">
                                         <label class="radio-inline">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="value1">option1
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="value2">option2
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="value3">option3
                                         </label>
                                     </div>
                                 </div>
@@ -275,7 +275,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="codeblock easyuicode hidden">
+                            <div class="codeblock easyuicode hidden inputtextarea">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit">下拉框</label>
                                     <div class="col-sm-8">
@@ -299,7 +299,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="codeblock easyuicode hidden">
+                            <div class="codeblock easyuicode hidden inputtextarea">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit">日期框</label>
                                     <div class="col-sm-8">
@@ -323,7 +323,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="codeblock easyuicode hidden">
+                            <div class="codeblock easyuicode hidden inputtextarea">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit">时间框</label>
                                     <div class="col-sm-8">
@@ -346,7 +346,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="codeblock easyuicode hidden">
+                            <div class="codeblock easyuicode hidden inputtextarea">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit">数字框</label>
                                     <div class="col-sm-8">
@@ -467,7 +467,7 @@
                             <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                             <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                         </div>
-                        <div class="codeblock">
+                        <div class="codeblock inputtextarea">
                             <div class="row-inline-item">
                                 <label class="inline-label fast-edit" for="btn-input-1">输入框</label>
                                 <div class="inline-input">
@@ -491,7 +491,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="codeblock easyuicode hidden">
+                        <div class="codeblock easyuicode hidden inputtextarea">
                             <div class="row-inline-item">
                                 <label class="inline-label fast-edit">下拉框</label>
                                 <div class="inline-input">
@@ -515,7 +515,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="codeblock easyuicode hidden">
+                        <div class="codeblock easyuicode hidden inputtextarea">
                             <div class="row-inline-item">
                                 <label class="inline-label fast-edit">日期框</label>
                                 <div class="inline-input">

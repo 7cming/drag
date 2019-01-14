@@ -196,7 +196,8 @@
 }
 
 .editmore {
-    min-height: 200px;
+    max-height: 290px;
+    overflow: auto;
     border: 1px solid rgb(169, 169, 169);
     border-radius: 4px;
     padding: 5px;
@@ -205,4 +206,19 @@
 
 .attrlist {
     padding: 10px;
+}
+
+.checkboxsortable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.checkboxsortable li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+}
+
+.draghighlight {
+    height: 40px;
 }
