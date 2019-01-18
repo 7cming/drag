@@ -647,16 +647,13 @@ $(document).on("click", ".edit-link", function () {
         }, 500);
     } else if (operation.find(".codeblock").hasClass("easyuitable")) {
         //easyui表格
-        attrcontent +=
-            '<div class="form-group">' +
-            '<label>title</label>' +
-            '<input class="form-control" id="dcode-title" value="' + displaycode.find("table").attr("title") + '">' +
-            '</div>' +
-            '<div class="form-group">' +
-            '<label>data-options</label>' +
-            '<input class="form-control" id="dcode-opts" value="' + displaycode.find("table").attr("data-options") + '">' +
-            '</div>';
-        attrcontent += '<button type="button" class="btn btn-success" id="xxx">添加项目</button><br><ul class="checkboxsortable">';
+        attrcontent += '<button type="button" class="btn btn-success" id="xxx">添加项目</button><br>';
+        if (displaycode.find("table th")[0].outerHTML.indexOf("checkbox:true") > -1) {
+            attrcontent += '<label class="checkbox-inline"><input type="checkbox" id="check1" checked="checked"> datagrid 复选框</label>';
+        } else {
+            attrcontent += '<label class="checkbox-inline"><input type="checkbox" id="check1"> datagrid 复选框</label>';
+        }
+        attrcontent += '<ul class="checkboxsortable">';
         displaycode.find("table th").each(function () {
             if ($(this).attr("data-options").indexOf("checkbox:true") > -1) {
                 //不加载checkbox行，给选择是否需要选择框
@@ -676,6 +673,15 @@ $(document).on("click", ".edit-link", function () {
             // '</li>';
         });
         attrcontent += '</ul>';
+        attrcontent +=
+            '<div class="form-group">' +
+            '<label>title</label>' +
+            '<input class="form-control" id="dcode-title" value="' + displaycode.find("table").attr("title") + '">' +
+            '</div>' +
+            '<div class="form-group">' +
+            '<label>data-options</label>' +
+            '<input class="form-control" id="dcode-opts" value="' + displaycode.find("table").attr("data-options") + '">' +
+            '</div>';
         setTimeout(function () {
             $(".checkboxsortable").sortable({
                 placeholder: "draghighlight",
