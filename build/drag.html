@@ -225,13 +225,13 @@
                                     <label class="col-sm-4 control-label fast-edit">复选框</label>
                                     <div class="col-sm-8 checkboxedit">
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" id="inlineCheckbox1" value="value1">option1
+                                            <input type="checkbox" name="inlineCheckbox1"  id="inlineCheckbox1" value="value1">option1
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" id="inlineCheckbox2" value="value2">option2
+                                            <input type="checkbox" name="inlineCheckbox2"  id="inlineCheckbox2"value="value2">option2
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" id="inlineCheckbox3" value="value3">option3
+                                            <input type="checkbox" name="inlineCheckbox3"  id="inlineCheckbox3"value="value3">option3
                                         </label>
                                     </div>
                                 </div>
@@ -243,10 +243,10 @@
                                 <button class="btn btn-warning btn-xs edit-link hiddentoolbar" type="button"><i class="fa fa-edit"></i>编辑</button>
                                 <div class="btn btn-xs draglabel" disabled="disabled"><i class="fa fa-arrows-alt"></i>拖动</div>
                             </div>
-                            <div class="codeblock">
+                            <div class="codeblock inputcheckbox">
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label fast-edit">单选框</label>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-8 checkboxedit">
                                         <label class="radio-inline">
                                             <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="value1">option1
                                         </label>
@@ -549,9 +549,9 @@
                                 </thead>
                             </table>
                         </div>
-                        <div class="codeblock easyuicode hidden">
+                        <div class="codeblock easyuicode hidden easyuitable">
                             <table class="easyui" rel="easyui-datagrid" title="title"
-                                data-options="rownumbers:true,singleSelect:false,collapsible:false,method:'get',fitColumns:true,pagination:true">
+                                    data-options="rownumbers:true,singleSelect:false,collapsible:false,method:'get',fitColumns:true,pagination:true">
                                 <thead>
                                 <tr>
                                     <th data-options="field:'ck',checkbox:true"></th>

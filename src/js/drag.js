@@ -299,7 +299,7 @@ function viewcode() {
     });
     code.find(".viewcode").remove();
     //移除class及样式
-    $.each(["col-layout", "ui-droppable", "ui-sortable", "fromparent", "btnparent", "fast-edit"],
+    $.each(["col-layout", "ui-droppable", "ui-sortable", "fromparent", "btnparent", "fast-edit", "checkboxedit"],
         function (i, c) {
             code.find("." + c).removeClass(c).removeAttr("style");
         }
@@ -511,6 +511,7 @@ var editelementattr;//类型区分 属性自动加载
 
 var inputlabel = "input,textarea";
 var inputattr = ["id", "name", "placeholder", "data-options"];//input、textarea定义的加载属性
+var boxtypefalg;//判断是复选框、单选框
 //编辑代码
 $(document).on("click", ".edit-link", function () {
     operation = $(this).parent().parent();
@@ -576,6 +577,7 @@ $(document).on("click", ".edit-link", function () {
     var attrcontent = "";//属性加载代码块
     //判断编辑的组件
     if (operation.find('.codeblock').hasClass("inputtextarea")) {
+        //输入框和文本域
         editelementlabel = inputlabel;
         editelementattr = inputattr;
         $.each(editelementattr,
@@ -590,6 +592,7 @@ $(document).on("click", ".edit-link", function () {
             }
         );
     } else if (operation.find('.codeblock').hasClass("inputifa")) {
+        //带图标的输入框
         editelementlabel = inputlabel;
         editelementattr = inputattr;
         $.each(editelementattr,
@@ -603,6 +606,7 @@ $(document).on("click", ".edit-link", function () {
                 }
             }
         );
+        //新增图标和图标颜色的编辑项
         attrcontent = attrcontent +
             '<div class="form-group">' +
             '<label>图标&emsp;<i class="fa ' + displaycode.find(".input-icon > i").data("icon") + '"></i></label>' +
@@ -614,20 +618,64 @@ $(document).on("click", ".edit-link", function () {
             '</div>';
 
     } else if (operation.find(".codeblock").hasClass("inputcheckbox")) {
+        //复选框和单选框
         attrcontent += '<button type="button" class="btn btn-success" id="crboxadd">添加项目</button><br><ul class="checkboxsortable">';
-        operation.find(".checkboxedit .checkbox-inline").each(function () {
+        if (operation.find(".checkboxedit .checkbox-inline").length > 0) {
+            boxtypefalg = true;
+        } else {
+            boxtypefalg = false;
+        }
+        operation.find(".checkboxedit .checkbox-inline,.radio-inline").each(function () {
             attrcontent +=
                 '<li class="">' +
                 '<span class="light-grey-bg" style="padding: 4px">' +
                 '<i class="fa fa-times fa-lg red"></i>&emsp;' +
-                '<i class="fa fa-arrows-alt blue"></i></span>&emsp;' +
-                'id <input class="boot-input" value="' + $(this).find("input").attr("id") + '">&emsp;' +
-                'value <input class="boot-input" value="' + $(this).find("input").attr("value") + '">&emsp;' +
-                'option <input class="boot-input" value="' + $(this)[0].innerText + '">&emsp;' +
+                '<i class="fa fa-arrows-alt blue"></i></span>&emsp;&emsp;' +
+                'name <input class="boot-input" value="' + $(this).find("input").attr("name") + '">&emsp;&emsp;' +
+                'id <input class="boot-input" value="' + $(this).find("input").attr("id") + '">&emsp;&emsp;' +
+                'value <input class="boot-input" value="' + $(this).find("input").attr("value") + '">&emsp;&emsp;' +
+                'option <input class="boot-input" value="' + $(this)[0].innerText + '">&emsp;&emsp;' +
                 '</li>';
         });
         attrcontent += '</ul>';
-
+        setTimeout(function () {
+            $(".checkboxsortable").sortable({
+                placeholder: "draghighlight",
+                axis: "y",
+                handle: ".fa-arrows-alt"
+            });
+        }, 500);
+    } else if (operation.find(".codeblock").hasClass("easyuitable")) {
+        //easyui表格
+        attrcontent +=
+            '<div class="form-group">' +
+            '<label>title</label>' +
+            '<input class="form-control" id="dcode-title" value="' + displaycode.find("table").attr("title") + '">' +
+            '</div>' +
+            '<div class="form-group">' +
+            '<label>data-options</label>' +
+            '<input class="form-control" id="dcode-opts" value="' + displaycode.find("table").attr("data-options") + '">' +
+            '</div>';
+        attrcontent += '<button type="button" class="btn btn-success" id="xxx">添加项目</button><br><ul class="checkboxsortable">';
+        displaycode.find("table th").each(function () {
+            if ($(this).attr("data-options").indexOf("checkbox:true") > -1) {
+                //不加载checkbox行，给选择是否需要选择框
+            } else {
+                attrcontent +=
+                    '<li class="">' +
+                    '<span class="light-grey-bg" style="padding: 4px">' +
+                    '<i class="fa fa-times fa-lg red"></i>&emsp;' +
+                    '<i class="fa fa-arrows-alt blue"></i></span>&emsp;&emsp;';
+                var attrs = $(this).attr("data-options").split(",");
+                for (var i = 0; i < attrs.length; i++) {
+                    //再拆分属性：
+                    attrs[i];
+                }
+            }
+            // 'name <input class="boot-input" value="' + $(this).attr("data-options") + '">&emsp;&emsp;' +
+            // '</li>';
+        });
+        attrcontent += '</ul>';
         setTimeout(function () {
             $(".checkboxsortable").sortable({
                 placeholder: "draghighlight",
@@ -646,7 +694,8 @@ $(document).on("click", ".edit-link", function () {
         $('.editmore').css("display", "none");
         $(".attrlist").html("自动加载属性：<br>" +
             "输入框、文本域---\"id\", \"name\", \"placeholder\", \"data-options\" <br>" +
-            "复选框、单选框---");
+            "复选框、单选框---\"name\", \"id\", \"value\", \"text\" <br>" +
+            "easyui datagrid---\"title\",\"data-options\"");
     }
 
     setTimeout(function () {
@@ -661,10 +710,11 @@ $(document).on("click", "#crboxadd", function () {
         '<li class="ui-sortable-handle">' +
         '<span class="light-grey-bg" style="padding: 4px">' +
         '<i class="fa fa-times fa-lg red"></i>&emsp;' +
-        '<i class="fa fa-arrows-alt blue"></i></span>&emsp;' +
-        'id <input class="boot-input" value="">&emsp;' +
-        'value <input class="boot-input" value="">&emsp;' +
-        'option <input class="boot-input" value="">&emsp;' +
+        '<i class="fa fa-arrows-alt blue"></i></span>&emsp;&emsp;' +
+        'name <input class="boot-input" value="">&emsp;&emsp;' +
+        'id <input class="boot-input" value="">&emsp;&emsp;' +
+        'value <input class="boot-input" value="">&emsp;&emsp;' +
+        'option <input class="boot-input" value="">&emsp;&emsp;' +
         '</li>');
 });
 
@@ -709,11 +759,13 @@ $(document).on("click", "#displaybtn", function () {
         copycontent.find(".checkboxedit").children().remove();
         //获取到每行的信息重新生成code
         var recode = "";
+        var boxtypeclass = boxtypefalg ? "checkbox-inline" : "radio-inline";
+        var boxtype = boxtypefalg ? "checkbox" : "radio";
         $(".checkboxsortable li").each(function () {
             recode +=
-                '<label class="checkbox-inline">' +
-                '<input type="checkbox" id="' + $(this).find("input")[0].value + '" value="' + $(this).find("input")[1].value + '">' +
-                '' + $(this).find("input")[2].value + '' +
+                '<label class="' + boxtypeclass + '">' +
+                '<input type="' + boxtype + '" name="' + $(this).find("input")[0].value + '" id="' + $(this).find("input")[1].value + '" value="' + $(this).find("input")[2].value + '">' +
+                '' + $(this).find("input")[3].value + '' +
                 '</label>';
         })
         copycontent.find(".checkboxedit").append(recode);
@@ -765,7 +817,9 @@ $('#updateContent').on("click", function () {
         var easyuicode = copycontent.find('.easyuicode');
         var classname = copycontent.find('.easyui').attr("rel");
         easyuicode.find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
-        easyuicode.find('.fast-edit')[0].innerHTML = $('#updatetext').val();
+        if (easyuicode.find('.fast-edit').length > 0) {
+            easyuicode.find('.fast-edit')[0].innerHTML = $('#updatetext').val();
+        }
         $('#bodycode').val(html_beautify(easyuicode.html()));
     } else {
         copycontent.find('.fast-edit')[0].innerHTML = $('#updatetext').val();

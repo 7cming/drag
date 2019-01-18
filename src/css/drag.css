@@ -231,3 +231,9 @@
 .draghighlight {
     height: 40px;
 }
+
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 1200px;
+    }
+}
