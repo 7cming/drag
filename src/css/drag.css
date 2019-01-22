@@ -208,23 +208,23 @@
     padding: 10px;
 }
 
-.checkboxsortable {
+.elementsortable {
     list-style-type: none;
     margin-top: 5px;
     padding: 0;
 }
 
-.checkboxsortable li {
+.elementsortable li {
     margin: 0 5px 5px 5px;
     padding: 5px;
     border: 1px dotted;
 }
 
-.checkboxsortable .fa-arrows-alt {
+.elementsortable .fa-arrows-alt {
     cursor: move;
 }
 
-.checkboxsortable .fa-times {
+.elementsortable .fa-times {
     cursor: pointer;
 }
 

@@ -619,7 +619,7 @@ $(document).on("click", ".edit-link", function () {
 
     } else if (operation.find(".codeblock").hasClass("inputcheckbox")) {
         //复选框和单选框
-        attrcontent += '<button type="button" class="btn btn-success" id="crboxadd">添加项目</button><br><ul class="checkboxsortable">';
+        attrcontent += '<button type="button" class="btn btn-success" id="crboxadd">添加项目</button><br><ul class="elementsortable">';
         if (operation.find(".checkboxedit .checkbox-inline").length > 0) {
             boxtypefalg = true;
         } else {
@@ -639,7 +639,7 @@ $(document).on("click", ".edit-link", function () {
         });
         attrcontent += '</ul>';
         setTimeout(function () {
-            $(".checkboxsortable").sortable({
+            $(".elementsortable").sortable({
                 placeholder: "draghighlight",
                 axis: "y",
                 handle: ".fa-arrows-alt"
@@ -649,11 +649,11 @@ $(document).on("click", ".edit-link", function () {
         //easyui表格
         attrcontent += '<button type="button" class="btn btn-success" id="xxx">添加项目</button><br>';
         if (displaycode.find("table th")[0].outerHTML.indexOf("checkbox:true") > -1) {
-            attrcontent += '<label class="checkbox-inline"><input type="checkbox" id="check1" checked="checked"> datagrid 复选框</label>';
+            attrcontent += '<label class="checkbox-inline"><input type="checkbox" id="tablecheckbox" checked="checked"> datagrid 复选框</label>';
         } else {
-            attrcontent += '<label class="checkbox-inline"><input type="checkbox" id="check1"> datagrid 复选框</label>';
+            attrcontent += '<label class="checkbox-inline"><input type="checkbox" id="tablecheckbox"> datagrid 复选框</label>';
         }
-        attrcontent += '<ul class="checkboxsortable">';
+        attrcontent += '<ul class="elementsortable">';
         displaycode.find("table th").each(function () {
             if ($(this).attr("data-options").indexOf("checkbox:true") > -1) {
                 //不加载checkbox行，给选择是否需要选择框
@@ -662,15 +662,50 @@ $(document).on("click", ".edit-link", function () {
                     '<li class="">' +
                     '<span class="light-grey-bg" style="padding: 4px">' +
                     '<i class="fa fa-times fa-lg red"></i>&emsp;' +
-                    '<i class="fa fa-arrows-alt blue"></i></span>&emsp;&emsp;';
+                    '<i class="fa fa-arrows-alt blue"></i></span>&emsp;&emsp;' +
+                    '列名 <input class="boot-input columnname" value="' + $(this).html() + '">&emsp;&emsp;';
                 var attrs = $(this).attr("data-options").split(",");
                 for (var i = 0; i < attrs.length; i++) {
                     //再拆分属性：
-                    attrs[i];
+                    //将属性按照：进行分隔展示，去除‘，生成代码时再给加上
+                    var attrvalues = attrs[i].split(":");
+                    var inputclass;
+                    if (attrvalues[0] == "field") {
+                        inputclass = "field";
+                        attrcontent +=
+                            '' + attrvalues[0] + ' <input class="boot-input ' + inputclass + '" value="' + attrvalues[1].replace(/\'/g, "") + '">&emsp;&emsp;';
+                    } else if (attrvalues[0] == "width") {
+                        inputclass = "width";
+                        attrcontent +=
+                            '' + attrvalues[0] + ' <input class="boot-input ' + inputclass + '" value="' + attrvalues[1].replace(/\'/g, "") + '">&emsp;&emsp;';
+                    } else if (attrvalues[0] == "align") {
+                        inputclass = "align";
+                        var centerselected, rightselected;
+                        if (attrvalues[1] == "'center'") {
+                            centerselected = "selected";
+                        } else {
+                            rightselected = "selected";
+                        }
+                        attrcontent +=
+                            '' + attrvalues[0] + ' <select class="boot-input ' + inputclass + '">' +
+                            '<option value=""></option>' +
+                            '<option value="center" ' + centerselected + '>center</option>' +
+                            '<option value="right" ' + rightselected + '>right</option>' +
+                            '</select>&emsp;&emsp;';
+                    }
+                }
+                if ($(this).attr("data-options").indexOf("align:") > -1) {
+
+                } else {
+                    attrcontent +=
+                        'align <select class="boot-input align">' +
+                        '<option value=""></option>' +
+                        '<option value="center">center</option>' +
+                        '<option value="right">right</option>' +
+                        '</select>&emsp;&emsp;';
                 }
             }
-            // 'name <input class="boot-input" value="' + $(this).attr("data-options") + '">&emsp;&emsp;' +
-            // '</li>';
+            attrcontent += '</li>';
         });
         attrcontent += '</ul>';
         attrcontent +=
@@ -683,7 +718,7 @@ $(document).on("click", ".edit-link", function () {
             '<input class="form-control" id="dcode-opts" value="' + displaycode.find("table").attr("data-options") + '">' +
             '</div>';
         setTimeout(function () {
-            $(".checkboxsortable").sortable({
+            $(".elementsortable").sortable({
                 placeholder: "draghighlight",
                 axis: "y",
                 handle: ".fa-arrows-alt"
@@ -712,7 +747,7 @@ $(document).on("click", ".edit-link", function () {
 
 //添加一行编辑信息
 $(document).on("click", "#crboxadd", function () {
-    $(".checkboxsortable ").append(
+    $(".elementsortable ").append(
         '<li class="ui-sortable-handle">' +
         '<span class="light-grey-bg" style="padding: 4px">' +
         '<i class="fa fa-times fa-lg red"></i>&emsp;' +
@@ -725,7 +760,7 @@ $(document).on("click", "#crboxadd", function () {
 });
 
 //删除该行
-$(document).on("click", ".checkboxsortable > li  .fa-times", function () {
+$(document).on("click", ".elementsortable > li  .fa-times", function () {
     $(this).parent().parent().remove();
 });
 
@@ -767,21 +802,44 @@ $(document).on("click", "#displaybtn", function () {
         var recode = "";
         var boxtypeclass = boxtypefalg ? "checkbox-inline" : "radio-inline";
         var boxtype = boxtypefalg ? "checkbox" : "radio";
-        $(".checkboxsortable li").each(function () {
+        $(".elementsortable li").each(function () {
             recode +=
                 '<label class="' + boxtypeclass + '">' +
                 '<input type="' + boxtype + '" name="' + $(this).find("input")[0].value + '" id="' + $(this).find("input")[1].value + '" value="' + $(this).find("input")[2].value + '">' +
                 '' + $(this).find("input")[3].value + '' +
                 '</label>';
-        })
+        });
         copycontent.find(".checkboxedit").append(recode);
+    } else if (operation.find(".codeblock").hasClass("easyuitable")) {
+        copycontent.find("table thead tr").children().remove();
+        var recode = "";
+        //checkbox
+        if($('#tablecheckbox').is(':checked')){
+            recode +=
+                '<th data-options="field:\'ck\',checkbox:true"></th>';
+        }
+        //column
+        $(".elementsortable li").each(function () {
+            recode +=
+                '<th data-options="field:\'' + $(this).find(".field")[0].value + '\',width:' + $(this).find(".width")[0].value + '';
+            if ($(this).find(".align")[0].value == "") {
+                recode += '">' + $(this).find(".columnname")[0].value + '</th>';
+            } else {
+                recode += ',align:\'' + $(this).find(".align")[0].value + '\'">' + $(this).find(".columnname")[0].value + '</th>';
+            }
+        });
+        copycontent.find("table thead tr").append(recode);
+        copycontent.find("table").attr("title", $('#dcode-title').val());
+        copycontent.find("table").attr("data-options", $('#dcode-opts').val());
     }
 
     if (copycontent.find('.codeblock').hasClass("easyuicode")) {
         var easyuicode = copycontent.find('.easyuicode');
         var classname = copycontent.find('.easyui').attr("rel");
         easyuicode.find('.easyui').removeAttr("rel").removeClass("easyui").addClass(classname);
-        easyuicode.find('.fast-edit')[0].innerHTML = $('#updatetext').val();
+        if (easyuicode.find('.fast-edit')[0] != undefined) {
+            easyuicode.find('.fast-edit')[0].innerHTML = $('#updatetext').val();
+        }
         $('#bodycode').val(html_beautify(easyuicode.html()));
     }
 
