@@ -647,7 +647,7 @@ $(document).on("click", ".edit-link", function () {
         }, 500);
     } else if (operation.find(".codeblock").hasClass("easyuitable")) {
         //easyui表格
-        attrcontent += '<button type="button" class="btn btn-success" id="xxx">添加项目</button><br>';
+        attrcontent += '<button type="button" class="btn btn-success" id="datagridadd">添加项目</button><br>';
         if (displaycode.find("table th")[0].outerHTML.indexOf("checkbox:true") > -1) {
             attrcontent += '<label class="checkbox-inline"><input type="checkbox" id="tablecheckbox" checked="checked"> datagrid 复选框</label>';
         } else {
@@ -745,7 +745,7 @@ $(document).on("click", ".edit-link", function () {
 });
 
 
-//添加一行编辑信息
+//checkbox radio添加一行编辑信息
 $(document).on("click", "#crboxadd", function () {
     $(".elementsortable ").append(
         '<li class="ui-sortable-handle">' +
@@ -756,6 +756,24 @@ $(document).on("click", "#crboxadd", function () {
         'id <input class="boot-input" value="">&emsp;&emsp;' +
         'value <input class="boot-input" value="">&emsp;&emsp;' +
         'option <input class="boot-input" value="">&emsp;&emsp;' +
+        '</li>');
+});
+
+//datagrid添加一行编辑信息
+$(document).on("click", "#datagridadd", function () {
+    $(".elementsortable ").append(
+        '<li class="ui-sortable-handle">' +
+        '<span class="light-grey-bg" style="padding: 4px">' +
+        '<i class="fa fa-times fa-lg red"></i>&emsp;' +
+        '<i class="fa fa-arrows-alt blue"></i></span>&emsp;&emsp;' +
+        '列名 <input class="boot-input columnname" value="">&emsp;&emsp;' +
+        'field <input class="boot-input field" value="">&emsp;&emsp;' +
+        'width <input class="boot-input width" value="">&emsp;&emsp;' +
+        'align <select class="boot-input align">' +
+        '<option value=""></option>' +
+        '<option value="center">center</option>' +
+        '<option value="right">right</option>' +
+        '</select>&emsp;&emsp;' +
         '</li>');
 });
 
@@ -814,12 +832,19 @@ $(document).on("click", "#displaybtn", function () {
         copycontent.find("table thead tr").children().remove();
         var recode = "";
         //checkbox
-        if($('#tablecheckbox').is(':checked')){
+        if ($('#tablecheckbox').is(':checked')) {
             recode +=
                 '<th data-options="field:\'ck\',checkbox:true"></th>';
         }
         //column
         $(".elementsortable li").each(function () {
+            if($(this).find(".field")[0].value==""||$(this).find(".width")[0].value==""||$(this).find(".columnname")[0].value==""){
+                bootbox.alert({
+                    message: "列名、field、width属性为空",
+                    size: "small"
+                });
+                return;
+            }
             recode +=
                 '<th data-options="field:\'' + $(this).find(".field")[0].value + '\',width:' + $(this).find(".width")[0].value + '';
             if ($(this).find(".align")[0].value == "") {
