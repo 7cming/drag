@@ -3,7 +3,6 @@
 # Drag 页面拖拽
 >基于bootstrap的页面元素拖拽  
 项目演示：[demo](https://7cming.github.io/drag/build/drag.html)  
-备用演示：[demo](https://mugenming.gitee.io/drag/build/drag.html)  
 
 |Author|7c|
 |----------|-----------------
