@@ -30,7 +30,7 @@ $(function () {
     });
 
     //客户端缓存加载
-    if (localStorage.getItem("dragcode") != "") {
+    if (localStorage.getItem("dragcode") != "" && localStorage.getItem("dragcode") != null) {
         $('.dragbox').html(localStorage.getItem("dragcode"));
     }
     $('#headcode').val(localStorage.getItem("headcode"));
@@ -141,7 +141,14 @@ $('#cleanbtn').click(function () {
 
 //客户端缓存
 $('#savebtn').click(function () {
-    localsave("dragcode", $('.dragbox').clone().html());
+    if($('.dragbox').clone().html().replace(/\s+/g,"") !=""){
+        localsave("dragcode", $('.dragbox').clone().html());
+    }else{
+        bootbox.dialog({
+            message: '<div class="text-center red">请拖拽内容后暂存</div>',
+            size: 'small'
+        });
+    }
 });
 
 //预览
