@@ -626,7 +626,7 @@ $(document).on("click", ".edit-link", function () {
 
     } else if (operation.find(".codeblock").hasClass("inputcheckbox")) {
         //复选框和单选框
-        attrcontent += '<button type="button" class="btn btn-success" id="crboxadd">添加项目</button><br><ul class="elementsortable">';
+        attrcontent += '<ul class="elementsortable">';
         if (operation.find(".checkboxedit .checkbox-inline").length > 0) {
             boxtypefalg = true;
         } else {
@@ -644,7 +644,7 @@ $(document).on("click", ".edit-link", function () {
                 'option <input class="boot-input" value="' + $(this)[0].innerText + '">&emsp;&emsp;' +
                 '</li>';
         });
-        attrcontent += '</ul>';
+        attrcontent += '</ul><button type="button" class="btn btn-success" id="crboxadd">添加项目</button><br>';
         setTimeout(function () {
             $(".elementsortable").sortable({
                 placeholder: "draghighlight",
@@ -654,7 +654,6 @@ $(document).on("click", ".edit-link", function () {
         }, 500);
     } else if (operation.find(".codeblock").hasClass("easyuitable")) {
         //easyui表格
-        attrcontent += '<button type="button" class="btn btn-success" id="datagridadd">添加项目</button><br>';
         if (displaycode.find("table th")[0].outerHTML.indexOf("checkbox:true") > -1) {
             attrcontent += '<label class="checkbox-inline"><input type="checkbox" id="tablecheckbox" checked="checked"> datagrid 复选框</label>';
         } else {
@@ -715,6 +714,7 @@ $(document).on("click", ".edit-link", function () {
             attrcontent += '</li>';
         });
         attrcontent += '</ul>';
+        attrcontent += '<button type="button" class="btn btn-success" id="datagridadd">添加项目</button><br>';
         attrcontent +=
             '<div class="form-group">' +
             '<label>title</label>' +
@@ -754,7 +754,7 @@ $(document).on("click", ".edit-link", function () {
 
 //checkbox radio添加一行编辑信息
 $(document).on("click", "#crboxadd", function () {
-    $(".elementsortable ").append(
+    $(".elementsortable").append(
         '<li class="ui-sortable-handle">' +
         '<span class="light-grey-bg" style="padding: 4px">' +
         '<i class="fa fa-times fa-lg red"></i>&emsp;' +
@@ -768,7 +768,7 @@ $(document).on("click", "#crboxadd", function () {
 
 //datagrid添加一行编辑信息
 $(document).on("click", "#datagridadd", function () {
-    $(".elementsortable ").append(
+    $(".elementsortable").append(
         '<li class="ui-sortable-handle">' +
         '<span class="light-grey-bg" style="padding: 4px">' +
         '<i class="fa fa-times fa-lg red"></i>&emsp;' +
