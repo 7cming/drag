@@ -74,7 +74,7 @@ $(function () {
         }
     });
     //焦点在更新框中 enter更新代码，alt s 更新页面
-    $('#updatetext').bind('keydown', function (event) {
+    $('#updatetext,#bodycode').bind('keydown', function (event) {
         if (event.keyCode == "13") {
             $('#updateContent').click();
         }
